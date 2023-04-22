@@ -1,0 +1,21 @@
+.section-specialty{
+    .section-container
+    {
+        .section-body{
+            .section-customize
+            {
+                .specialty-name
+                {
+                    text-align: center;
+                    padding-top: 10px;
+                    font-weight: 600;
+
+                    &:hover{
+                        color: rgb(40, 73, 145);
+                    }
+                }
+                
+            }
+        }
+    }
+}

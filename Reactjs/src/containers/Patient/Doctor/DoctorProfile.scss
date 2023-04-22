@@ -1,0 +1,54 @@
+.profile-doctor-container
+{
+    .introduction-doctor
+    {
+        display: flex;
+        // padding: 0 70px;
+        width: 150%;
+        min-height: 150px;
+        .content-left
+        {
+            .avt-doctor
+            {
+                width: 30%;
+                width: 70px;
+                height: 70px;
+                border-radius: 35px;
+                -webkit-border-radius: 35px;
+                -moz-border-radius: 35px;
+                -ms-border-radius: 35px;
+                -o-border-radius: 35px;
+                background: center center no-repeat;
+                background-size: contain;
+                margin-left: 10px;
+}
+            .more-intro
+            {
+                cursor: pointer;
+                margin-top: 10px;
+                color: rgb(28, 68, 176);
+                text-align: center;
+                font-weight: 600;
+                font-size: 11px;
+            }
+ 
+        }
+        .content-right
+        {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            .up
+            {
+                font-weight: 600;
+                font-size: 17px;
+            }
+            .down
+            {
+              span {
+                font-size: 12px;
+              }
+            }
+        }
+    }
+}

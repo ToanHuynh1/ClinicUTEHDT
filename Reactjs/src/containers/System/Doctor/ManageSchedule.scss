@@ -1,0 +1,52 @@
+.manage-schedule-container
+{
+    .manage-schedule-title
+    {
+        text-transform: uppercase;
+        margin-top: 15px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 25px;
+        color: rgb(62, 124, 204);
+        margin-bottom: 30px;
+    }
+
+    .select-time-container{
+        display: flex;
+        gap: 20px;
+        margin: 30px;
+        // tự co màn hình
+        flex-wrap: wrap;
+        .btn-schedule
+        {
+            padding:7px 12px;
+            border: 1px solid black;
+            border-radius: 8px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            -ms-border-radius: 8px;
+            -o-border-radius: 8px;
+            
+            &.active {
+                background-color: rgb(251, 165, 182);
+            }
+
+        }
+    }
+
+    
+    .btn-submit-schedule
+    {
+    outline: none;
+        font-size: 15px;
+        border: none;
+        padding: 7px 5px;
+        border-radius: 7px;
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        -ms-border-radius: 7px;
+        -o-border-radius: 7px;
+    }
+
+  
+}

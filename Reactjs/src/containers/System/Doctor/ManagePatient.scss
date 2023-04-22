@@ -1,0 +1,108 @@
+.manage-patient-container{
+    .m-p-title
+    {
+        font-size: 20px;
+        margin: 10px 0;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .manage-patient-body
+    {
+        padding: 0 20px;
+        .pagination
+        {
+            margin-top: 20px;
+
+            .active{
+                button {
+                    background-color: aquamarine;
+                }
+            }
+            button {
+                outline: none;
+                border: none;
+                padding: 6px 10px;
+                border-radius: 5px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -ms-border-radius: 5px;
+                -o-border-radius: 5px;
+
+            }
+
+
+            .btn_prevPage
+            {
+                margin-right: 10px;
+                font-weight: 600;
+                padding: 6px 15px;
+                background-color: #f3f3d8;
+            }
+
+            .btn_nextPage
+            {
+                margin-left: 10px;
+                font-weight: 600;
+                padding: 6px 15px;
+                background-color: #f3f3d8;
+            }
+    
+        }
+    }
+
+}
+
+div._loading_overlay_wrapper {
+    position: unset;
+
+    ._loading_overlay_overlay{
+        z-index: 100000;
+    }
+}
+
+#table-manage-patient td, #table-manage-patient th {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+#table-manage-patient tr:nth-child(even){background-color: #f3f3d8;}
+  
+#table-manage-patient tr:hover {background-color: #ddd;}
+  
+#table-manage-patient th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #7ec0df;
+    color: black;
+    text-align: center;
+}
+
+
+.btn-confirm
+{
+    outline: none;
+    border: none;
+    margin-right: 10px;
+    padding: 6px 10px;
+    background-color: rgb(98, 218, 74);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.btn-send
+{
+    outline: none;
+    border: none;
+    margin-right: 10px;
+    padding: 6px 10px;
+    background-color: rgb(230, 94, 178);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}

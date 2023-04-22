@@ -1,0 +1,329 @@
+.booking-schedule-container
+{
+    margin-top: 69px;
+
+    .intro-infor
+    {
+        border: 1px solid #dddd;
+        background-color: #f3eeeedd;
+        display: flex;
+        justify-content: center;
+        .content-left
+        {
+            width: 23.3%;
+        }
+        .content-center
+        {
+            width: 43.3%;
+            display: flex;
+            .avatar
+            {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            background: center center no-repeat;
+            background-size: contain;
+            margin: 10px 20px;
+            }
+
+            .content-doctor
+            {
+                margin-top: 14px;
+                .title-info{
+                    color: black;
+                    font-weight: 600;
+                }
+                .time-info{
+                    font-size: 12px;
+                    margin-top: 3px;
+                }
+                .doctor-info{
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: rgb(118, 102, 207);
+                    margin-top: 3px;
+                }
+            }
+           
+        }
+        .content-right
+        {
+            margin-top: 15px;
+            width: 23.3%;
+           
+        }
+    }
+
+    .content-booking
+    {
+        margin-top: 20px;
+        display: flex;
+        min-height: 1000px;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 30%;
+        .book-name
+        {
+            width: 50%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 2px;
+         
+            .book-name-input{
+                border: none;
+                outline: none;
+                width: 200px;
+            }
+
+            .book-name-icon
+            {
+                margin-right: 10px;
+            }
+         
+        }
+
+        .note
+        {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #9b9a9a;
+        }
+
+        .book-phone
+        {
+            margin-top: 10px;
+            width: 50%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 2px;
+            .phone-input
+            {
+                border: none;
+                outline: none;
+                width: 200px;
+            }
+            .phone-icon{
+                margin-right: 10px;
+            }
+        }
+
+        .book-email
+        {
+            margin-top: 10px;
+            width: 50%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 2px;
+            .email-input
+            {
+                border: none;
+                outline: none;
+                width: 200px;
+            }
+            .email-icon{
+                margin-right: 10px;
+            }
+        }
+
+        // 
+        .book-email
+        {
+            margin-top: 10px;
+            width: 50%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 2px;
+            .email-input
+            {
+                border: none;
+                outline: none;
+                width: 200px;
+            }
+            .email-icon{
+                margin-right: 10px;
+            }
+        }
+        // 
+        .book-contact
+        {
+            margin-top: 10px;
+            width: 50%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 2px;
+            .contact-input
+            {
+                border: none;
+                outline: none;
+                width: 200px;
+            }
+            .contact-icon{
+                margin-right: 10px;
+            }
+        }
+
+        // 
+
+        .book-reason
+        {
+            margin-top: 10px;
+            width: 50%;
+            height: 100px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 2px;
+            .reason-input
+            {
+                border: none;
+                outline: none;
+                width: 200px;
+            }
+            .reason-icon{
+                margin-right: 10px;
+            }
+        }
+
+        // 
+        .book-who
+        {
+            margin-top: 10px;
+            width: 50%;
+            // border: 1px solid #ccc;
+            // padding: 10px;
+            border-radius: 2px;
+            .who-input
+            {
+                border: none;
+                outline: none;
+                width: 200px;
+            }
+            .who-icon{
+                margin-right: 10px;
+            }
+        }
+
+
+        .book-gender
+        {
+            margin-top: 10px;
+            width: 50%;
+            // border: 1px solid #ccc;
+            // padding: 10px;
+            border-radius: 2px;
+            .gender-input
+            {
+                border: none;
+                outline: none;
+                width: 200px;
+            }
+        }
+
+        .gender-title
+        {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .payment-title
+        {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .payment-detail
+        {
+            margin-top: 10px;
+            border-radius: 6px;
+            background-color: #dfdada;
+            padding: 10px;
+            width: 50%;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            -ms-border-radius: 6px;
+            -o-border-radius: 6px;
+            .payment-detail-up  
+                {
+                padding: 15px;
+                box-sizing: border-box;
+                .left
+                {
+                    font-size: 12px;
+                    float: left;
+                    font-weight: 600;
+                }
+                .right{
+                    font-size: 12px;
+                    float: right;
+                    font-weight: 600;
+                }
+            }
+            .payment-detail-down
+            {
+                margin-top: 10px;
+                padding: 15px;
+                border-top: 1px solid #9b9a9a;
+                box-sizing: border-box;
+                .left
+                {
+                    font-size: 12px;
+                    float: left;
+                    font-weight: 600;
+                }
+                .right{
+                    font-size: 12px;
+                    float: right;
+                }
+                .free
+                {
+                    font-weight: 600;
+                    color: red;
+                }
+            }
+    
+        }
+
+        .idea
+        {
+            margin-top: 10px;
+            margin-left: 5%;
+            font-size: 12px;
+            color: #918e8e;
+        }
+
+        .detail-note
+        {
+            width: 50%;
+            border-radius: 6px;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #D4EFFC;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            -ms-border-radius: 6px;
+            -o-border-radius: 6px;
+        }
+
+        .btn-confirm
+        {
+            margin-top: 20px;
+            width: 50%;
+            outline: none;
+            height: 35px;
+            border: none;
+            background-color: #f1d27b;
+        }
+    }
+
+}
+
+
+div._loading_overlay_wrapper {
+    position: unset;
+
+    ._loading_overlay_overlay{
+        z-index: 100000;
+    }
+}

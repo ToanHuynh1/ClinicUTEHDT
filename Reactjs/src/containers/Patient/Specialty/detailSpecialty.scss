@@ -1,0 +1,88 @@
+.detail-specialty-container
+{
+    .detail-specialty-body
+    {
+        padding: 0 200px;
+        background: #eee;
+    }
+    .search-doctor
+    {
+        .select-province
+        {
+            margin-bottom: 20px;
+            outline: none;
+            border: none;
+            box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+            padding: 7px 0;
+            cursor: pointer;
+            font-weight: 600;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+}
+    }
+    .description-specialty
+    {
+        padding: 20px;
+        box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+        background-color: white !important;
+        margin-top: 50px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .each-doctor
+    {
+        display: flex;
+        background-color: #fff;
+        box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+        border-radius: 8px;
+        border-bottom: none;
+        margin-bottom: 10px;
+        padding: 20px 0;
+        width: 100%;
+        min-height: 300px;
+        margin: 15px 0;
+        .content-left{
+            width: 50%;
+
+            .profile-doctor-container 
+            {
+                .introduction-doctor {
+                    .content-left{
+                        width: 30% !important;
+                        width: 90px !important;
+                        height: 90px !important;
+                        border-radius: 45px !important;
+                        -webkit-border-radius: 45px !important;
+                        -moz-border-radius: 45px !important;
+                        -ms-border-radius: 45px !important;
+                        -o-border-radius: 45px !important;
+}
+                    }
+                    .content-right
+                    {
+                        .down {
+                            text-align: justify;
+                        }
+                    }
+            }
+        }
+        .content-right{
+            width: 50%;
+            .doctor-more-infor
+            {
+                width: 94%;
+                .doctor-more-infor-container
+                {
+                    padding-left: 0px;
+                }
+            }
+            .doctor-schedule
+            {
+                width: 100%;
+            }
+        }
+    }
+}

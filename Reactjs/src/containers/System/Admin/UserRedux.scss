@@ -1,0 +1,32 @@
+.img-container
+{
+
+    .upload_custom
+    {
+        padding: 5px;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        background: rgb(163, 162, 162);
+        cursor: pointer;
+    
+        &:hover{
+            background: greenyellow;
+            opacity: 0.8;
+        }
+    }
+
+
+    .image-admin
+    {
+        height: 50px;
+        width: 100%;
+        border: 1px solid rgb(100, 155, 180);
+        background: center center no-repeat;
+        background-size: contain;
+        cursor: pointer;
+    }
+}
+

@@ -1,0 +1,128 @@
+{
+    "homeheader":{
+        "speciality" : "Medical speciality",
+        "searchDoctor" : "Find a doctor by speciality",
+        "health-facility" : "Medical facility",
+        "select-room": "Select an appropriate facility",
+        "doctor": "Team of doctors",
+        "select-doctor": "Select doctors based on your needs",
+        "fee": "Healthcare package",
+        "check-health" : "Specialized health check-up",
+        "support": "Support",
+        "welcome": "Welcome"
+    },
+    "banner": 
+    {
+        "title-banner": "BOOK AN APPOINTMENT ONLINE",
+        "title-banner-small": "CARING FOR YOUR HEALTH",
+        "Specialtyexamination": "Specialty examination",
+        "Remotemedical": "Remote medical examination",
+        "healthcheckup" : "General health check-up",
+        "Medicaltesting" : "Medical testing",
+        "Mentalhealth" : "Mental health",
+        "Dentalexamination" : "Dental examination",
+        "Surgicalpackage" : "Surgical package",
+        "Medicalproducts": "Medical products",
+        "Corporatehealth": "Corporate health"
+    },
+    "menu": {
+        "admin":
+        {
+            "manage-user" : "Users System",
+            "manage-doctor": "Manage Doctor",
+            "manage-admin": "Manage Administrator",
+            "crud-redux": "Manage users",
+            "crud": "CRUD User",
+            "clinic": "Clinic",
+            "manage-clinic": "Manage Clicnic",
+            "specialty": "Specialty",
+            "manage-specialty": "Manage Specialty",
+            "guidebook": "Guidebook",
+            "manage-guidebook": "Manage Guidebook"
+        },
+        "doctor":{
+            "manage-schedule": "Manege schedule of doctor",
+            "manage-patient": "Manege patient of doctor"
+        }
+    },
+    "manage-user":{
+        "add": "Add User",
+        "email": "Email",
+        "password": "Password",
+        "firstName":  "FirstName",
+        "lastName": "LastName",
+        "phoneNumber": "Phone Number",
+        "address": "Address",
+        "gender": "Gender",
+        "position": "Position",
+        "role": "Role",
+        "save": "Save user",
+        "image": "Avatar",
+        "edit": "Edit user"
+    },
+
+    "homepage": {
+        "prominent-doctor": "Prominent doctors of the week",
+        "more-inf": "See more",
+        "speciality": "Popular specialties"
+    },
+
+    "manage-schedule": {
+        "title": "Management of medical examination plan",
+        "select-doctor": "Select Doctor",
+        "select-day": "Choose a medical examination date",
+        "save-inforSchedule": "Submit Information"
+    },
+    "patient": {
+        "detail-doctor": {
+            "schedule": "Appointment schedule",
+            "no-appointment": "Without an appointment, please choose another time !!!",
+            "choose": "Choose",
+            "book-free": " and book free"
+        },
+        "more-info-doctor": {
+            "clinic-address": "Clinic Address",
+            "clinic-price": "Consultation Fee",
+            "see-info": "See details",
+            "info-clinic": "The clinic accepts payment by means of",
+            "close-detail": "Hide price list"
+        },
+        "booking-schedule": {
+            "title": "BOOK AN APPOINTMENT",
+            "more-name": "Please clearly write your Full Name, capitalizing the first letter of each word, for example: ",
+            "title-date": "Birthday",
+            "title-gender": "Gender",
+            "payment": "Payment method",
+            "price": "Examination fee",
+            "fee-book": "Booking fee",
+            "fee-book-price": "Free",
+            "sum": "Sum",
+            "more-book": "Please fill in all necessary information to save time in the examination process.",
+            "note": "Note",
+            "more-note-up": "The information you provide will be used as a medical record. Please kindly provide the following information:",
+            "more-note-center": "Please write your full name, capitalizing the first letter of each word. For example: ",
+            "more-note-down": "Please fill in all necessary and correct information and kindly double-check before pressing - Confirm - ",
+            "submit": "Appointment confirmation",
+            "more-submit": "By confirming the appointment, you fully agree to our Terms of Service."
+        }
+    },
+    "admin": {
+        "manage-doctor": {
+            "title": "Add information for doctor",
+            "select": "Select doctor",
+            "intro": "Information Introduction",
+            "add": "Add Information",
+            "save": "Save Information",
+            "price": "Medical examination fee",
+            "payment": "Payment method",
+            "province": "Province",
+            "nameClinic": "Name of clinic",
+            "address": "Address",
+            "note" : "Note",
+            "speciality": "Select speciality",
+            "clinic": "Select clinic"
+        }
+    }
+
+    
+}
