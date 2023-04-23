@@ -59,7 +59,9 @@
         "role": "Vai trò",
         "save": "Lưu người dùng",
         "image": "Hình ảnh",
-        "edit": "Cập nhật thay đổi"
+        "edit": "Cập nhật thay đổi",
+        "save-guidebook": "Lưu cẩm nang",
+        "edit-guidebook": "Cập nhật thay đổi"
     },
     "homepage": {
         "prominent-doctor": "Bác sĩ nổi bật tuần qua",

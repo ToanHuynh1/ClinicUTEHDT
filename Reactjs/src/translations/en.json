@@ -46,6 +46,8 @@
         }
     },
     "manage-user":{
+        "save-guidebook": "Save guidebook",
+        "edit-guidebook": "Edit guidebook",
         "add": "Add User",
         "email": "Email",
         "password": "Password",

@@ -1,0 +1,160 @@
+.detail-guidebook-container
+{
+    .detail-guidebook-body
+    {
+        padding: 0 200px;
+        background: #eee;
+    }
+
+    .related-article
+    {
+        box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+        background-color: #FCFAF6 !important;
+        width: 100%;
+        min-height: 300px;
+        .title-related
+        {
+            text-align: start;
+            font-size: 30px;
+            padding: 40px;
+            font-weight: 600;
+        }
+
+        
+        .no-write
+        {
+            padding: 0 36px;
+            font-size: 20px;
+            cursor: pointer;
+            font-style: italic;
+            color: rgb(91, 51, 184);
+        }
+
+        .content-write{
+            cursor: pointer;
+            display: flex;
+            padding: 0 50px;
+            .image-content-write{
+                // background: url('../../../assets/guidebook/mun-viem-la-gi.png') center center no-repeat; 
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                width: 200px;
+                height: 100px;
+            }
+
+            .name-content-write
+            {
+                font-weight: 600;
+                font-size: 20px;
+                margin-left: 20px;
+            }
+
+        }
+    }
+    .search-doctor
+    {
+        .select-province
+        {
+            margin-bottom: 20px;
+            outline: none;
+            border: none;
+            box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+            padding: 7px 0;
+            cursor: pointer;
+            font-weight: 600;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+}
+    }
+    .description-guidebook
+    {
+        padding: 20px;
+        box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+        background-color: white !important;
+        margin-top: 50px;
+        width: 100%;
+
+        .title-guidebook
+        {
+            text-align: center;
+            font-size: 30px;
+            margin: 20px 0;
+            font-weight: 600;
+
+        }
+    }
+    .each-doctor
+    {
+        display: flex;
+        background-color: #fff;
+        box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+        border-radius: 8px;
+        border-bottom: none;
+        margin-bottom: 10px;
+        padding: 20px 0;
+        width: 100%;
+        min-height: 300px;
+        margin: 15px 0;
+        .content-left{
+            width: 50%;
+
+            .profile-doctor-container 
+            {
+                .introduction-doctor {
+                    .content-left{
+                        width: 30% !important;
+                        width: 90px !important;
+                        height: 90px !important;
+                        border-radius: 45px !important;
+                        -webkit-border-radius: 45px !important;
+                        -moz-border-radius: 45px !important;
+                        -ms-border-radius: 45px !important;
+                        -o-border-radius: 45px !important;
+}
+                    }
+                    .content-right
+                    {
+                        .down {
+                            text-align: justify;
+                        }
+                    }
+            }
+        }
+        .content-right{
+            width: 50%;
+            .doctor-more-infor
+            {
+                width: 94%;
+                .doctor-more-infor-container
+                {
+                    padding-left: 0px;
+                }
+            }
+            .doctor-schedule
+            {
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+
+.bg-image
+    {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-color: white;
+        &.section-guidebook
+        {
+            // background-image: url('../../assets/medical-facility/benh-vien-an-viet.jpg'); 
+            background-size: cover;
+        }
+        width:100%;
+        height: 480px;
+        opacity: 0.9;
+    }

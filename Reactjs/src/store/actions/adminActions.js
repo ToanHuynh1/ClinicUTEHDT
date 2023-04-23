@@ -114,7 +114,6 @@ export const createNewUser = (data) =>{
     {
         try {
             let res = await createNewUserService(data)
-            console.log(data)
             if (res && res.errCode === 0)
             {
                 toast.success("Create a new user success !!!")

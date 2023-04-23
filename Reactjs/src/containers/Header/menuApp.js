@@ -47,8 +47,9 @@ export const adminMenu = [
         name: 'menu.admin.guidebook', 
         menus: [
             {
-                name: 'menu.admin.manage-clinic',link: '/system/manage-guidebook'
-            },  
+                // Tạo cẩm nang
+                name: 'menu.admin.manage-guidebook',link: '/system/manage-guidebook'
+            }, 
         ]
     },
 ];

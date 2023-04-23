@@ -1,0 +1,64 @@
+#TableGuidebook {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  #TableGuidebook td, #TableGuidebook th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #TableGuidebook tr:nth-child(even){background-color: #f8f8d9;}
+  
+  #TableGuidebook tr:hover {background-color: #ddd;}
+  
+  #TableGuidebook th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #7ec0df;
+    color: black;
+    text-align: center;
+  }
+
+  .modify-page
+  {
+    .pagination
+    {
+      .active{
+        button {
+            background-color: aquamarine;
+        }
+       }
+      button {
+          margin-top: 20px;
+          outline: none;
+          border: none;
+          padding: 6px 10px;
+          border-radius: 5px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          -ms-border-radius: 5px;
+          -o-border-radius: 5px;
+
+      }
+
+      .btn_prevPage
+      {
+          margin-right: 10px;
+          font-weight: 600;
+          padding: 6px 15px;
+          background-color: #f3f3d8;
+      }
+
+      .btn_nextPage
+      {
+          margin-left: 10px;
+          font-weight: 600;
+          padding: 6px 15px;
+          background-color: #f3f3d8;
+      }
+    }
+  }

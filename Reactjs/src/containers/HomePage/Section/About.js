@@ -15,9 +15,12 @@ class About extends Component {
                 <div className='section-about-content'>
                     <div className='content-left'>
                         <iframe 
-                            width="85%" height="370px" src="https://www.youtube.com/embed/U_6xHKGf3Ho" 
-                            title="THỎ BẢY MÀU - THẦN BÀI MIỀN TÂY | Hoạt Hình Tết 2023" 
-                            frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            width="700" 
+                            height="406" 
+                            src="https://www.youtube.com/embed/FyDQljKtWnI" 
+                            title="CÀ PHÊ KHỞI NGHIỆP VTV1 - BOOKINGCARE - HỆ THỐNG ĐẶT LỊCH KHÁM TRỰC TUYẾN" 
+                            frameBorder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             allowFullScreen>
                         </iframe>
                     </div>

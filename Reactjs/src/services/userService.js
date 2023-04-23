@@ -137,5 +137,25 @@ export const confirmPassword= (data) => {
     return axios.post(`http://localhost:1906/api/confirm-password`, data)
 }
 
+export const createNewGuidebook= (data) => {
+    return axios.post(`http://localhost:1906/api/create-new-guide`, data)
+}
+
+
+export const getAllGuidebook= (data) => {
+    return axios.post(`http://localhost:1906/api/get-all-guidebook`, data)
+}
+
+
+export const editGuidebookService = (guidebookData) =>
+{   
+    return axios.put('http://localhost:1906/api/update-guidebook', guidebookData)
+}
+
+export const getAllGuidebookByType= (data) => {
+    return axios.post(`http://localhost:1906/api/get-guidebook-by-type`, data)
+}
+
+
 
 

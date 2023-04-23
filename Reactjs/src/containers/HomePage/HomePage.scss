@@ -99,6 +99,13 @@
                 {
                     background-image: url('../../assets/guidebook/bac-si-ho-hap-gioi-ha-noi.png');  
                 }
+
+                &.section-medical-guidebook{
+                    background-size: cover;
+                    width: 98%;
+                    height: 220px;
+                    margin-bottom: 20px;
+                }
                 width:96%;
                 height: 180px;
                 opacity: 0.9;

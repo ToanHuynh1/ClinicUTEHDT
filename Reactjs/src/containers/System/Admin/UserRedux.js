@@ -116,8 +116,6 @@ class UserRedux extends Component {
             img: '',
             imgURL: ''
         })
-
-        console.log(this.state)
     }
     openImage = () =>
     {

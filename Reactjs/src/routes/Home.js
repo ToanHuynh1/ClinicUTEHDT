@@ -13,7 +13,7 @@ class Home extends Component {
       
         if (isLoggedIn && (this.props.userInfo.roleId == 'R1' || this.props.userInfo.roleId == 'R2'))
         {
-            linkToRedirect = isLoggedIn ? '/system/user-manage' : '/home';
+            linkToRedirect = isLoggedIn ? '/system/user-redux' : '/home';
         }
         if (isLoggedIn && (this.props.userInfo.roleId == 'R3'))
         {

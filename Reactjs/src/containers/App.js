@@ -23,6 +23,7 @@ import BookingSchedule from '../containers/Patient/Doctor/Booking/BookingSchedul
 import VerifyEmail from './Patient/VerifyEmail'
 import detailSpecialty from './Patient/Specialty/detailSpecialty';
 import DetailClinic from './Patient/Clinic/DetailClinic';
+import DetailGuidebook from './Patient/Guidebook/DetailGuidebook';
 
 class App extends Component {
 
@@ -63,6 +64,7 @@ class App extends Component {
                                     <Route path={path.DETAIL_DOCTOR} component={DetailDoctor}/>
                                     <Route path={path.DETAIL_SPECIALTY} component={detailSpecialty}/>
                                     <Route path={path.DETAIL_CLINIC} component={DetailClinic}/>
+                                    <Route path={path.DETAIL_GUIDEBOOK} component={DetailGuidebook}/>
                                     <Route path={path.BOOKING_SCHEDULE} component={BookingSchedule}/>
                                     <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
                                     <Route path={path.VERIFY_EMAIL_BOOKING} component={VerifyEmail}/>

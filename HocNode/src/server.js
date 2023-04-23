@@ -7,6 +7,7 @@ import initWebRoutesPatient from "./route/webPatient"
 import initWebRoutesSpecialty from "./route/webSpecialty"
 import initWebRoutesUser from "./route/webUser"
 import initWebRoutesClinic from "./route/webClinic"
+import initWebRoutesGuide from './route/webGuidebook'
 
 import connectDB from './config/connectDB'
 import cors from 'cors'
@@ -35,6 +36,7 @@ initWebRoutesPatient(app)
 initWebRoutesSpecialty(app)
 initWebRoutesUser(app)
 initWebRoutesClinic(app)
+initWebRoutesGuide(app)
 
 connectDB()
 

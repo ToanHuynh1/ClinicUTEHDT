@@ -9,6 +9,7 @@ export const path = {
     BOOKING_SCHEDULE: '/booking-schedule/:id',
     VERIFY_EMAIL_BOOKING: '/verify-booking',
     DETAIL_CLINIC: '/detail-clinic/:id',
+    DETAIL_GUIDEBOOK: '/detail-guidebook/:id',
     SIGNUP: '/signup',
     FORGOT: '/forgot',
     COMFIRM: '/confirm/:id'
