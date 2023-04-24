@@ -99,6 +99,18 @@
                 }
  
             }
+
+            .avatar-profile
+            {
+                cursor: pointer;
+                font-weight: 700;
+                img 
+                {
+                    width: 32px;
+                    height: auto;
+                    margin-left: 5px;
+                }
+            }
             .language-en
             {
                 .content_language_en
@@ -280,3 +292,96 @@
         }
     }
 }
+
+
+.model {
+    position: absolute;
+    top: 58px; 
+    right: 30px;
+    width: 250px;
+    height: 320px;
+    background-color: rgb(252, 246, 246);
+    z-index: 999;
+    margin-left: 20px;
+    padding: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2); 
+
+    .btn-login
+    {
+        margin-left: 32%;
+        outline: none;
+        border: none;
+        padding: 10px;
+        background-color: #2fd84b;
+        border-radius: 10px;
+        margin-top: 20px;
+        font-weight: 600;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+    .model-inner
+    {
+        .avatar
+        {
+            img {
+                width: 80px;
+                height: 80px;
+                margin-top: 10px;
+                margin-left: 80px;
+            }
+        }
+        .name
+        {
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-size: 18px;
+            color: black;
+            text-align: center;
+        }
+
+        .gmail
+        {
+            text-align: center;
+            font-size: 12px;
+        }
+
+
+
+    }
+    .handle
+    {
+        display: flex;
+        justify-content: space-around;
+        .update-profile{
+            outline: none;
+            border: none;
+            padding: 10px;
+            background-color: #f5dd42;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: 600;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+    }
+
+        .seen-booking{
+            outline: none;
+            border: none;
+            font-weight: 600;
+            background-color: rgb(70, 128, 216);
+            border-radius: 10px;
+            margin-top: 20px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+}
+    }
+
+}
+  
+  

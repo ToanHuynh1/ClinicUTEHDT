@@ -16,6 +16,7 @@ let bookAppointment = async (req,res) => {
 let verifyBookAppointment = async (req,res) => {
     try {
         let info = await patientService.verifyBookAppointmentService(req.body)
+
         return res.status(200).json(info)
     } catch (error) {
         console.log(error)
@@ -30,6 +31,7 @@ let verifyBookAppointment = async (req,res) => {
 let ForgotPasswordPatient = async (req,res) => {
     try {
         let info = await patientService.ForgotPasswordPatientService(req.body)
+
         return res.status(200).json(info)
     } catch (error) {
         console.log(error)
@@ -53,11 +55,45 @@ let ConfirmPassword = async (req,res) => {
     }
 }
 
+let getBookingById = async (req,res) => {
+    try {
+        let info = await patientService.getBookingByIdService(req.body)
+        return res.status(200).json({
+            errCode: 0,
+            errMessage: 'Get booking success',
+            info
+        })
+    } catch (error) {
+        console.log(error)
+        return res.status(200).json({
+            errCode: -1,
+            errMessage: 'Error from server'
+        })
+    }
+}
 
+let updateInforPatient = async (req,res) => {
+    try {
+        let info = await patientService.updateInforPatientService(req.body)
+        return res.status(200).json({
+            errCode: 0,
+            errMessage: 'Update infor success',
+            info
+        })
+    } catch (error) {
+        console.log(error)
+        return res.status(200).json({
+            errCode: -1,
+            errMessage: 'Error from server'
+        })
+    }
+}
 
 module.exports = {
     bookAppointment: bookAppointment,
     verifyBookAppointment: verifyBookAppointment,
     ForgotPasswordPatient:ForgotPasswordPatient,
-    ConfirmPassword: ConfirmPassword
+    ConfirmPassword: ConfirmPassword,
+    getBookingById:getBookingById,
+    updateInforPatient:updateInforPatient
 }

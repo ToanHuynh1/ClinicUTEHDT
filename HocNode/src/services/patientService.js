@@ -242,12 +242,87 @@ let hashUserPassword = (password) =>
       }
     })
   }
+ 
+let getBookingByIdService = (data) => {
+  return new Promise(async (resolve,reject) => 
+  {
+      try {
+          if (!data.patientId)
+          {
+              resolve({
+                  errCode: 1,
+                  errMessage: 'Missing parameter'
+              })
+          }
+          else
+          {
+              let appointment = {}
+              appointment = await db.Booking.findAll({
+                  where: {
+                      patientId: data.patientId,
+                  },
+                  // raw = false mới dùng được hàm update
+                  // raw = true trả về object của JS
+                  raw: false
+              })
+             
+              resolve(appointment)
+              
+          }
+      } catch (error) {
+          reject(error)
+      }
+  })
+}
 
+let updateInforPatientService = (data) => {
+  return new Promise(async (resolve,reject) => 
+  {
+      try {
+          if (!data.id || !data.address || !data.gender || !data.firstName || !data.phonenumber)
+          {
+              resolve({
+                  errCode: 1,
+                  errMessage: 'Missing parameter'
+              })
+          }
+          else
+          {
+              let user = await db.User.findOne({
+                  where: {
+                    id: data.id,
+                  },
+                  // raw = false mới dùng được hàm update
+                  // raw = true trả về object của JS
+                  raw: false
+              })
+             
+              if (user) {
+                user.address = data.address
+                user.gender = data.gender
+                user.firstName = data.firstName
+                user.phonenumber = data.phonenumber
 
+                await user.save()
 
+                resolve(user)
+              }
+              else
+              {
+                resolve({})
+              }
+              
+          }
+      } catch (error) {
+          reject(error)
+      }
+  })
+}
 module.exports = {
     bookAppointmentService:bookAppointmentService,
     verifyBookAppointmentService:verifyBookAppointmentService,
     ForgotPasswordPatientService:ForgotPasswordPatientService,
-    ConfirmPasswordService:ConfirmPasswordService
+    ConfirmPasswordService:ConfirmPasswordService,
+    getBookingByIdService:getBookingByIdService,
+    updateInforPatientService:updateInforPatientService
 }

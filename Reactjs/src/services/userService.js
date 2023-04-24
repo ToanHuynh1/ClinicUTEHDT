@@ -157,5 +157,11 @@ export const getAllGuidebookByType= (data) => {
 }
 
 
+export const getAllBookingById= (data) => {
+    return axios.post(`http://localhost:1906/api/get-booking-by-id`, data)
+}
+
+
+
 
 

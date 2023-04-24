@@ -4,23 +4,38 @@ import '../HomePage/HomeHeader.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import logo_vi from '../../assets/images/vi.png'
 import logo_en from '../../assets/images/en.png'
+import avatar_header from '../../assets/about/avatar_header.png'
 import { FormattedMessage } from 'react-intl';
 import {LANGUAGES , ROLES_USER} from '../../utils'
 import  {changeLanguageApp} from '../../store/actions'
 import { withRouter } from 'react-router';
 import * as actions from "../../store/actions";
-import _ from 'lodash'
+import _, { isBoolean } from 'lodash'
 import { adminMenu, doctorMenu } from '../Header/menuApp';
 
 
 class HomeHeader extends Component {
+    constructor(props)
+    {
+        super(props)
+        this.state = {
+            isOpen: false,
+            dataUserlogin: {}
+        };
+    }
     changeLanguage = (language) =>
     {
         this.props.changeLanguageAppRedux(language)
         // fire redux event: actions
     }
+
+
     componentDidMount = () => {
         let {userInfo} = this.props
+
+        this.setState({
+            dataUserlogin: userInfo
+        })
         let menu = []
         if (userInfo && ! _.isEmpty(userInfo))
         {
@@ -36,7 +51,7 @@ class HomeHeader extends Component {
         }
 
         this.setState({
-            menuApp: menu
+            menuApp: menu,
         })
     }
 
@@ -51,9 +66,31 @@ class HomeHeader extends Component {
         this.props.history.push(`/login`)
 
     }
+
+
+    handleOpenInfor = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        })
+    }
+
+    handleSwtichLogin = () => {
+        this.props.history.push(`/login`)
+    }
+
+
+    handleUpdateProfile = () => {
+        let check = true;
+        this.setState({
+            isOpen: false
+        })
+        this.props.handleOpenUpdateInfo(check)
+    }
     render() {
-        const { userInfo } = this.props;
+        let { userInfo } = this.props;
+        let {isOpen, dataUserlogin} = this.state
         let language = this.props.language
+
         return (
             <React.Fragment>  
                 <div className='home-header-container'>
@@ -122,9 +159,58 @@ class HomeHeader extends Component {
                              </div>
                         </div>
 
-                        <div className="btn btn-logout" onClick={() => this.logOut()} title="LOGOUT">
-                            <i className="fas fa-sign-out-alt"></i>
+                        <div className='avatar-profile' onClick={() => this.handleOpenInfor()}>
+                            <span>
+                                <img src={avatar_header}></img>
+                            </span>
                         </div>
+
+                        {isOpen === true ? (
+                        <div className="model">
+                            <div className="model-inner">
+                                
+                            {dataUserlogin && (
+                            <div className="btn btn-logout" onClick={() => this.logOut()} title="LOGOUT">
+                                <i className="fas fa-sign-out-alt"></i>
+                            </div>
+                            )}
+
+                                {dataUserlogin !== null ? (
+                                <div className='avatar'>
+                                    <img src={avatar_header} />
+                                    <div className='name'>
+                                    <span>{dataUserlogin.firstName}</span>
+                                    </div>
+                                    <div className='gmail'>
+                                    <span>{dataUserlogin.email}</span>
+                                    </div>
+                                </div>
+                                ) : (
+                                <div className='avatar'>
+                                    <img src={avatar_header} />
+                                    <div className='name'>
+                                    <span>GUEST</span>
+                                    </div>
+                                    <div className='gmail'>
+                                    <span>GUEST</span>
+                                    </div>
+                                </div>
+                                )}
+
+
+                            </div>
+
+                            {dataUserlogin ? (
+                            <div className='handle'>
+                               <button className='update-profile' onClick={() => this.handleUpdateProfile()}>Cập nhật</button>
+                                <button className='seen-booking'>Xem lịch hẹn</button>
+                            </div>
+
+                            ):  <button className='btn-login' onClick={() => this.handleSwtichLogin()}>Đăng nhập</button>}
+                                                
+                            </div>
+                            ) : null}
+ 
                     </div>
                 </div>
                 </div>
