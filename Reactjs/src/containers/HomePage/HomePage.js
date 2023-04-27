@@ -13,7 +13,9 @@ import About from './Section/About'
 import * as actions from '../../store/actions/index'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import HomeFooter from './HomeFooter'
+import { toast } from 'react-toastify';
 import Information from './Section/Information'
+import {updateInforPatient, handleGetUserById} from '../../services/userService'
 class HomePage extends Component {
 
     constructor(props)
@@ -27,22 +29,37 @@ class HomePage extends Component {
             gender: '',
             address: '',
             arrGender: [],
+            id: ''
         };
     }
     
-    componentDidMount = () => {
+    componentDidMount = async () => {
+
         this.props.fetchGenderStart()
 
         let {userInfo} = this.props
 
         if (userInfo)
         {
-            this.setState({
-                firstName: userInfo.firstName ? userInfo.firstName: '',
-                phoneNumber: userInfo.phoneNumber ? userInfo.phoneNumber: '',
-                address: userInfo.address ? userInfo.address: ''
+            let reponse = await handleGetUserById({
+                id: userInfo.id
             })
+
+            if (reponse && reponse.data.errCode === 0){
+                let data = reponse.data.user
+
+                this.setState({
+                    firstName: data.firstName ? data.firstName: '',
+                    phoneNumber: data.phonenumber ? data.phonenumber: '',
+                    address: data.address ? data.address: '',
+                    gender: data.gender ? data.gender : '',
+                    id: data.id ? data.id : ''
+                })
+            }
+            
+            console.log(this.state)
         }
+    
 
     }
 
@@ -87,8 +104,27 @@ class HomePage extends Component {
         )
     }
 
-    handleExcuteUpdateInfo = () => {
-        alert('update')
+    handleExcuteUpdateInfo = async () => {
+        let reponse = await updateInforPatient({
+            id: this.state.id,
+            address: this.state.address,
+            phonenumber: this.state.phoneNumber,
+            gender: this.state.gender,
+            firstName: this.state.firstName
+        })
+
+        if (reponse && reponse.errCode === 0)
+        {
+            toast.success("Cập nhật thông tin thành công! ")
+            this.setState({
+                isOpenUpdate: false
+            })
+
+        }
+        else
+        {
+            toast.error("Cập nhật thông tin thất bại! ")
+        }
     }
     render() {
         let dataGender = this.state.arrGender
@@ -140,14 +176,14 @@ class HomePage extends Component {
 
                         <div className='col-6 form-group'>
                                 <label>Số điện thoại</label>
-                                <input className='form-control' type='phoneNumber' value={this.state.email}
+                                <input className='form-control' type='phoneNumber' value={this.state.phoneNumber}
                                     onChange= {(event) => this.onChangeInput(event, 'phoneNumber')}
                                 ></input>
                         </div> 
 
                         <div className='col-6 form-group'>
                                 <label>Địa chỉ</label>
-                                <input className='form-control' type='address' value={this.state.email}
+                                <input className='form-control' type='address' value={this.state.address}
                                    onChange= {(event) => this.onChangeInput(event, 'address')}
                                 ></input>
                         </div> 

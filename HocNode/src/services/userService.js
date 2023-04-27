@@ -311,6 +311,51 @@ let handleUserSignup = (email, password, username) =>
         }
     })
 }
+
+let handleGetUserByIdService = (IdInput) =>
+{
+    return new Promise(async (resolve,reject) => 
+    {
+        try {
+            if (!IdInput)
+            {
+                resolve({
+                    errCode: 1,
+                    errMessage: "Thiếu tham số"
+                })
+            }
+            else
+            {
+        
+                let user = await db.User.findOne({
+                    where: {id: IdInput}
+                })
+
+                if (user)
+                {
+                    resolve({
+                        errCode: 0,
+                        errMessage: 'Lấy thông tin người dùng thành công',
+                        user
+                    })
+                }
+
+                else
+                {
+                    resolve({
+                        errCode: 1,
+                        errMessage: 'Không tìm thấy người dùng',
+                
+                    })
+                }
+                
+            }
+          
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
 module.exports = {
     handleUserLogin: handleUserLogin,
     getAllUsers:getAllUsers,
@@ -318,5 +363,6 @@ module.exports = {
     deleteUser:deleteUser,
     updateUserData:updateUserData,
     getAllCodeService:getAllCodeService,
-    handleUserSignup:handleUserSignup
+    handleUserSignup:handleUserSignup,
+    handleGetUserByIdService:handleGetUserByIdService
 }

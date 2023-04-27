@@ -93,7 +93,6 @@ let getAllCode  = async (req,res) => {
 
 let handleSignup  = async (req,res) => {
 
-    console.log(req.body)
     let username = req.body.username
     let email = req.body.email
     let password = req.body.password
@@ -131,6 +130,20 @@ let handleSignup  = async (req,res) => {
     })
  
 }
+
+let handleGetUserById = async (req,res) => {
+    try {
+
+        let data = await userService.handleGetUserByIdService(req.body.id);
+
+        return res.status(200).json({data})
+    } catch (error) {
+        return res.status(200).json({
+            error: -1,
+            errMessage: "Lỗi từ server"
+        })
+    }
+}
 module.exports = {
     handleLogin: handleLogin,
     handleGetAllUsers:handleGetAllUsers,
@@ -138,5 +151,6 @@ module.exports = {
     handleEditUser : handleEditUser,
     handleDeleteUser : handleDeleteUser,
     getAllCode: getAllCode,
-    handleSignup: handleSignup
+    handleSignup: handleSignup,
+    handleGetUserById:handleGetUserById
 }

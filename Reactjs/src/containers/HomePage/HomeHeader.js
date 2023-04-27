@@ -86,8 +86,12 @@ class HomeHeader extends Component {
         })
         this.props.handleOpenUpdateInfo(check)
     }
+
+    handleSeeBooking =  () => {
+        this.props.history.push(`/seebooking`)
+    }
     render() {
-        let { userInfo } = this.props;
+      
         let {isOpen, dataUserlogin} = this.state
         let language = this.props.language
 
@@ -203,7 +207,7 @@ class HomeHeader extends Component {
                             {dataUserlogin ? (
                             <div className='handle'>
                                <button className='update-profile' onClick={() => this.handleUpdateProfile()}>Cập nhật</button>
-                                <button className='seen-booking'>Xem lịch hẹn</button>
+                                <button className='seen-booking' onClick={() => this.handleSeeBooking()}>Xem lịch hẹn</button>
                             </div>
 
                             ):  <button className='btn-login' onClick={() => this.handleSwtichLogin()}>Đăng nhập</button>}

@@ -1,0 +1,28 @@
+.see-booking-container
+{
+    .title-see-booking
+    {
+        margin-top: 80px;
+        text-align: center;
+        font-size: 30px;
+        text-transform: uppercase;
+        color: rgb(27, 66, 150);
+        font-weight: 600;
+    }
+
+
+    .content-see-booking
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: bisque;
+        padding: 0 200px;
+        .booking
+        {
+            text-align: center;    width: 80%;
+            height: 200px;
+            border: 1px solid red;
+        }
+    }
+}

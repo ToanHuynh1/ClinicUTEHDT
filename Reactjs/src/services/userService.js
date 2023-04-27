@@ -161,7 +161,14 @@ export const getAllBookingById= (data) => {
     return axios.post(`http://localhost:1906/api/get-booking-by-id`, data)
 }
 
+export const updateInforPatient= (data) => {
+    return axios.post(`http://localhost:1906/api/update-infor-from-homepage`, data)
+}
 
+
+export const handleGetUserById= (data) => {
+    return axios.post(`http://localhost:1906/api/get-user-by-id`, data)
+}
 
 
 

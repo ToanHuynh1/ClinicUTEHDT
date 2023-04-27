@@ -18,6 +18,8 @@ let initWebRoutesUser = (app) => {
 
     router.post('/api/signup', userController.handleSignup)
 
+    router.post('/api/get-user-by-id' , userController.handleGetUserById)
+
 
     return app.use("/", router)
 }

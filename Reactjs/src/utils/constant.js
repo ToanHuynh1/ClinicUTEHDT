@@ -12,7 +12,8 @@ export const path = {
     DETAIL_GUIDEBOOK: '/detail-guidebook/:id',
     SIGNUP: '/signup',
     FORGOT: '/forgot',
-    COMFIRM: '/confirm/:id'
+    COMFIRM: '/confirm/:id',
+    SEEBOOKING: '/seebooking'
 };
 
 export const LANGUAGES = {
