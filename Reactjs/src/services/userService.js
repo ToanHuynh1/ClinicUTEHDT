@@ -170,5 +170,18 @@ export const handleGetUserById= (data) => {
     return axios.post(`http://localhost:1906/api/get-user-by-id`, data)
 }
 
+export const editSpecialtyService = (specialtyData) =>
+{   
+    return axios.put('http://localhost:1906/api/update-specialty', specialtyData)
+}
 
 
+export const deleteGuidebookService = (guibookid) =>
+{
+    return axios.delete('http://localhost:1906/api/delete-guidebook-by-id',  
+    {
+        data: {
+            id: guibookid
+        }
+    })
+}

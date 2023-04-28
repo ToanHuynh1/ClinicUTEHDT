@@ -12,6 +12,8 @@ let initWebRoutesGuide = (app) => {
 
     router.post('/api/get-guidebook-by-type', guideController.handleGetGuidebookByType)
 
+    router.delete('/api/delete-guidebook-by-id', guideController.handleDeleteGuidebook)
+
     return app.use("/", router)
 }
 

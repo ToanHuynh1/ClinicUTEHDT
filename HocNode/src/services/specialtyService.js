@@ -149,26 +149,48 @@ module.exports = {
     updateSpecialtyService: (data) => {
         return new Promise (async (resolve,reject) => {
             try {
-               let dataSpecialty = await db.Specialty.findOne({
-                 where : {
-                    id : data.id
-                    },
-                    raw: true
-               })
 
-               if (dataSpecialty) {
+                if (!data.id || !data.name || !data.descriptionMardown || !data.descriptionHTML)
+                {
+                    resolve({
+                        errCode:2,
+                        errmessage: 'Phải điền đầy đủ thông tin'
+                    })
+                }
+                let dataSpecialty = await db.Specialty.findOne({
+                    where: {
+                        id : data.id
+                    },raw: false
+                    
+                })
+                if (dataSpecialty)
+                {
                     dataSpecialty.name = data.name,
-                    dataSpecialty.descriptionHTML = data.descriptionHTML,
-                    dataSpecialty.descriptionMardown = data.descriptionMardown
-                    if (data.image){
-                        dataSpecialty.image = data.image
+                    dataSpecialty.address = data.type,
+                    dataSpecialty.descriptionMardown= data.descriptionMardown,
+                    dataSpecialty.descriptionHTML = data.descriptionHTML
+    
+                    if (data.image)
+                    {
+                        guidebook.image = data.image
                     }
-               }
-
-               await dataSpecialty.save()
+                    await dataSpecialty.save()
+                    resolve({
+                        errCode:0,
+                        errMessage: 'Cập nhật chuyên khoa thành công'
+                    })
+                }
+                else
+                {
+                    resolve({
+                        errCode: 1,
+                        errmessage: 'Không tìm thấy chuyên khoa'
+                    })
+                }
             } catch (error) {
                 reject(error)
             }
+            
         });
     }
 }

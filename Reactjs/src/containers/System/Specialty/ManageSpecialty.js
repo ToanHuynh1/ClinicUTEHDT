@@ -7,8 +7,10 @@ import { toast } from 'react-toastify';
 import './ManageSpecialty.scss'
 import MdEditor from 'react-markdown-editor-lite';
 import MarkdownIt from 'markdown-it';
-import {CommonUtils} from '../../../utils'
-import {createNewSpecialty} from '../../../services/userService'
+import {CommonUtils, CRUD_ACTIONS} from '../../../utils'
+import {createNewSpecialty, getAllSpecialty, editSpecialtyService} from '../../../services/userService'
+import TableSpecialty from './TableSpecialty';
+import Lightbox from 'react-image-lightbox';
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 class ManageSpecialty extends Component {
@@ -18,14 +20,51 @@ class ManageSpecialty extends Component {
         super(props)
         this.state = {
             name: '',
+            isOpen: false,
             imageBase64: '',
             descriptionHTML: '',
-            descriptionMardown: ''
+            descriptionMardown: '',
+            listSpecialty: [],
+            imgURL: [],
+            actions: ''
         }
     }
 
-    componentDidMount() {
-     
+    openImage = () =>
+    {
+        if (!this.state.imgURL) return
+        this.setState({
+            isOpen:true,
+        })
+    }
+
+    resetState = () =>
+    {
+        this.setState({
+            name: '',
+            imageBase64: '',
+            descriptionHTML: '',
+            descriptionMardown: '',
+        })
+    }
+
+
+    async componentDidMount() {
+        const stateCoppy = {...this.state}
+        stateCoppy['actions'] = CRUD_ACTIONS.CREATE
+        this.setState({
+            ...stateCoppy
+        })
+
+        let reponse = await getAllSpecialty()
+
+        if (reponse && reponse.infor.errCode === 0)
+        {
+            this.setState({
+                listSpecialty:  reponse.infor.data ? reponse.infor.data : []
+            })
+
+        }
     }
 
 
@@ -49,38 +88,109 @@ class ManageSpecialty extends Component {
     }
 
 
-    
+
     onChangeImage = async (event) => {
         let data = event.target.files
         let file = data[0]
         if (file) {
             let base64 = await CommonUtils.getBase64(file)
+            let obUrl = URL.createObjectURL(file)
             this.setState({
+                imgURL: obUrl,
                 imageBase64: base64
             })
         }  
     }
 
+    checkInput  = () => 
+    {
+        let checkFlag = true
+        let checkArr = ['name']
+        for(let i = 0 ; i < checkArr.length; i++)
+        {
+            if (!this.state[checkArr[i]])
+                {
+                    checkFlag = false
+                    alert('Lack of worth : ' + checkArr[i])
+                    break
+                }
+        }
+
+        return checkFlag
+ 
+    }
 
     handleSaveSpecialty = async () => 
     {
-        let res = await createNewSpecialty(this.state)
-        console.log(res)
-        if (res && res.infor.errCode === 0){
-            toast.success("Create new specialty succeed ! ")
-            this.setState({
-                name: '',
-                imageBase64: '',
-                descriptionHTML: '',
-                descriptionMardown: ''
-            })
-        } 
-        else
+
+        let checkFlag = this.checkInput()
+
+        let actions = this.state.actions
+
+        if (checkFlag === false) return;
+        
+        if (actions == CRUD_ACTIONS.CREATE)
         {
-            toast.error("Create new specialty fail ! ")
+            let res = await createNewSpecialty({
+                name: this.state.name,
+                imageBase64: this.state.imageBase64,
+                descriptionHTML: this.state.descriptionHTML,
+                descriptionMardown: this.state.descriptionMardown,
+            })
+
+            console.log(res)
+            if (res && res.infor.errCode === 0){
+                toast.success("Create new specialty succeed ! ")
+                this.setState({
+                    name: '',
+                    imageBase64: '',
+                    descriptionHTML: '',
+                    descriptionMardown: ''
+                })
+            } 
+            else
+            {
+                toast.error("Create new specialty fail ! ")
+            }
+        }
+
+        if (actions === CRUD_ACTIONS.EDIT)
+        {
+            let reponse = await editSpecialtyService({
+                name: this.state.name,
+                imageBase64: this.state.imageBase64,
+                descriptionHTML: this.state.descriptionHTML,
+                descriptionMardown: this.state.descriptionMardown,
+                id:this.state.editId
+            })
+
+            if (reponse && reponse.infor.errCode === 0){
+                toast.success("Update specialty success ! ")
+                this.resetState()
+            }
+            else
+            {
+                toast.error("Update specialty fail ! ")
+            }  
         }
     }
+
+    handleEditSpecialty = (data) => 
+    {
+
+        this.setState(
+        {
+            imageBase64: '',
+            editId: data.id,
+            name: data.name,
+            descriptionHTML: data.descriptionHTML,
+            descriptionMardown: data.descriptionMardown,
+            imgURL: data.image,
+            actions: CRUD_ACTIONS.EDIT,
+        })
+    }
     render() {
+        let {listSpecialty} = this.state
         return (
             <div className='manage-specialty-container'>
                 <div className='ms-title'>Quản lý chuyên khoa</div>
@@ -94,10 +204,17 @@ class ManageSpecialty extends Component {
                     </div>
                     <div className='col-6 form-group'>
                         <label>Ảnh chuyên khoa</label>
-                        <input type='file' className='form-control-file'
-                        
-                            onChange={(event) => this.onChangeImage(event)}
-                        />
+                        <div className='img-container'>
+                            <input id='imgAdmin' type='file' hidden onChange={(event) => this.onChangeImage(event)}></input>
+                            <label className='upload_custom' htmlFor='imgAdmin'>Tải ảnh <i className="fas fa-upload"></i></label>
+                                <div className='image-admin'
+                                style = {{backgroundImage: `url(${this.state.imgURL})`}}
+                                onClick = {() => this.openImage()}
+                            >
+                                        
+                            </div>
+                        </div>
+                       
                     </div>
                     <div className='col-12'>
                         <MdEditor 
@@ -107,13 +224,34 @@ class ManageSpecialty extends Component {
                         value = {this.state.descriptionMardown}
                         />
                     </div>
-                    <div className='col-12'>
-                        <button className='btn-save-specialty'
+                    <div className='col-12 my-3'>
+                        <button className={this.state.actions == CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}  
                             onClick={() => this.handleSaveSpecialty()}
                         >
-                            Lưu
+                        {this.state.actions == CRUD_ACTIONS.EDIT ? 
+                            <FormattedMessage id ="manage-user.edit-guidebook"/> :
+                            <FormattedMessage id ="manage-user.save-guidebook"/>
+                            }
                         </button>
-                    </div>
+                    </div>   
+
+
+                    {this.state.isOpen === true && 
+                    <Lightbox
+                        mainSrc={this.state.imgURL}
+                        onCloseRequest={() => this.setState({ isOpen: false })}
+                    />
+                      }
+
+                    {listSpecialty && listSpecialty.length > 0 && 
+                    <div className='col-12 mb-5'>
+                            <TableSpecialty 
+                                handleEditSpecialtyKey = {this.handleEditSpecialty}
+                                specialties = {listSpecialty}
+                            />
+                    </div> 
+
+                     }
                 </div> 
            
             </div>

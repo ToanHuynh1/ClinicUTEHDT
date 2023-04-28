@@ -7,8 +7,9 @@ import { toast } from 'react-toastify';
 import './ManageClinic.scss'
 import MdEditor from 'react-markdown-editor-lite';
 import MarkdownIt from 'markdown-it';
-import {CommonUtils} from '../../../utils'
-import {createNewClinic} from '../../../services/userService'
+import {CommonUtils, CRUD_ACTIONS} from '../../../utils'
+import {createNewClinic, getAllClinic} from '../../../services/userService'
+import TableClinic from './TableClinic';
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 class ManageClinic extends Component {
@@ -21,12 +22,21 @@ class ManageClinic extends Component {
             imageBase64: '',
             address: '',
             descriptionHTML: '',
-            descriptionMardown: ''
+            descriptionMardown: '',
+            listClinic: []
         }
     }
 
-    componentDidMount() {
-     
+    async componentDidMount() {
+        let reponse = await getAllClinic()
+
+        if (reponse && reponse.infor.errCode === 0)
+        {
+            this.setState({
+                listClinic:  reponse.infor.data ? reponse.infor.data : []
+            })
+
+        }
     }
 
 
@@ -82,7 +92,23 @@ class ManageClinic extends Component {
             toast.error("Create new clinic fail ! ")
         }
     }
+
+    handleEditClinic = (data) => 
+    {
+        this.setState(
+        {
+            imageBase64: '',
+            editId: data.id,
+            name: data.name,
+            address: data.address,
+            descriptionHTML: data.descriptionHTML,
+            descriptionMardown: data.descriptionMardown,
+            imgURL: data.image,
+            actions: CRUD_ACTIONS.EDIT,
+        })
+    }
     render() {
+        let {listClinic} = this.state
         return (
             <div className='manage-specialty-container'>
                 <div className='ms-title'>Quản lý phòng khám</div>
@@ -96,10 +122,16 @@ class ManageClinic extends Component {
                     </div>
                     <div className='col-6 form-group'>
                         <label>Ảnh phòng khám</label>
-                        <input type='file' className='form-control-file'
-                        
-                            onChange={(event) => this.onChangeImage(event)}
-                        />
+                        <div className='img-container'>
+                            <input id='imgAdmin' type='file' hidden onChange={(event) => this.onChangeImage(event)}></input>
+                            <label className='upload_custom' htmlFor='imgAdmin'>Tải ảnh <i className="fas fa-upload"></i></label>
+                                <div className='image-admin'
+                                style = {{backgroundImage: `url(${this.state.imgURL})`}}
+                                onClick = {() => this.openImage()}
+                            >
+                                        
+                            </div>
+                        </div>
                     </div>
                     <div className='col-6 form-group'>
                         <label>Địa chỉ phòng khám</label>
@@ -116,12 +148,22 @@ class ManageClinic extends Component {
                         value = {this.state.descriptionMardown}
                         />
                     </div>
-                    <div className='col-12'>
-                        <button className='btn-save-specialty'
-                            onClick={() => this.handleSaveClinic()}
+                    <div className='col-12 my-3'>
+                        <button className={this.state.actions == CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}  
+                            onClick={() => this.handleSaveGuideBook()}
                         >
-                            Lưu
+                        {this.state.actions == CRUD_ACTIONS.EDIT ? 
+                            <FormattedMessage id ="manage-user.edit-guidebook"/> :
+                            <FormattedMessage id ="manage-user.save-guidebook"/>
+                            }
                         </button>
+                    </div>
+
+                    <div className='col-12 mb-5'>
+                            <TableClinic 
+                                handleEditClinicKey = {this.handleEditClinic}
+                                clinics = {listClinic}
+                            />
                     </div>
                 </div> 
            

@@ -122,7 +122,7 @@ class ManageGuidebook extends Component {
     checkInput  = () => 
     {
         let checkFlag = true
-        let checkArr = ['name', 'type', 'imageBase64']
+        let checkArr = ['name', 'type']
         for(let i = 0 ; i < checkArr.length; i++)
         {
             if (!this.state[checkArr[i]])
@@ -144,7 +144,6 @@ class ManageGuidebook extends Component {
 
         let actions = this.state.actions
 
-        console.log(actions)
         if (checkFlag === false) return;
 
         if (actions == CRUD_ACTIONS.CREATE)
@@ -159,6 +158,10 @@ class ManageGuidebook extends Component {
 
             if (reponse && reponse.infor.errCode === 0){
                 toast.success("Create new guidebook success ! ")
+                let data = {}
+
+                data.id = 'ALL'
+                await getAllGuidebook(data)
                 this.resetState()
             }
 
@@ -242,6 +245,8 @@ class ManageGuidebook extends Component {
 
         let {listGuidebook} = this.state
 
+
+        console.log(this.state)
         return (
             <div className='manage-guidebook-container'>
                 <div className='ms-title'>Quản lý cẩm nang</div>
@@ -287,12 +292,6 @@ class ManageGuidebook extends Component {
                 />
                     </div>
 
-                    <div className='col-12 mb-5'>
-                            <TableGuidebook 
-                                handleEditGuideBookKey = {this.handleEditGuidebook}
-                                guidebooks = {listGuidebook}
-                            />
-                    </div>
 
                      <div className='col-12 my-3'>
                         <button className={this.state.actions == CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}  
@@ -312,6 +311,13 @@ class ManageGuidebook extends Component {
                         onCloseRequest={() => this.setState({ isOpen: false })}
                     />
                 }
+
+                    <div className='col-12 mb-5'>
+                            <TableGuidebook 
+                                handleEditGuideBookKey = {this.handleEditGuidebook}
+                                guidebooks = {listGuidebook}
+                            />
+                    </div>
             </div>
         )
     }

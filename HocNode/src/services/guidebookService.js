@@ -174,4 +174,34 @@ module.exports = {
         });
     },
     
+
+    handleDeleteGuidebookService: (guidbookId) =>
+    {
+        return new Promise(async (resolve,reject) =>{
+            let dataGuibook = await db.Guidebook.findOne({
+                where: {
+                    id: guidbookId
+                }
+            })
+    
+            if (!dataGuibook)
+            {
+                resolve({
+                    errCode: 2,
+                    errMessage: "Cẩm nang không tồn tại"
+                })
+            }
+            
+            await db.Guidebook.destroy({
+                where: {
+                    id: guidbookId
+                }
+            })
+    
+            resolve({
+                errCode: 0,
+                errMessage: 'Xóa cẩm nang thành công'
+            })
+        })
+    }
 }

@@ -10,7 +10,8 @@ let initWebRoutesSpecialty = (app) => {
 
     router.get('/api/get-detail-specialty-for-id', specialtyController.getDetailSpecialty)
 
-    router.post('api/update-specialty', specialtyController.updateSpecialty)
+    router.put('/api/update-specialty', specialtyController.updateSpecialty)
+
 
     return app.use("/", router)
 }

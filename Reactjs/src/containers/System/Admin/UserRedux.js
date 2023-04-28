@@ -229,6 +229,8 @@ class UserRedux extends Component {
         let dataRole = this.state.arrRole
         let {email, password, firstName, lastName, phoneNumber, gender, position, role, address, img} = this.state
         
+
+        console.log(this.state)
         return (
            
             <div className='user-redux-container'>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import './TableGuidebook.scss'
+import './TableClinic.scss'
 import * as actions from '../../../store/actions/index'
-import { deleteGuidebookService, getAllGuidebook } from '../../../services/userService';
+
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
@@ -15,49 +15,43 @@ function handleEditorChange({ html, text }) {
 //   console.log('handleEditorChange', html, text);
 }
 
-class TableGuidebook extends Component {
+class TableClinic extends Component {
 
     constructor(props)
     {
         super(props)
         this.state = {
-          guidebooks: [],
+          clinics: [],
           currentPage: 1,
           patientsPerPage: 5,
-          allGuidebookList: []
+          allClinicList: []
         }
     }
 
     componentDidMount(){
        this.setState({
-             allGuidebookList: this.props.guidebooks
+            allClinicList: this.props.clinics
        })
     }
     componentDidUpdate( prevProps,prevState,snapshot)
     {
-        if(prevProps.guidebooks !== this.props.guidebooks)
+        if(prevProps.clinics !== this.props.clinics)
         {
             this.setState({
-                allGuidebookList: this.props.guidebooks
+                allClinicList: this.props.clinics
             })
         }
     }
 
-    handleDeleteGuidebook =async (data) =>
+    handleDeleteGuidebook = (user) =>
     {
-        let response = await deleteGuidebookService(data.id)
-
-        if (response.errCode === 0) {
-            let data = {}
-
-            data.id = 'ALL'
-            await getAllGuidebook(data)
-        }
+        // this.props.deleteUser(user.id)
     }
 
-    handleEditGuidebook = (guidebook) =>
+    handleEditClinic = (clinic) =>
     {
-        this.props.handleEditGuideBookKey(guidebook)
+        console.log(clinic)
+        this.props.handleEditClinicKey(clinic)
     }
 
 
@@ -79,8 +73,8 @@ class TableGuidebook extends Component {
 
     handleNextPageClick = () => {
     
-        const { currentPage, guidebooks, patientsPerPage } = this.state;
-        const totalPatients = guidebooks.length;
+        const { currentPage, clinics, patientsPerPage } = this.state;
+        const totalPatients = clinics.length;
         const maxPage = Math.ceil(totalPatients / patientsPerPage);
         if (currentPage < maxPage) {
             this.setState({ currentPage: currentPage + 1 });
@@ -89,37 +83,37 @@ class TableGuidebook extends Component {
 
     render() {
 
-        let {allGuidebookList, currentPage, patientsPerPage} = this.state;
+        let {allClinicList, currentPage, patientsPerPage} = this.state;
 
 
         const indexOfLastPatient = currentPage * patientsPerPage;
         const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
-        const currentGuidebooks = allGuidebookList.slice(indexOfFirstPatient, indexOfLastPatient);
+        const currentClinics = allClinicList.slice(indexOfFirstPatient, indexOfLastPatient);
     
         const pageNumbers = [];
-        for (let i = 1; i <= Math.ceil(allGuidebookList.length / patientsPerPage); i++) {
+        for (let i = 1; i <= Math.ceil(allClinicList.length / patientsPerPage); i++) {
             pageNumbers.push(i);
         }
 
     
         return (
             <React.Fragment>
-                <table id='TableGuidebook'>
+                <table id='TableClinic'>
                     <tbody>
                         <tr>
                             <th>Tên</th>
-                            <th>Loại</th>
+                            <th>Địa chỉ</th>
                             <th>Actions</th>
                         </tr>
-                        {currentGuidebooks && currentGuidebooks.length > 0 && 
-                            currentGuidebooks.map((guidebook, index) => {
+                        {currentClinics && currentClinics.length > 0 && 
+                            currentClinics.map((item, index) => {
                                 return (
                                     <tr key={index}>
-                                        <td>{guidebook.name}</td>
-                                        <td>{guidebook.type}</td>
+                                        <td>{item.name}</td>
+                                        <td>{item.address}</td>
                                         <td>   
-                                            <button className='btn-edit' onClick={() => this.handleEditGuidebook(guidebook)}><i className="fas fa-edit"></i></button>
-                                            <button className='btn-delete' onClick={() => this.handleDeleteGuidebook(guidebook)}><i className="fas fa-trash-alt"></i></button>   
+                                            <button className='btn-edit' onClick={() => this.handleEditClinic(item)}><i className="fas fa-edit"></i></button>
+                                            <button className='btn-delete' onClick={() => this.handleDeleteUser(item)}><i className="fas fa-trash-alt"></i></button>   
                                         </td>
                                     </tr> 
                                 )
@@ -166,4 +160,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TableGuidebook);
+export default connect(mapStateToProps, mapDispatchToProps)(TableClinic);
