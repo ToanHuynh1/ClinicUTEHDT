@@ -13,7 +13,9 @@ export const path = {
     SIGNUP: '/signup',
     FORGOT: '/forgot',
     COMFIRM: '/confirm/:id',
-    SEEBOOKING: '/seebooking'
+    SEEBOOKING: '/seebooking',
+    SEEALLSPECIALTY: '/see-all-specialty',
+    SEEALLDOCTOR: '/see-all-doctor',
 };
 
 export const LANGUAGES = {

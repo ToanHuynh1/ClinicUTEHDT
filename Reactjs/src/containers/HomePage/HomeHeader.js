@@ -90,6 +90,16 @@ class HomeHeader extends Component {
     handleSeeBooking =  () => {
         this.props.history.push(`/seebooking`)
     }
+
+    SwtichSeeAllSpecialty = () => {
+        this.props.history.push(`/see-all-specialty`) 
+    }
+
+    SwitchSeeAllDoctor = () => {
+        this.props.history.push(`/see-all-doctor`) 
+
+    }
+
     render() {
       
         let {isOpen, dataUserlogin} = this.state
@@ -104,11 +114,11 @@ class HomeHeader extends Component {
                         <div className='header-logo' onClick={() => this.undoHomePage()}></div>
                     </div>
                     <div className='center-container'>
-                        <div className='child-content'>
-                            <div>
+                        <div className='child-content' onClick={() => this.SwtichSeeAllSpecialty()}>
+                            <div >
                                 <b><FormattedMessage id= "homeheader.speciality"/></b>
                             </div>
-                            <div className='subs-title'>
+                            <div className='subs-title' >
                                 <FormattedMessage id= "homeheader.searchDoctor"/>
                             </div>
                         </div>
@@ -120,7 +130,7 @@ class HomeHeader extends Component {
                                  <FormattedMessage id= "homeheader.select-room"/>
                             </div>
                         </div>
-                        <div className='child-content'>
+                        <div className='child-content' onClick={() => this.SwitchSeeAllDoctor()}>
                             <div>
                                 <b><FormattedMessage id= "homeheader.doctor"/></b>
                             </div>
@@ -242,11 +252,11 @@ class HomeHeader extends Component {
                     <div className='content-down'>
                         <div className='options'>
                             <div className='option-child'>
-                                <div className='icon-option-child'>
+                                <div className='icon-option-child' onClick = {() => this.SwtichSeeAllSpecialty()}>
                                     <i className="fas fa-hospital-alt"></i>
                                 </div>
                                 <div className='text-option-child'>
-                                     <FormattedMessage id= "banner.Specialtyexamination"/>
+                                     <FormattedMessage id= "banner.Specialtyexamination" />
                                 </div>
                             </div>
                             <div className='option-child'>

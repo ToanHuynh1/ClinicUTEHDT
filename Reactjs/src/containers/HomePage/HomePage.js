@@ -45,6 +45,8 @@ class HomePage extends Component {
                 id: userInfo.id
             })
 
+            console.log(reponse)
+
             if (reponse && reponse.data.errCode === 0){
                 let data = reponse.data.user
 
@@ -57,7 +59,6 @@ class HomePage extends Component {
                 })
             }
             
-            console.log(this.state)
         }
     
 
@@ -148,7 +149,7 @@ class HomePage extends Component {
            <div>
 
                 <HomeHeader 
-                    isShowBanner={isOpenUpdate}
+                    isShowBanner={true}
                     handleOpenUpdateInfo = {this.handleOpenUpdateInfo}
                 />
 

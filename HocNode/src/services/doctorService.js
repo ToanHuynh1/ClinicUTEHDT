@@ -23,6 +23,13 @@ let getSuperDoctorHome = (typeInput) =>
                     },
                     {
                         model: db.Allcode, as: 'genderData', attributes: ['valueEn', 'valueVi']
+                    },
+                    {
+                        model: db.Doctor_Infor,  attributes: ['clinicId'],
+                        include: [
+                            {model: db.Specialty, attributes: ['name']}
+                        ]
+                        
                     }
                 ],
                 raw: true,

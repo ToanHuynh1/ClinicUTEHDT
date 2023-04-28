@@ -29,6 +29,10 @@ class Specialty extends Component {
     handleViewDetailSpecialy = (data) => {
         this.props.history.push(`/detail-specialty/${data.id}`)  
     }
+
+    SwitchSeeAllSpecialtyFromSpecialty = () => {
+        this.props.history.push(`/see-all-specialty`)  
+    }
     render() {
         let {dataSpecialty} = this.state
         return (
@@ -36,7 +40,7 @@ class Specialty extends Component {
             <div className='section-container'>
                 <div className='section-header'>
                     <span className='title-section'><FormattedMessage id="homepage.speciality"/></span>
-                    <button className='btn-section'><FormattedMessage id="homepage.more-inf"/></button>
+                    <button className='btn-section' onClick={() => this.SwitchSeeAllSpecialtyFromSpecialty()}><FormattedMessage id="homepage.more-inf"/></button>
                 </div>
                 <div className='section-body'>
                     <Slider {...this.props.settings}>

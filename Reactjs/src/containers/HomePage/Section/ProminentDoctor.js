@@ -34,15 +34,21 @@ class ProminentDoctor extends Component {
     {
         this.props.history.push(`/detail-doctor/${doctor.id}`)
     }
+
+    handleSwitchMoreInfoDoctor = () => {
+        this.props.history.push(`/see-all-doctor`)
+    }
     render() {
+
         let topDoctorArr = this.state.doctorArr
+   
         let {language} = this.props
         return (
             <div className='section-share section-prominent-doctor'>
             <div className='section-container'>
                 <div className='section-header'>
                     <span className='title-section'><FormattedMessage id="homepage.prominent-doctor"/></span>
-                    <button className='btn-section'><FormattedMessage id="homepage.more-inf"/></button>
+                    <button className='btn-section' onClick={() => this.handleSwitchMoreInfoDoctor()}><FormattedMessage id="homepage.more-inf"/></button>
                 </div>
                 <div className='section-body'>
                     <Slider {...this.props.settings}>
@@ -67,8 +73,11 @@ class ProminentDoctor extends Component {
                                                 />
                                             </div>
                                             <div className='position text-center'>
-                                                <div>{language === LANGUAGES.VI ? nameVi : nameEn}</div>
-                                                <div>Răng hàm mặt</div>
+                                                <div style={{fontWeight: '600'}}>{language === LANGUAGES.VI ? nameVi : nameEn}</div>
+                                                {doctor.Doctor_Infor.Specialty.name && (
+                                                    <div>Chuyên khoa: {doctor.Doctor_Infor.Specialty.name}</div>
+                                                )}
+                                               
                                              </div>
                                         </div>
                                     </div>

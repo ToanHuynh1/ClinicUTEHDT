@@ -25,6 +25,8 @@ import detailSpecialty from './Patient/Specialty/detailSpecialty';
 import DetailClinic from './Patient/Clinic/DetailClinic';
 import DetailGuidebook from './Patient/Guidebook/DetailGuidebook';
 import Seebooking from './Patient/Booking/Seebooking';
+import SeeallSpecialty from './Patient/Specialty/SeeallSpecialty';
+import SeeallDoctor from './Patient/Doctor/DoctorAll/SeeallDoctor';
 
 class App extends Component {
 
@@ -68,6 +70,8 @@ class App extends Component {
                                     <Route path={path.DETAIL_GUIDEBOOK} component={DetailGuidebook}/>
                                     <Route path={path.BOOKING_SCHEDULE} component={BookingSchedule}/>
                                     <Route path={path.SEEBOOKING} component={Seebooking}/>
+                                    <Route path={path.SEEALLSPECIALTY} component={SeeallSpecialty}/>
+                                    <Route path={path.SEEALLDOCTOR} component={SeeallDoctor}/>
                                     <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
                                     <Route path={path.VERIFY_EMAIL_BOOKING} component={VerifyEmail}/>
                                 </Switch>
