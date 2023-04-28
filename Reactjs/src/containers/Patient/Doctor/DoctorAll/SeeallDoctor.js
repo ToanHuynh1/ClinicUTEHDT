@@ -102,7 +102,7 @@ class SeeallDoctor extends Component {
                     )
                 })
                   ) : (
-                <div className='no-specialty'>Chưa có chuyên khoa</div>
+                <div className='no-specialty'>Chưa tìm thấy bác sĩ</div>
                  )}
 
             </div>

@@ -100,6 +100,11 @@ class HomeHeader extends Component {
 
     }
 
+    handleSwitchSeeALlClinic = () => {
+        this.props.history.push(`/see-all-clinic`) 
+
+    }
+
     render() {
       
         let {isOpen, dataUserlogin} = this.state
@@ -122,7 +127,7 @@ class HomeHeader extends Component {
                                 <FormattedMessage id= "homeheader.searchDoctor"/>
                             </div>
                         </div>
-                        <div className='child-content'>
+                        <div className='child-content'  onClick= {() => this.handleSwitchSeeALlClinic()}>
                             <div>
                                 <b><FormattedMessage id= "homeheader.health-facility"/></b>
                             </div>

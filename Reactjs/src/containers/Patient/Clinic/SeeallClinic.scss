@@ -1,0 +1,91 @@
+.see-all-clinic-container{
+    .up{
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 100px;
+        padding: 10px 0;
+        border-bottom: 1px solid #dddada;  
+        
+        .left
+        {
+            display: flex;
+            .icon-back{
+                line-height: 73.4px;
+                margin-right: 10px;
+            }
+            .title-see-all-clinic{
+                font-size: 22px;
+                font-weight: 600;
+                line-height: 73.4px;
+            }
+        }
+        
+      
+
+        .search
+        {
+            input {
+                margin-top: 20px;
+                border: 1px solid #bcd652;
+                outline: none;
+                padding: 10px 20px;
+                width: 280px;
+                border-radius: 16px;
+            }
+        }
+    }
+
+    .center
+    {
+        padding: 20px 100px;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            padding: 5px 14px;
+            outline: none;
+            border: none;
+        }
+    }
+
+    .down {
+        padding: 0 100px;
+        .section-content-clinic {
+          display: flex;
+          flex-wrap: wrap;
+          .clinic-item {
+            margin-top: 20px;
+            width: 18%;
+            margin-right: 20px;
+            .logo-clinic {
+                border: 1px solid black;
+                border-radius: 10px;
+                border-color: rgb(213, 213, 213);
+                background-color: rgb(255, 255, 255);
+
+                img {
+                    object-fit: contain;
+                    width: 100%;
+                    padding: 20px 20px;
+                    height: 145px;
+                    inset: 0px;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+              }
+            }
+            .clinic-info {
+              word-wrap: break-word;
+              text-align: center;
+
+              .name
+              {
+                margin-top: 20px;
+                font-weight: 600;
+                color: black;
+              }
+            }
+          }
+        }
+      }
+      
+}

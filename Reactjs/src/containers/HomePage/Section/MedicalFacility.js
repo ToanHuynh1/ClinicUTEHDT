@@ -30,6 +30,10 @@ class MedicalFacility extends Component {
     handleViewDetailClinic = (data) => {
         this.props.history.push(`/detail-clinic/${data.id}`)  
     }
+
+    handleSwtichSeeAllClinicFromMedical = () => {
+        this.props.history.push(`/see-all-clinic`)  
+    }
     render() {
         let {dataAllClinic} =  this.state
         return (
@@ -37,7 +41,7 @@ class MedicalFacility extends Component {
             <div className='section-container'>
                 <div className='section-header'>
                     <span className='title-section'>Cơ sở nổi bật</span>
-                    <button className='btn-section'>Tìm kiếm</button>
+                    <button className='btn-section' onClick={() => this.handleSwtichSeeAllClinicFromMedical()}>Tìm kiếm</button>
                 </div>
                 <div className='section-body'>
                     <Slider {...this.props.settings}>

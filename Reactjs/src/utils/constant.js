@@ -16,6 +16,7 @@ export const path = {
     SEEBOOKING: '/seebooking',
     SEEALLSPECIALTY: '/see-all-specialty',
     SEEALLDOCTOR: '/see-all-doctor',
+    SEEALLCLINIC: '/see-all-clinic'
 };
 
 export const LANGUAGES = {
