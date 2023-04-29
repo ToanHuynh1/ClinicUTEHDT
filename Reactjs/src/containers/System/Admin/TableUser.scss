@@ -61,3 +61,30 @@
       }
     }
   }
+
+.search-input-user
+{ 
+  display: flex;
+  padding-right: 16%;
+  .select-admin-user
+  {
+    padding: 0px;
+    .custom-select
+    {
+      width: 15%;
+    }
+  }
+
+  .search-input
+  {
+  
+    input{
+      margin-top: 12px;
+      padding: 5px 10px;
+      outline: none;
+      border: 0.5px solid rgb(147, 146, 149);
+    }
+  }
+
+}
+ 

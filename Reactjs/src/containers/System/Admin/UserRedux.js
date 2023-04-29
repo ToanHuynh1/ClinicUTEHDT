@@ -229,8 +229,6 @@ class UserRedux extends Component {
         let dataRole = this.state.arrRole
         let {email, password, firstName, lastName, phoneNumber, gender, position, role, address, img} = this.state
         
-
-        console.log(this.state)
         return (
            
             <div className='user-redux-container'>
@@ -357,6 +355,7 @@ class UserRedux extends Component {
                                 }
                                 </button>
                             </div>   
+
                             <div className='col-12 mb-5'>
                                 <TableUser 
                                 handleEditUserKey = {this.handleEditUser}

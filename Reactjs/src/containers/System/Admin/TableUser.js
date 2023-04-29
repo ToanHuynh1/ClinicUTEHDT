@@ -16,90 +16,148 @@ function handleEditorChange({ html, text }) {
 }
 
 class TableUser extends Component {
-
-    constructor(props)
-    {
-        super(props)
-        this.state = {
-          users: [],
-          currentPage: 1,
-          patientsPerPage: 5,
-        }
+    constructor(props) {
+      super(props);
+      this.state = {
+        dataUsers: [],
+        currentPage: 1,
+        patientsPerPage: 5,
+        searchTerm: '',
+        originalUsers: []
+      };
     }
-
-    componentDidMount(){
-        this.props.getUser()
+  
+    async componentDidMount() {
+      await this.props.getUser();
+      this.setState({
+        originalUsers: this.props.usersList 
+      });
     }
-    componentDidUpdate( prevProps,prevState,snapshot)
-    {
-        if(prevProps.usersList !== this.props.usersList)
-        {
-            this.setState({
-                users: this.props.usersList
-            })
-        }
-    }
-
-    handleDeleteUser = (user) =>
-    {
-        this.props.deleteUser(user.id)
-    }
-
-    handleEditUser = (user) =>
-    {
-        this.props.handleEditUserKey(user)
-    }
-
-
-    handleClick = (event) => {
+  
+    componentDidUpdate(prevProps, prevState, snapshot) {
+      if (prevProps.usersList !== this.props.usersList) {
         this.setState({
-            currentPage: Number(event.target.id)
+          dataUsers: this.props.usersList,
         });
+      }
     }
-
+  
+    handleDeleteUser = (user) => {
+      this.props.deleteUser(user.id);
+    };
+  
+    handleEditUser = (user) => {
+      this.props.handleEditUserKey(user);
+    };
+  
+    handleClick = (event) => {
+      this.setState({
+        currentPage: Number(event.target.id),
+      });
+    };
+  
     handlePrevPageClick = () => {
-        // const { currentPage } = this.state;
-        // this.setState({
-        //     currentPage: currentPage - 1
-        // });
-
-        const { currentPage } = this.state;
-        if (currentPage > 1) {
-            this.setState({
-                currentPage: currentPage - 1
-            });
-        }
-    }
-
+      const { currentPage } = this.state;
+      if (currentPage > 1) {
+        this.setState({
+          currentPage: currentPage - 1,
+        });
+      }
+    };
+  
     handleNextPageClick = () => {
-        // const { currentPage } = this.state;
-        // this.setState({
-        //     currentPage: currentPage + 1
-        // });
-
-        const { currentPage, users, patientsPerPage } = this.state;
-        const totalPatients = users.length;
-        const maxPage = Math.ceil(totalPatients / patientsPerPage);
-        if (currentPage < maxPage) {
-            this.setState({ currentPage: currentPage + 1 });
+      const { currentPage, dataUsers, patientsPerPage } = this.state;
+      const totalPatients = dataUsers.length;
+      const maxPage = Math.ceil(totalPatients / patientsPerPage);
+      if (currentPage < maxPage) {
+        this.setState({ currentPage: currentPage + 1 });
+      }
+    };
+  
+    filterUsers = (event) => {
+        let value = event.target.value;
+        let { dataUsers, originalUsers } = this.state;
+        let sortedUsers = [];
+        
+        switch (value) {
+          case "name_asc":
+            sortedUsers = dataUsers.sort((a, b) => a.firstName.localeCompare(b.firstName));
+            break;
+          case "name_desc":
+            sortedUsers = dataUsers.sort((a, b) => b.firstName.localeCompare(a.firstName));
+            break;
+          case "email_asc":
+            sortedUsers = dataUsers.sort((a, b) => a.email.localeCompare(b.email));
+            break;
+          case "email_desc":
+            sortedUsers = dataUsers.sort((a, b) => b.email.localeCompare(a.email));
+            break;
+          default:
+            // Nếu không có giá trị nào phù hợp thì lấy danh sách ban đầu
+            sortedUsers = originalUsers;
+            break;
         }
-    }
+    
+        this.setState({ dataUsers: sortedUsers });
+      };
+    
+      handleSearchTermChange = (event) => {
+        const searchTerm = event.target.value;
+        const { originalUsers } = this.state;
+    
+        if (searchTerm) {
+          const filteredUsers = originalUsers.filter(
+            (user) => user.email.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+          );
+    
+          this.setState({
+            searchTerm: searchTerm,
+            dataUsers: filteredUsers
+          });
+        } else {
+          this.setState({
+            searchTerm: searchTerm,
+            dataUsers: originalUsers // Khôi phục lại danh sách ban đầu
+          });
+        }
+      };
 
+
+    
     render() {
+      let { dataUsers, currentPage, patientsPerPage } = this.state;
+      const indexOfLastPatient = currentPage * patientsPerPage;
+      const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
+      const currentPatients = dataUsers.slice(indexOfFirstPatient, indexOfLastPatient);
 
-        let {users, currentPage, patientsPerPage} = this.state;
-        const indexOfLastPatient = currentPage * patientsPerPage;
-        const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
-        const currentPatients = users.slice(indexOfFirstPatient, indexOfLastPatient);
-    
-        const pageNumbers = [];
-        for (let i = 1; i <= Math.ceil(users.length / patientsPerPage); i++) {
-            pageNumbers.push(i);
-        }
+      const pageNumbers = [];
+      for (let i = 1; i <= Math.ceil(dataUsers.length / patientsPerPage); i++) {
+        pageNumbers.push(i);
+      }
+  
+      return (
+        <React.Fragment>
+            <div className='search-input-user'>
+                <div className="col-12 my-3 d-flex align-items-center select-admin-user">
+                    <select className="form-select me-3 custom-select" onChange={(e) => this.filterUsers(e)}>
+                        <option value="macdinh">Mặc định</option>
+                        <option value='name_asc'>Tên A-Z</option>
+                        <option value='name_desc'>Tên Z-A</option>
+                        <option value='email_asc'>Email A-Z</option>
+                        <option value='email_desc'>Email Z-A</option>
+                    </select>
+                </div>
 
-    
-        return (
-            <React.Fragment>
+                <div className='search-input'>
+                    <input 
+                        placeholder='Tìm kiếm theo Email'
+                        onChange={this.handleSearchTermChange}
+                        value={this.state.searchTerm}
+                    >
+
+                    </input>
+                </div>
+            </div>
                 <table id='TableUser'>
                     <tbody>
                         <tr>

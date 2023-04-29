@@ -62,3 +62,31 @@
       }
     }
   }
+
+
+  .search-table-specialty
+  {
+    display: flex;
+    .btn-sort
+    {
+      button {
+        outline: none;
+        border: none;
+        background-color: #10c25a;
+        padding: 9px 15px;
+        border-radius: 10px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+    }
+    }
+
+    .input-search
+    {
+      margin-left: 20px;
+      input{
+        padding: 7px 10px;
+      }
+    }
+  }

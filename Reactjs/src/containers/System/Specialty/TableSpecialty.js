@@ -24,7 +24,10 @@ class TableSpecialty extends Component {
           specialties: [],
           currentPage: 1,
           patientsPerPage: 5,
-          allSpecialtyList: []
+          allSpecialtyList: [],
+          searchText: '',
+          sortByName: true,
+          searchedSpecialties: []
         }
     }
 
@@ -88,10 +91,47 @@ class TableSpecialty extends Component {
         // console.log(response)
     }
 
+    handleChangeSearch = (event) => {
+        const searchText = event.target.value.toLowerCase();
+        const searchedSpecialties = this.state.allSpecialtyList.filter((clinic) =>
+            clinic.name.toLowerCase().includes(searchText)
+        );
+    
+        this.setState({
+            searchText: searchText,
+            searchedSpecialties: searchedSpecialties
+        });
+    }
+
+    
+    handleChangeSort = () => {
+        const sortByName = !this.state.sortByName;
+        const { allSpecialtyList, searchedSpecialties } = this.state;
+        let specialtiesToSort = searchedSpecialties.length > 0 ? searchedSpecialties : allSpecialtyList;
+    
+        specialtiesToSort.sort((a, b) => {
+            if (sortByName) {
+                return a.name.localeCompare(b.name);
+            } else {
+                return b.name.localeCompare(a.name);
+            }
+        });
+    
+        this.setState({
+            sortByName: sortByName,
+            searchedSpecialties: searchedSpecialties.length > 0 ? specialtiesToSort : [],
+            allSpecialtyList: searchedSpecialties.length === 0 ? specialtiesToSort : allSpecialtyList,
+            currentPage: 1
+        });
+    }
+
     render() {
 
-        let {allSpecialtyList, currentPage, patientsPerPage} = this.state;
-
+        let {allSpecialtyList, currentPage, patientsPerPage, searchText, searchedSpecialties} = this.state;
+        
+        if (searchedSpecialties.length > 0) {
+            allSpecialtyList = searchedSpecialties;
+        }
 
         const indexOfLastPatient = currentPage * patientsPerPage;
         const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
@@ -105,6 +145,17 @@ class TableSpecialty extends Component {
     
         return (
             <React.Fragment>
+                <div className='search-table-specialty'>
+                    <div className='btn-sort'>
+                        <button onClick={this.handleChangeSort}>
+                            {this.state.sortByName ? 'Sắp xếp Z-A' : 'Sắp xếp A-Z'}
+                        </button>
+                    </div>
+
+                    <div className='input-search'>
+                         <input placeholder='Tìm kiếm theo tên' type="text" value={searchText} onChange={this.handleChangeSearch} />
+                    </div>
+                </div>
                 <table id='TableSpecialty'>
                     <tbody>
                         <tr>

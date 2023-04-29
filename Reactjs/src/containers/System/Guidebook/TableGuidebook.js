@@ -24,7 +24,10 @@ class TableGuidebook extends Component {
           guidebooks: [],
           currentPage: 1,
           patientsPerPage: 5,
-          allGuidebookList: []
+          allGuidebookList: [],
+          searchText: '',
+          sortByName: true,
+          searchedGuidebooks: []
         }
     }
 
@@ -87,10 +90,50 @@ class TableGuidebook extends Component {
         }
     }
 
+
+    handleChangeSearch = (event) => {
+        const searchText = event.target.value.toLowerCase();
+        const searchedGuidebooks = this.state.allGuidebookList.filter((clinic) =>
+            clinic.name.toLowerCase().includes(searchText)
+        );
+    
+        this.setState({
+            searchText: searchText,
+            searchedGuidebooks: searchedGuidebooks
+        });
+    }
+
+    
+    handleChangeSort = () => {
+        const sortByName = !this.state.sortByName;
+        const { allGuidebookList, searchedGuidebooks } = this.state;
+        let guidebooksToSort = searchedGuidebooks.length > 0 ? searchedGuidebooks : allGuidebookList;
+    
+        guidebooksToSort.sort((a, b) => {
+            if (sortByName) {
+                return a.name.localeCompare(b.name);
+            } else {
+                return b.name.localeCompare(a.name);
+            }
+        });
+    
+        this.setState({
+            sortByName: sortByName,
+            searchedGuidebooks: searchedGuidebooks.length > 0 ? guidebooksToSort : [],
+            allGuidebookList: searchedGuidebooks.length === 0 ? guidebooksToSort : allGuidebookList,
+            currentPage: 1
+        });
+    }
+
+
     render() {
 
-        let {allGuidebookList, currentPage, patientsPerPage} = this.state;
+        let {allGuidebookList, currentPage, patientsPerPage, searchText, searchedGuidebooks} = this.state;
 
+
+        if (searchedGuidebooks.length > 0) {
+            allGuidebookList = searchedGuidebooks
+        }
 
         const indexOfLastPatient = currentPage * patientsPerPage;
         const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
@@ -104,6 +147,17 @@ class TableGuidebook extends Component {
     
         return (
             <React.Fragment>
+                <div className='search-table-guidebook'>
+                    <div className='btn-sort'>
+                        <button onClick={this.handleChangeSort}>
+                            {this.state.sortByName ? 'Sắp xếp Z-A' : 'Sắp xếp A-Z'}
+                        </button>
+                    </div>
+
+                    <div className='input-search'>
+                         <input placeholder='Tìm kiếm theo tên' type="text" value={searchText} onChange={this.handleChangeSearch} />
+                    </div>
+                </div>
                 <table id='TableGuidebook'>
                     <tbody>
                         <tr>

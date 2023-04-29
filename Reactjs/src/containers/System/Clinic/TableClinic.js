@@ -21,10 +21,13 @@ class TableClinic extends Component {
     {
         super(props)
         this.state = {
-          clinics: [],
-          currentPage: 1,
-          patientsPerPage: 5,
-          allClinicList: []
+            clinics: [],
+            currentPage: 1,
+            patientsPerPage: 5,
+            allClinicList: [],
+            searchText: '',
+            sortByName: true,
+            searchedClinics: []
         }
     }
 
@@ -81,15 +84,54 @@ class TableClinic extends Component {
         }
     }
 
+    handleChangeSearch = (event) => {
+        const searchText = event.target.value.toLowerCase();
+        const searchedClinics = this.state.allClinicList.filter((clinic) =>
+            clinic.name.toLowerCase().includes(searchText)
+        );
+    
+        this.setState({
+            searchText: searchText,
+            searchedClinics: searchedClinics
+        });
+    }
+
+    
+    handleChangeSort = () => {
+        const sortByName = !this.state.sortByName;
+        const { allClinicList, searchedClinics } = this.state;
+        let clinicsToSort = searchedClinics.length > 0 ? searchedClinics : allClinicList;
+    
+        clinicsToSort.sort((a, b) => {
+            if (sortByName) {
+                return a.name.localeCompare(b.name);
+            } else {
+                return b.name.localeCompare(a.name);
+            }
+        });
+    
+        this.setState({
+            sortByName: sortByName,
+            searchedClinics: searchedClinics.length > 0 ? clinicsToSort : [],
+            allClinicList: searchedClinics.length === 0 ? clinicsToSort : allClinicList,
+            currentPage: 1
+        });
+    }
+    
+    
+
     render() {
 
-        let {allClinicList, currentPage, patientsPerPage} = this.state;
+        let { allClinicList, currentPage, patientsPerPage, searchedClinics, searchText } = this.state;
 
+        if (searchedClinics.length > 0) {
+            allClinicList = searchedClinics;
+        }
 
         const indexOfLastPatient = currentPage * patientsPerPage;
         const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
         const currentClinics = allClinicList.slice(indexOfFirstPatient, indexOfLastPatient);
-    
+
         const pageNumbers = [];
         for (let i = 1; i <= Math.ceil(allClinicList.length / patientsPerPage); i++) {
             pageNumbers.push(i);
@@ -98,6 +140,17 @@ class TableClinic extends Component {
     
         return (
             <React.Fragment>
+                <div className='search-table-clinic'>
+                    <div className='btn-sort'>
+                        <button onClick={this.handleChangeSort}>
+                            {this.state.sortByName ? 'Sắp xếp Z-A' : 'Sắp xếp A-Z'}
+                        </button>
+                    </div>
+
+                    <div className='input-search'>
+                         <input placeholder='Tìm kiếm theo tên' type="text" value={searchText} onChange={this.handleChangeSearch} />
+                    </div>
+                </div>
                 <table id='TableClinic'>
                     <tbody>
                         <tr>
