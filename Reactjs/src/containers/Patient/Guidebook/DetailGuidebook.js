@@ -139,37 +139,6 @@ class DetailGuidebook extends Component {
                         
                     </div>
 
-
-                    {/* {arrDoctorId && arrDoctorId.length > 0 && arrDoctorId.map((item, index)=> {
-                    return (
-                    <div className='each-doctor' key={index}>
-                        <div className='content-left'>
-                            <div className='profile-doctor'>
-                                <DoctorProfile
-                                    doctorId = {item}
-                                />
-                            </div>
-                        </div>
-                        <div className='content-right'>
-                            <div className='doctor-schedule'>
-                                <DoctorSchedule
-                                    key={index}
-                                    doctorIdParent={item}
-                                    // detailDoctor = {detailDoctor}
-                                />
-                            </div>
-                        
-                            <div className='doctor-more-infor'>
-                                <DoctorMoreInfor 
-                                    doctorIdParent={item}
-                                />
-                            </div>
-                        
-                        </div>
-                    </div>
-                    )
-                    })} */}
-
                 </div>
                
             </div>

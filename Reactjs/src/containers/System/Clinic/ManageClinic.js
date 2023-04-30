@@ -86,6 +86,7 @@ class ManageClinic extends Component {
                 descriptionHTML: '',
                 descriptionMardown: ''
             })
+            window.location.href = `/system/manage-clinic`;
         } 
         else
         {
@@ -150,7 +151,7 @@ class ManageClinic extends Component {
                     </div>
                     <div className='col-12 my-3'>
                         <button className={this.state.actions == CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}  
-                            onClick={() => this.handleSaveGuideBook()}
+                            onClick={() => this.handleSaveClinic()}
                         >
                         {this.state.actions == CRUD_ACTIONS.EDIT ? 
                             <FormattedMessage id ="manage-user.edit-guidebook"/> :

@@ -245,8 +245,6 @@ class ManageGuidebook extends Component {
 
         let {listGuidebook} = this.state
 
-
-        console.log(this.state)
         return (
             <div className='manage-guidebook-container'>
                 <div className='ms-title' style={{fontWeight: '600', marginBottom: '20px', textTransform: 'uppercase', fontSize: '26px', marginTop: '20px'}}>Quản lý cẩm nang</div>
@@ -259,7 +257,7 @@ class ManageGuidebook extends Component {
                             />
                     </div>
 
-                    <div className='col-4 form-group'>
+                    <div className='col-6 form-group'>
                         <label>Loại:</label>
                         <input type='text' className='form-control' 
                             value={this.state.type}

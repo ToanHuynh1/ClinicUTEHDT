@@ -3,11 +3,11 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './TableSpecialty.scss'
 import * as actions from '../../../store/actions/index'
-
+import { toast } from 'react-toastify';
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
-
+import { deleteSpecialtyService } from '../../../services/userService';
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 // Finish!
@@ -46,11 +46,6 @@ class TableSpecialty extends Component {
         }
     }
 
-    handleDeleteGuidebook = (user) =>
-    {
-        // this.props.deleteUser(user.id)
-    }
-
     handleEditSpecialty = (specialty) =>
     {
         this.props.handleEditSpecialtyKey(specialty)
@@ -75,8 +70,8 @@ class TableSpecialty extends Component {
 
     handleNextPageClick = () => {
     
-        const { currentPage, specialties, patientsPerPage } = this.state;
-        const totalPatients = specialties.length;
+        const { currentPage, allSpecialtyList, patientsPerPage } = this.state;
+        const totalPatients = allSpecialtyList.length;
         const maxPage = Math.ceil(totalPatients / patientsPerPage);
         if (currentPage < maxPage) {
             this.setState({ currentPage: currentPage + 1 });
@@ -85,10 +80,17 @@ class TableSpecialty extends Component {
 
     handleDeleteSpecialty = async (data) => {
 
-        // console.log(data)
-        // let response = await deleteGuidebookService(data.id)
+        let response = await deleteSpecialtyService(data.id)
 
-        // console.log(response)
+        if (response.errCode === 0)
+        {
+            toast.success('Xóa chuyên khoa thành công !')
+        }
+
+        else
+        {
+            toast.error('Xóa chuyên khoa không thành công !')
+        }
     }
 
     handleChangeSearch = (event) => {
@@ -153,7 +155,7 @@ class TableSpecialty extends Component {
                     </div>
 
                     <div className='input-search'>
-                        <i class="fas fa-search"></i>
+                        <i className="fas fa-search"></i>
                         <input placeholder='Tìm kiếm theo tên' type="text" value={searchText} onChange={this.handleChangeSearch} />
                     </div>
                 </div>

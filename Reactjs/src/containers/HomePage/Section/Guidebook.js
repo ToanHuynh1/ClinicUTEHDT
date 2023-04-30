@@ -37,7 +37,6 @@ class Guidebook extends Component {
     }
 
     handleViewDetailGuidebook = (data) => {
-        console.log(data)
         this.props.history.push(`/detail-guidebook/${data.id}`)  
     }
 

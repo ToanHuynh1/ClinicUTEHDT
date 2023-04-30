@@ -82,8 +82,8 @@ class TableGuidebook extends Component {
 
     handleNextPageClick = () => {
     
-        const { currentPage, guidebooks, patientsPerPage } = this.state;
-        const totalPatients = guidebooks.length;
+        const { currentPage, allGuidebookList, patientsPerPage } = this.state;
+        const totalPatients = allGuidebookList.length;
         const maxPage = Math.ceil(totalPatients / patientsPerPage);
         if (currentPage < maxPage) {
             this.setState({ currentPage: currentPage + 1 });
@@ -155,7 +155,7 @@ class TableGuidebook extends Component {
                     </div>
 
                     <div className='input-search'>
-                        <i class="fas fa-search"></i>
+                        <i className="fas fa-search"></i>
                         <input placeholder='Tìm kiếm theo tên' type="text" value={searchText} onChange={this.handleChangeSearch} />
                     </div>
                 </div>
