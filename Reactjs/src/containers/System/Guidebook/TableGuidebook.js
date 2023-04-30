@@ -146,7 +146,7 @@ class TableGuidebook extends Component {
 
     
         return (
-            <React.Fragment>
+            <div className="guidebook-container">
                 <div className='search-table-guidebook'>
                     <div className='btn-sort'>
                         <button onClick={this.handleChangeSort}>
@@ -201,7 +201,7 @@ class TableGuidebook extends Component {
                     </li>
                     </ul>
                 </div>
-            </React.Fragment>
+            </div>
           
         );
     }

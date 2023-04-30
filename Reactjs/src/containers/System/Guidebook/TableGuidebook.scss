@@ -63,7 +63,8 @@
     }
   }
 
-
+.guidebook-container
+{
   .search-table-guidebook
   {
     display: flex;
@@ -72,7 +73,7 @@
       button {
         outline: none;
         border: none;
-        background-color: #10c25a;
+        background-color: #7cdda5;
         padding: 9px 15px;
         border-radius: 10px;
         -webkit-border-radius: 5px;
@@ -95,3 +96,4 @@
       }
     }
   }
+}

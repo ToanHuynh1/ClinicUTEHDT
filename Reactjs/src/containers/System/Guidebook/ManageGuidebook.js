@@ -312,7 +312,7 @@ class ManageGuidebook extends Component {
                     />
                 }
 
-                    <div className='col-12 mb-5'>
+                    <div className='col-12 mb-5' style={{padding: '0px'}}>
                             <TableGuidebook 
                                 handleEditGuideBookKey = {this.handleEditGuidebook}
                                 guidebooks = {listGuidebook}
