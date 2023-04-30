@@ -149,7 +149,7 @@ class TableUser extends Component {
                 </div>
 
                 <div className='input-search'>
-                    <i class="fas fa-search"></i>
+                    <i className="fas fa-search"></i>
                     <input 
                         placeholder='Tìm kiếm theo Email'
                         onChange={this.handleSearchTermChange}

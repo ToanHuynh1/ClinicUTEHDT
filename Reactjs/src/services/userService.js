@@ -185,3 +185,25 @@ export const deleteGuidebookService = (guibookid) =>
         }
     })
 }
+
+
+export const deleteSpecialtyService = (specialtyId) =>
+{
+    return axios.delete('http://localhost:1906/api/delete-specialty',  
+    {
+        data: {
+            id: specialtyId
+        }
+    })
+}
+
+
+export const deleteClinicService = (clinicId) =>
+{
+    return axios.delete('http://localhost:1906/api/delete-clinic',  
+    {
+        data: {
+            id: clinicId
+        }
+    })
+}
