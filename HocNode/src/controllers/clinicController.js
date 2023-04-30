@@ -47,5 +47,27 @@ module.exports = {
                 errMessage: 'Error from server'
             })
         }
-    }
+    },
+
+    handleDeleteClinic: async (req,res) => {
+        try {
+            if (!req.body.id) {
+                return res.status(300).json({
+                    errCode: 1,
+                    errMessage: "Thiếu tham số"
+                })
+            }
+        
+            let message = await clinicService.handleDeleteClinicService(req.body.id)
+        
+            return res.status(200).json(message)
+        
+        } catch (error) {
+            console.log(error)
+            return res.status(200).json({
+                errCode: -1,
+                errMessage: 'Error from server'
+            })
+        }
+    },
 }

@@ -10,6 +10,8 @@ let initWebRoutesClinic = (app) => {
 
     router.get('/api/get-detail-clinic-for-id', clinicController.getDetailClinic)
 
+    router.delete('/api/delete-clinic' , clinicController.handleDeleteClinic)
+
     return app.use("/", router)
 }
 

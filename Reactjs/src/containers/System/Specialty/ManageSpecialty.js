@@ -193,7 +193,7 @@ class ManageSpecialty extends Component {
         let {listSpecialty} = this.state
         return (
             <div className='manage-specialty-container'>
-                <div className='ms-title'>Quản lý chuyên khoa</div>
+                <div className='ms-title' style={{fontWeight: '600', marginBottom: '20px', textTransform: 'uppercase', fontSize: '26px', marginTop: '20px'}}>Quản lý chuyên khoa</div>
                 <div className='add-all-specialty row'>
                     <div className='col-6 form-group'>
                         <label>Tên chuyên khoa</label>

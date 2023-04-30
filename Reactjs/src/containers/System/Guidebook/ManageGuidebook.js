@@ -249,7 +249,7 @@ class ManageGuidebook extends Component {
         console.log(this.state)
         return (
             <div className='manage-guidebook-container'>
-                <div className='ms-title'>Quản lý cẩm nang</div>
+                <div className='ms-title' style={{fontWeight: '600', marginBottom: '20px', textTransform: 'uppercase', fontSize: '26px', marginTop: '20px'}}>Quản lý cẩm nang</div>
                 <div className='add-all-guidebook row'>
                     <div className='col-6 form-group'>
                         <label>Tên cẩm nang:</label>

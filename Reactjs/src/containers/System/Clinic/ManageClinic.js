@@ -111,7 +111,7 @@ class ManageClinic extends Component {
         let {listClinic} = this.state
         return (
             <div className='manage-specialty-container'>
-                <div className='ms-title'>Quản lý phòng khám</div>
+                <div className='ms-title' style={{fontWeight: '600', marginBottom: '20px', textTransform: 'uppercase', fontSize: '26px', marginTop: '20px'}}>Quản lý phòng khám</div>
                 <div className='add-all-specialty row'>
                     <div className='col-6 form-group'>
                         <label>Tên phòng khám</label>

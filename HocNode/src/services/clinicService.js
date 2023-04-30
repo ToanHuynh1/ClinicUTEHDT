@@ -114,7 +114,56 @@ module.exports = {
                 reject(error)
             }
         })
-    },
+    }, 
+    handleDeleteClinicService: async (dataId) =>
+    {
+        return new Promise(async (resolve,reject) =>{
+
+            let dataClinic = await db.Clinic.findOne({
+                where: {
+                    id : dataId
+                }
+            })
+
+            if (!dataClinic){
+           
+                resolve({
+                    errCode: 2,
+                    errMessage: "Phòng khám không tồn tại"
+                })
+                
+            }
+
+            else
+            {
+                let dataDoctor_infor = await db.Doctor_Infor.findOne({
+                    where: {
+                        clinicId: dataId
+                    }
+                })
+        
+                if (dataDoctor_infor)
+                {
+                    dataDoctor_infor.clinicId = ''
+                    await dataDoctor_infor.save()
+                }
+        
+
+                await db.Clinic.destroy({
+                    where: {
+                        id: dataId
+                    }
+                })
+
+                resolve({
+                    errCode: 0,
+                    errMessage: 'Xóa chuyên khoa thành công'
+                })
+            }
+
+          
+        })
+    }
 }
 
 

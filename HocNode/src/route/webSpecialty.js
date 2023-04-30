@@ -12,6 +12,7 @@ let initWebRoutesSpecialty = (app) => {
 
     router.put('/api/update-specialty', specialtyController.updateSpecialty)
 
+    router.delete('/api/delete-specialty' , specialtyController.handleDeleteSpecialty)
 
     return app.use("/", router)
 }

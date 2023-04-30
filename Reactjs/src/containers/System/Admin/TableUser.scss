@@ -65,26 +65,34 @@
 .search-input-user
 { 
   display: flex;
-  padding-right: 16%;
+  justify-content: start;
+  float: left;
   .select-admin-user
   {
     padding: 0px;
     .custom-select
     {
-      width: 15%;
+      width: 41%;
     }
   }
 
-  .search-input
-  {
-  
-    input{
+  .input-search
+    {
+      border-radius: 10px;
+      padding: 0px 7px;
+      display: flex;
+      height: 35px;
       margin-top: 12px;
-      padding: 5px 10px;
-      outline: none;
-      border: 0.5px solid rgb(147, 146, 149);
+      border: 1px solid rgb(198, 193, 193);
+      input{
+        border: none;
+        outline: none;
+      }
+      i {
+        margin-top: 9px;
+        margin-right: 3px;
+      }
     }
-  }
 
 }
  

@@ -192,5 +192,56 @@ module.exports = {
             }
             
         });
+    },
+
+
+    handleDeleteSpecialtyService: async (dataId) =>
+    {
+        return new Promise(async (resolve,reject) =>{
+
+            let dataSpecialty = await db.Specialty.findOne({
+                where: {
+                    id : dataId
+                }
+            })
+
+            if (!dataSpecialty){
+           
+                resolve({
+                    errCode: 2,
+                    errMessage: "Chuyên khoa không tồn tại"
+                })
+                
+            }
+
+            else
+            {
+                let dataDoctor_infor = await db.Doctor_Infor.findOne({
+                    where: {
+                        specialtyId: dataId
+                    }
+                })
+        
+                if (dataDoctor_infor)
+                {
+                    dataDoctor_infor.specialtyId = ''
+                    await dataDoctor_infor.save()
+                }
+        
+
+                await db.Specialty.destroy({
+                    where: {
+                        id: dataId
+                    }
+                })
+
+                resolve({
+                    errCode: 0,
+                    errMessage: 'Xóa chuyên khoa thành công'
+                })
+            }
+
+          
+        })
     }
 }

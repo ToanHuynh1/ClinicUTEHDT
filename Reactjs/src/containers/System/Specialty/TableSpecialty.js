@@ -153,7 +153,8 @@ class TableSpecialty extends Component {
                     </div>
 
                     <div className='input-search'>
-                         <input placeholder='Tìm kiếm theo tên' type="text" value={searchText} onChange={this.handleChangeSearch} />
+                        <i class="fas fa-search"></i>
+                        <input placeholder='Tìm kiếm theo tên' type="text" value={searchText} onChange={this.handleChangeSearch} />
                     </div>
                 </div>
                 <table id='TableSpecialty'>

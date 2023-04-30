@@ -232,7 +232,7 @@ class UserRedux extends Component {
         return (
            
             <div className='user-redux-container'>
-                <div className='title my-4'>
+                <div className='title-manage-user my-4'>
                     <FormattedMessage id ="manage-user.add"/>
                 </div>
            
