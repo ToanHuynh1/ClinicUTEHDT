@@ -94,7 +94,22 @@ class DetailDoctor extends Component {
                         }
                     </div>
                     <div className='review-doctor'>
-                        
+                        <div className='title-review-doctor'>
+                            Đánh giá
+                        </div>
+
+                        <div className='content-review'>
+
+                        </div>
+
+                        <div className='input-review-patient'>
+                            <div className='custom-input'>
+                                <input placeholder='Nhập đánh giá của bạn...'>
+                                </input>
+
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                        </div>
                     </div>
                     
                     <HomeFooter/>

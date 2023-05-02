@@ -58,7 +58,7 @@ class SeeallClinic extends Component {
     }
 
     SwitchHome = () => {
-        this.props.history.push(`/`);
+        this.props.history.push(`/home`);
     }
 
     handleSectionClick = (section) => {

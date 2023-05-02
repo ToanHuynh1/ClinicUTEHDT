@@ -243,11 +243,11 @@ let hashUserPassword = (password) =>
     })
   }
  
-let getBookingByIdService = (data) => {
+let getBookingByIdService = (patientId) => {
   return new Promise(async (resolve,reject) => 
   {
       try {
-          if (!data.patientId)
+          if (!patientId)
           {
               resolve({
                   errCode: 1,
@@ -259,10 +259,25 @@ let getBookingByIdService = (data) => {
               let appointment = {}
               appointment = await db.Booking.findAll({
                   where: {
-                      patientId: data.patientId,
+                      patientId: patientId,
                   },
+
+                  include: [
+                    {
+                      model: db.Allcode,
+                      as: 'timeTypeDataPatient',
+                      attributes: ['valueEn', 'valueVi'],
+                    },
+                    {
+                      model: db.User,
+                      as: 'doctorBookingData',
+                      attributes: { exclude: ['image'] },
+                    },
+                  ],
+                  
                   // raw = false mới dùng được hàm update
                   // raw = true trả về object của JS
+
                   raw: false
               })
              

@@ -16,13 +16,38 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: bisque;
         padding: 0 200px;
         .booking
         {
-            text-align: center;    width: 80%;
-            height: 200px;
-            border: 1px solid red;
+            margin-top: 20px;
+            text-align: center;    
+            width: 80%;
+
+            
+            .custom-history-booking
+            {
+                border: 1px solid rgb(80, 80, 81);
+                padding: 20px 100px;
+                border-radius: 10px;
+                background-color: rgb(191, 212, 229);
+                display: flex;
+                .right                          
+                {
+                    width: 70%;
+                }
+                .left
+                {
+                    width: 30%;
+                    .action
+                    {
+                        font-size: 20px;
+                        font-style: italic;
+                        font-weight: 600;
+                        margin-top: 35px;
+                        color: red;
+                    }
+                }
+            }
         }
     }
 }
