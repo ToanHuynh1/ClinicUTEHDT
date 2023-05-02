@@ -3,10 +3,11 @@ import { Fragment } from 'react';
 import { connect } from "react-redux";
 import HomeHeader from '../../HomePage/HomeHeader';
 import './DetailDoctor.scss'
-import {getDetailInfoDoctor} from '../../../services/userService'
+import {getDetailInfoDoctor, sendReviewDoctor, getAllReviewForDoctor} from '../../../services/userService'
 import { LANGUAGES } from '../../../utils';
 import DoctorSchedule from './DoctorSchedule';
 import DoctorMoreInfor from './DoctorMoreInfor';
+import { toast } from 'react-toastify';
 import HomeFooter from '../../HomePage/HomeFooter'
 import LikeShare from '../../System/SocialPlugin/LikeShare'
 import Comment from '../../System/SocialPlugin/Comment'
@@ -17,7 +18,9 @@ class DetailDoctor extends Component {
         super(props)
         this.state = {
             detailDoctor: {},
-            currentDoctor: -1
+            currentDoctor: -1,
+            contentReview: '',
+            allReview: {}
         }
     }
 
@@ -37,13 +40,76 @@ class DetailDoctor extends Component {
                 })
             }
         }
+
+        let result = await getAllReviewForDoctor({
+            doctorId: this.state.currentDoctor
+        })
+
+       if (result && result.errCode === 0)
+       {
+        this.setState({
+            allReview: result.dataReview
+        })
+       }
+     
     }
 
     componentDidUpdate(prevProps,prevState,snapshot){
 
     }
+
+
+     hanleSendReview = async () => {
+        
+        const today = new Date();
+        const day = today.getDate().toString().padStart(2, "0"); 
+        const month = (today.getMonth() + 1).toString().padStart(2, "0"); 
+        const year = today.getFullYear(); 
+        const hours = today.getHours().toString().padStart(2, "0"); 
+        const minutes = today.getMinutes().toString().padStart(2, "0"); 
+        const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes}`;
+          
+        if (this.props.userInfo)
+        {
+            let patientName = this.props.userInfo.firstName
+
+            let reponse = await sendReviewDoctor({
+                doctorId: this.state.currentDoctor,
+                patientName: patientName,
+                date: formattedDateTime,
+                status: this.state.contentReview
+            })
+
+            if (reponse.info.errCode === 0)
+            {
+                toast.success('Gửi đánh giá thành công')
+                this.setState({
+                    contentReview:''
+                })
+                window.location.href = `/detail-doctor/${this.state.currentDoctor}`;
+            }
+
+            else
+            {
+                toast.error('Gửi đánh giá thất bại')
+            }
+        }
+
+        else
+        {
+            alert('Mời bạn ấn đăng nhập')
+        }
+
+    }
+
+    handleOnChangeStatus = (event) => {
+        let status = event.target.value
+        this.setState({
+            contentReview: status
+        })
+    }
     render() {
-        let {detailDoctor} = this.state
+        let {detailDoctor , allReview} = this.state
         let nameVi = '',nameEn=''
         let {language} = this.props
 
@@ -98,16 +164,40 @@ class DetailDoctor extends Component {
                             Đánh giá
                         </div>
 
-                        <div className='content-review'>
+                        {allReview && allReview.length > 0 ? (
+                            allReview.map((item , index) => (
+                                <div className='content-review' key={index}>
+                                    <div className='customize'>
+                                        <div className='title-name-time'>
+                                            <div className='name-review'>
+                                                {item.patientName}
+                                            </div>
 
-                        </div>
+                                            <div className='time-review'>
+                                                {item.date}
+                                            </div>
+                                        </div>
+
+                                        <div className='status'>
+                                            {item.status}
+                                        </div>
+                                    </div>                      
+                                </div>
+                            ))
+                        ) : (
+                            <div>Hãy là người đầu tiên bình luận</div>
+                        )}
+                     
 
                         <div className='input-review-patient'>
                             <div className='custom-input'>
-                                <input placeholder='Nhập đánh giá của bạn...'>
+                                <input placeholder='Nhập đánh giá của bạn...'  
+                                    onChange={(event) => this.handleOnChangeStatus(event)} 
+                                    value={this.state.contentReview}
+                                    >
                                 </input>
 
-                                <i class="fas fa-paper-plane"></i>
+                                <i className="fas fa-paper-plane" onClick={() => this.hanleSendReview()}></i>
                             </div>
                         </div>
                     </div>
@@ -123,6 +213,8 @@ class DetailDoctor extends Component {
 const mapStateToProps = state => {
     return {
         language: state.app.language,
+        userInfo: state.user.userInfo,
+        isLoggedIn: state.user.isLoggedIn,
     };
 };
 

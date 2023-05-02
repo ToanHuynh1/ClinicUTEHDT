@@ -316,7 +316,7 @@ class BookingSchedule extends Component {
                             />  
                         </div>
 
-                        <label className='gender-title'><i className="fas fa-venus" ><FormattedMessage id="patient.booking-schedule.title-date"/></i></label> 
+                        <label className='gender-title'><i className="fas fa-calendar"><FormattedMessage id="patient.booking-schedule.title-date"/></i></label> 
                         <div className='book-who'>
                             <DatePicker
                                 onChange= {this.handleOnchangeDataPicker}

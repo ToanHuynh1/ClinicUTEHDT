@@ -333,11 +333,74 @@ let updateInforPatientService = (data) => {
       }
   })
 }
+
+let sendReviewOfDetailDoctorService = (data) => {
+  return new Promise(async (resolve,reject) => 
+  {
+      try {
+          if (!data.patientName || !data.doctorId || !data.date || !data.status)
+          {
+              resolve({
+                  errCode: 1,
+                  errMessage: 'Missing parameter'
+              })
+          }
+          else
+          {
+            await db.Review.create({
+              doctorId: data.doctorId,
+              patientName: data.patientName,
+              date: data.date,
+              status: data.status,
+            })
+            resolve({
+              errCode: 0,
+              errMessage: 'Gửi đánh giá thành công'
+            })
+          }
+      } catch (error) {
+          reject(error)
+      }
+  })
+}
+
+let getAllReviewOfPatientService = (data) => {
+  return new Promise(async (resolve,reject) => 
+  {
+      try {
+          if (!data.doctorId){
+            resolve({
+              errCode: 1,
+              errMessage: 'Thiếu tham số'
+            })
+          }
+          else
+          {
+            let dataReview = await db.Review.findAll({
+              where: {
+                doctorId: data.doctorId
+              }
+            })
+
+            resolve({
+              errCode: 0,
+              errMessage: 'Lấy thông tin đánh giá thành công',
+              dataReview
+            })
+          }
+        
+      } catch (error) {
+          reject(error)
+      }
+  })
+}
 module.exports = {
     bookAppointmentService:bookAppointmentService,
     verifyBookAppointmentService:verifyBookAppointmentService,
     ForgotPasswordPatientService:ForgotPasswordPatientService,
     ConfirmPasswordService:ConfirmPasswordService,
     getBookingByIdService:getBookingByIdService,
-    updateInforPatientService:updateInforPatientService
+    updateInforPatientService:updateInforPatientService,
+    sendReviewOfDetailDoctorService:sendReviewOfDetailDoctorService,
+    getAllReviewOfPatientService:getAllReviewOfPatientService
 }
