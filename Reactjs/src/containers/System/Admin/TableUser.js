@@ -30,7 +30,7 @@ class TableUser extends Component {
     async componentDidMount() {
       await this.props.getUser();
       this.setState({
-        originalUsers: this.props.usersList 
+          originalUsers: this.props.usersList 
       });
     }
   
@@ -76,7 +76,8 @@ class TableUser extends Component {
   
     filterUsers = (event) => {
         let value = event.target.value;
-        let { dataUsers, originalUsers } = this.state;
+        let { dataUsers } = this.state;
+        const {originalUsers} = this.state
         let sortedUsers = [];
         
         switch (value) {

@@ -57,7 +57,7 @@ let ConfirmPassword = async (req,res) => {
 
 let getBookingById = async (req,res) => {
     try {
-        let info = await patientService.getBookingByIdService(req.body)
+        let info = await patientService.getBookingByIdService(req.body.patientId)
         return res.status(200).json({
             errCode: 0,
             errMessage: 'Get booking success',

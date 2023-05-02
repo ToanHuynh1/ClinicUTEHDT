@@ -45,8 +45,6 @@ class HomePage extends Component {
                 id: userInfo.id
             })
 
-            console.log(reponse)
-
             if (reponse && reponse.data.errCode === 0){
                 let data = reponse.data.user
 
