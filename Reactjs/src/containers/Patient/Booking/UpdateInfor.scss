@@ -1,0 +1,72 @@
+
+.update-infor-patient
+{
+    margin-top: 100px;
+    padding: 20px 100px;
+    .custom-update
+    {
+        padding: 60px;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        border: 1px solid rgb(246, 204, 204);
+        -o-border-radius: 20px;
+        background-color: rgb(237, 248, 238);
+
+        .title-update
+        {
+            font-size: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .btn-excute
+        {
+            margin-top: 20px;
+            padding: 10px 20px;
+            outline: none;
+            border: none;
+            margin-right: 20px;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+            background-color: rgb(154, 154, 231);
+       }
+
+        .btn-cancel
+        {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;     
+        }
+
+        input{
+            background-color: #fbfcf2;
+            height: 45px;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+        }
+
+        select{
+            background-color: #fbfcf2;
+            height: 45px;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+}
+    }
+}

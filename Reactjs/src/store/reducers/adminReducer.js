@@ -13,7 +13,8 @@ const initialState = {
     topDoctor: [],
     allDoctors: [],
     allDataTime: [],
-    allRequired: []
+    allRequired: [],
+    check:''
 }
 
 const adminReducer = (state = initialState, action) => {

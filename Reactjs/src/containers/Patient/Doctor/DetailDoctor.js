@@ -72,10 +72,12 @@ class DetailDoctor extends Component {
         if (this.props.userInfo)
         {
             let patientName = this.props.userInfo.firstName
+            let patientId = this.props.userInfo.id
 
             let reponse = await sendReviewDoctor({
                 doctorId: this.state.currentDoctor,
                 patientName: patientName,
+                patientId: patientId,
                 date: formattedDateTime,
                 status: this.state.contentReview
             })

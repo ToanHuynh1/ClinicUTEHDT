@@ -84,7 +84,8 @@ class HomeHeader extends Component {
         this.setState({
             isOpen: false
         })
-        this.props.handleOpenUpdateInfo(check)
+
+        this.props.history.push(`/update-infor-patient`)
     }
 
     handleSeeBooking =  () => {
