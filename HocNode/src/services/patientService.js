@@ -290,55 +290,56 @@ let getBookingByIdService = (patientId) => {
   })
 }
 
-let updateInforPatientService = (data) => {
-  return new Promise(async (resolve,reject) => 
-  {
-      try {
-          if (!data.id || !data.address || !data.gender || !data.firstName || !data.phonenumber)
-          {
-              resolve({
-                  errCode: 1,
-                  errMessage: 'Missing parameter'
-              })
-          }
-          else
-          {
-              let user = await db.User.findOne({
-                  where: {
-                    id: data.id,
-                  },
-                  // raw = false mới dùng được hàm update
-                  // raw = true trả về object của JS
-                  raw: false
-              })
-             
-              if (user) {
-                user.address = data.address
-                user.gender = data.gender
-                user.firstName = data.firstName
-                user.phonenumber = data.phonenumber
+let updateInforPatientService = async (data) => {
+    const t = await db.sequelize.transaction();
+    try {
+      const user = await db.User.findOne({
+        where: {
+          id: data.id,
+        },
+        transaction: t,
+      });
 
-                await user.save()
-
-                resolve(user)
-              }
-              else
-              {
-                resolve({})
-              }
-              
-          }
-      } catch (error) {
-          reject(error)
+      if (!user) {
+        throw new Error('Không tìm thấy người dùng');
       }
-  })
-}
+
+      user.address = data.address;
+      user.gender = data.gender;
+      user.firstName = data.firstName;
+      user.phonenumber = data.phonenumber;
+
+      await user.save({ transaction: t });
+
+      const reviews = await db.Review.findAll({
+        where: {
+          patientId: data.id,
+        },
+        transaction: t,
+      });
+
+      if (reviews.length > 0) {
+        await Promise.all(reviews.map(async (review) => {
+          review.patientName = data.firstName;
+          await review.save({ transaction: t });
+        }));
+      }
+
+      await t.commit();
+      return user;
+    } 
+    catch (error) {
+      await t.rollback();
+      throw error;
+    }
+};
+
 
 let sendReviewOfDetailDoctorService = (data) => {
   return new Promise(async (resolve,reject) => 
   {
       try {
-          if (!data.patientName || !data.doctorId || !data.date || !data.status)
+          if (!data.patientName || !data.doctorId || !data.date || !data.status || !data.patientId)
           {
               resolve({
                   errCode: 1,
@@ -350,6 +351,7 @@ let sendReviewOfDetailDoctorService = (data) => {
             await db.Review.create({
               doctorId: data.doctorId,
               patientName: data.patientName,
+              patientId: data.patientId,
               date: data.date,
               status: data.status,
             })

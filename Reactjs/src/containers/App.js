@@ -28,6 +28,7 @@ import Seebooking from './Patient/Booking/Seebooking';
 import SeeallSpecialty from './Patient/Specialty/SeeallSpecialty';
 import SeeallDoctor from './Patient/Doctor/DoctorAll/SeeallDoctor';
 import SeeallClinic from './Patient/Clinic/SeeallClinic';
+import UpdateInfor from './Patient/Booking/UpdateInfor';
 class App extends Component {
 
     handlePersistorState = () => {
@@ -73,6 +74,7 @@ class App extends Component {
                                     <Route path={path.SEEALLSPECIALTY} component={SeeallSpecialty}/>
                                     <Route path={path.SEEALLDOCTOR} component={SeeallDoctor}/>
                                     <Route path={path.SEEALLCLINIC} component={SeeallClinic}/>
+                                    <Route path={path.UPDATEINFOR} component={UpdateInfor}/>
                                     <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
                                     <Route path={path.VERIFY_EMAIL_BOOKING} component={VerifyEmail}/>
                                 </Switch>

@@ -208,7 +208,6 @@ export const deleteClinicService = (clinicId) =>
     })
 }
 
-
 export const sendReviewDoctor= (data) => {
     return axios.post(`http://localhost:1906/api/review-for-doctor`, data)
 }

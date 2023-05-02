@@ -16,7 +16,8 @@ export const path = {
     SEEBOOKING: '/seebooking',
     SEEALLSPECIALTY: '/see-all-specialty',
     SEEALLDOCTOR: '/see-all-doctor',
-    SEEALLCLINIC: '/see-all-clinic'
+    SEEALLCLINIC: '/see-all-clinic',
+    UPDATEINFOR: '/update-infor-patient'
 };
 
 export const LANGUAGES = {
