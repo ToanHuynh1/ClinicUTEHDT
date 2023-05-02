@@ -18,8 +18,7 @@ class Information extends Component {
                     </div>
                     <div className='inf-center'>
                         <b className='inf-about'>Tìm hiểu thêm</b>
-                        <p className='mt-3'>Tuyển dụng</p>
-                        <p>Câu hỏi thường gặp</p>
+                        <p className='mt-3'>Câu hỏi thường gặp</p>
                         <p>Điều khoản sử dụng</p>
                         <p>Chính sách hoạt động</p>
                     </div>
