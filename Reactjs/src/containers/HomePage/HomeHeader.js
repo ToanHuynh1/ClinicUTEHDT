@@ -123,6 +123,10 @@ class HomeHeader extends Component {
         })
     }
 
+    handleSwitchGuidebook = () => {
+        this.props.history.push(`/see-all-guidebook`) 
+    }
+
     render() {
       
         let {isOpen, dataUserlogin, isOpenMenu, isOpenAllMenuSelect} = this.state
@@ -193,7 +197,7 @@ class HomeHeader extends Component {
                                 <FormattedMessage id= "homeheader.select-doctor"/>
                             </div>
                         </div>
-                        <div className='child-content'>
+                        <div className='child-content' onClick={() => this.handleSwitchGuidebook()}>
                             <div>
                                 <b><FormattedMessage id= "homeheader.fee"/></b>
                             </div>
