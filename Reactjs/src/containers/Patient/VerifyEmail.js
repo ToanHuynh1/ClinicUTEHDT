@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import {postVerifyAppointment} from '../../services/userService'
 import HomeHeader from '../HomePage/HomeHeader';
 import HomeFooter from '../HomePage/HomeFooter';
+import './VerifyEmail.scss'
 class VerifyEmail extends Component {
 
     constructor(props)
@@ -24,10 +25,12 @@ class VerifyEmail extends Component {
             const urlParams = new URLSearchParams(this.props.location.search);
             const token = urlParams.get('token');
             const doctorId = urlParams.get('doctorId');
+            const gmail = urlParams.get('gmail')
 
             let res = await postVerifyAppointment({
                 token :  token,
-                doctorId: doctorId
+                doctorId: doctorId,
+                gmail: gmail
             })
 
             if (res && res.errCode === 0 )
@@ -69,9 +72,11 @@ class VerifyEmail extends Component {
                     <div style={{marginTop: '69px'}}>Loading data ...</div>
                     :
 
-                    <div style={{marginTop: '90px'}}>
+                    <div style={{marginTop: '190px'}} className='customize-verify'>
                         {
-                            +errCode === 0 ? <div style={{fontSize: '30px', textAlign: 'center', fontWeight:'600', color:'#8d4141', textTransform: 'uppercase'}}>Xác nhận lịch hẹn thành công</div> : <div style={{fontSize: '30px', textAlign: 'center', fontWeight:'600', color:'#8d4141', textTransform: 'uppercase'}}>Lịch hẹn không tồn tại hoặc đã được xác nhận</div>
+                            +errCode === 0 ? <div style={{fontSize: '30px', textAlign: 'center', fontWeight:'600', color:'#8d4141'}}>
+                                Xác nhận lịch hẹn thành công! Nếu đây là lần đầu tiên bạn sử dụng Gmail, hãy kiểm tra email để lấy mật khẩu đăng nhập
+                            </div> : <div style={{fontSize: '30px', textAlign: 'center', fontWeight:'600', color:'#8d4141', textTransform: 'uppercase'}}>Lịch hẹn đã được xác nhận</div>
                         }
                     </div>
         

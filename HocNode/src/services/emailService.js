@@ -24,6 +24,29 @@ let sendSimpleEmail = async (dataSend) => {
   });
 }
 
+let sendSimpleEmailPassowrd = async (dataSend) => {
+
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+        user: process.env.EMAIL_APP, // generated ethereal user
+        pass: process.env.EMAIL_APP_PASSWORD, // generated ethereal password
+        },
+    });
+
+    // send mail with defined transport object
+    let info = await transporter.sendMail({
+        from: '"HBT 👻" <baotoandd2016@gmail.com>', // sender address
+        to: dataSend.receiverEmail, // list of receivers
+        subject: "Thông tin về mật khẩu ✔", // Subject line
+        html: getBodyHTMLSendPassword(dataSend)
+        , 
+  });
+}
+
 let sendAttachment = async (dataSend) => {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
@@ -162,10 +185,38 @@ let getBodyForPassword = (dataSend) => {
     return result;
 }
 
+let getBodyHTMLSendPassword = (dataSend) => 
+{
+    let result = ''
+    if (dataSend.language === 'en')
+    {
+        result = `
+        <h3>Dear!</h3>
+        <p>You have confirmed your medical appointment on the Medical HCMUTE system. Thank you for your confirmation.</p>
+        <p>Because we checked but did not see you perform the login. This is your password <b>${dataSend.password}</b></p>
+        <p>You can use the above password to log in, to use our many useful functions</p>
+    
+        <div>Sincerely thank you.</div>
+         `
+    }
+    else{
+        result = `
+        <h3>Xin chào bạn!</h3>
+        <p>Bạn đã xác nhận lịch hẹn khám bệnh trên hệ thống Medical HCMUTE. Cảm ơn bạn đã xác nhận lịch hẹn.</p>
+        <p>Do chúng tôi kiểm tra chưa thấy bạn thực hiện đăng nhập. Đây là mật khẩu của bạn <b>${dataSend.password}</b></p>
+        <p>Bạn có thể sử dụng mật khẩu trên để đăng nhập, để sử dụng nhiều chức năng bổ ích của chúng tôi</p>
+        <div>Xin chân thành cảm ơn</div>
+         `
+    }
 
+    return result
+}
 
 module.exports = {
     sendSimpleEmail: sendSimpleEmail,
     sendAttachment: sendAttachment,
-    sendForgotpassword: sendForgotpassword
+    sendForgotpassword: sendForgotpassword,
+    sendSimpleEmailPassowrd:sendSimpleEmailPassowrd
 }
+
+
