@@ -40,7 +40,7 @@ class Support extends Component {
 
                 <br/>
                 <div className='support-cotent' style={{marginTop: '100px', textAlign: 'center', fontSize: '18px'}}>
-                    Mọi thắc mắc khách hàng có thể liên hệ qua gmail: <span style={{color: 'blue'}}>baotoandd2016@gmail.com</span>, hoặc quy khách có thể liên hệ thông qua 
+                    Mọi thắc mắc khách hàng có thể liên hệ qua gmail: <span style={{color: 'blue'}}>baotoandd2016@gmail.com</span>, hoặc quý khách có thể liên hệ thông qua 
                     facebook: <span><a href='https://www.facebook.com/profile.php?id=100092272020913'>Clinic Hcmute</a></span>
                 </div>
             </div>
