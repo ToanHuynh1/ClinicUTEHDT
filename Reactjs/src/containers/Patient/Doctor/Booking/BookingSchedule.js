@@ -236,7 +236,7 @@ class BookingSchedule extends Component {
         return (
             <>
        
-                <HomeHeader/>
+              <HomeHeader isOpenMenu = {false}/>
 
                      
                {/* <LoadingOverlay

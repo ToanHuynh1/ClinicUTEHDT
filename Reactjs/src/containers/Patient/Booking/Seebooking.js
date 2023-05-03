@@ -64,7 +64,7 @@ class Seebooking extends Component {
 
         return (
             <div className='see-booking-container'>  
-                <HomeHeader/>
+                <HomeHeader isOpenMenu = {false}/>
             
                 <br/>
                 <div className='title-see-booking'>Lịch hẹn của bạn</div>

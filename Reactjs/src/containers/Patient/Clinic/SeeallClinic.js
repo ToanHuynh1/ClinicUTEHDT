@@ -95,7 +95,7 @@ class SeeallClinic extends Component {
                 </div>
                 <div className='down'>
                     <div className='title' style={{marginBottom: '20px'}}>
-                        {searchValue ? `Kết quả tìm kiếm cho "${searchValue}"` : `Kết quả tìm kiếm cho ký tự ${this.state.currentSection}`}
+                        {searchValue ? `Kết quả tìm kiếm "${searchValue}"` : `Kết quả tìm kiếm ${this.state.currentSection}`}
                     </div>
 
                     <div className='section-content-clinic'>
