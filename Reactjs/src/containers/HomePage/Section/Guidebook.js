@@ -40,6 +40,14 @@ class Guidebook extends Component {
         this.props.history.push(`/detail-guidebook/${data.id}`)  
     }
 
+    SwitchSeeAllGuidebook = () => {
+        this.props.history.push(`/see-all-guidebook`)  
+    }
+
+    handleSearchInputChange = (e) => {
+        this.setState({ searchValue: e.target.value });
+    }
+
     render() {
         let settings  = {
             dots: false,
@@ -58,7 +66,7 @@ class Guidebook extends Component {
             <div className='section-container'>
                 <div className='section-header'>
                     <span className='title-section'>Cẩm nang</span>
-                    <button className='btn-section'>Tất cả bài viết</button>
+                    <button className='btn-section' onClick={() => this.SwitchSeeAllGuidebook()}>Tất cả bài viết</button>
                 </div>
                 <div className='section-body'>
                     <Slider {...settings}>

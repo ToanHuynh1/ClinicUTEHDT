@@ -54,6 +54,7 @@ class HomePage extends Component {
 
                 <HomeHeader 
                     isShowBanner={true}
+                    isOpenMenu = {true}
                 />
                 <Specialty 
                     settings = {settings}

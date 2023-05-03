@@ -126,10 +126,9 @@ class detailSpecialty extends Component {
 
         let {language} = this.props
 
-        console.log(listProvince)
         return (
             <div className='detail-specialty-container'>  
-                <HomeHeader/>
+                <HomeHeader isOpenMenu = {false}/>
                 <br></br>
 
                 <div className='detail-specialty-body'> 

@@ -63,7 +63,7 @@ class VerifyEmail extends Component {
 
         return (
             <>
-                <HomeHeader/>
+                <HomeHeader isOpenMenu = {false}/>
 
                 {statusVerify === false ? 
                     <div style={{marginTop: '69px'}}>Loading data ...</div>

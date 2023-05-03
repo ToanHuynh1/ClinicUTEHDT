@@ -20,7 +20,9 @@ class HomeHeader extends Component {
         super(props)
         this.state = {
             isOpen: false,
-            dataUserlogin: {}
+            dataUserlogin: {},
+            isOpenMenu: false,
+            isOpenAllMenuSelect: false
         };
     }
     changeLanguage = (language) =>
@@ -31,10 +33,11 @@ class HomeHeader extends Component {
 
 
     componentDidMount = () => {
-        let {userInfo} = this.props
+        let {userInfo, isOpenMenu} = this.props
 
         this.setState({
-            dataUserlogin: userInfo
+            dataUserlogin: userInfo,
+            isOpenMenu: isOpenMenu
         })
         let menu = []
         if (userInfo && ! _.isEmpty(userInfo))
@@ -106,9 +109,19 @@ class HomeHeader extends Component {
 
     }
 
+    handleSwtichSupport = () => {
+        this.props.history.push(`/support`) 
+    }
+
+    openAllMenu = () => {
+        this.setState({
+            isOpenAllMenuSelect : !this.state.isOpenAllMenuSelect
+        })
+    }
+
     render() {
       
-        let {isOpen, dataUserlogin} = this.state
+        let {isOpen, dataUserlogin, isOpenMenu, isOpenAllMenuSelect} = this.state
         let language = this.props.language
 
         return (
@@ -116,7 +129,18 @@ class HomeHeader extends Component {
                 <div className='home-header-container'>
                     <div className='home-header-content'>
                     <div className='left-container'>
-                        <i className="fas fa-bars bar-header"></i>
+                        {isOpenMenu === true && (
+                            <i className="fas fa-bars bar-header" onClick={() => this.openAllMenu()}></i>
+                        )}
+
+                        {isOpenAllMenuSelect === true  && (
+                        <div className="model-all-menu">
+                            <div className="model-inner">
+
+                            </div>
+                        </div>
+                        )}
+                       
                         <div className='header-logo' onClick={() => this.undoHomePage()}></div>
                     </div>
                     <div className='center-container'>
@@ -154,7 +178,7 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                     <div className='right-container'>
-                        <div className='support'>
+                        <div className='support' onClick={() => this.handleSwtichSupport()}>
                             <span>
                                 <i className="fas fa-question-circle icon-hotro"></i>
                                 <b>

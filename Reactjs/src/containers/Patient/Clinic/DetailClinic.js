@@ -71,7 +71,7 @@ class DetailClinic extends Component {
 
         return (
             <div className='detail-specialty-container'>  
-                <HomeHeader/>
+                <HomeHeader isOpenMenu = {false}/>
                 <br></br>
 
                 <div className='detail-specialty-body'> 

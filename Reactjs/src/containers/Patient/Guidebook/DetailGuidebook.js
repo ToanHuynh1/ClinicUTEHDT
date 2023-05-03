@@ -103,7 +103,7 @@ class DetailGuidebook extends Component {
         }
         return (
             <div className='detail-guidebook-container'>  
-                <HomeHeader/>
+                <HomeHeader isOpenMenu = {false}/>
                 <br></br>
 
                 <div className='detail-guidebook-body'> 
