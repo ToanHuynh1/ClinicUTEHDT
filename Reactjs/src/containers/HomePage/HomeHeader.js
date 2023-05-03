@@ -22,8 +22,10 @@ class HomeHeader extends Component {
             isOpen: false,
             dataUserlogin: {},
             isOpenMenu: false,
-            isOpenAllMenuSelect: false
+            isOpenAllMenuSelect: false,
+            
         };
+
     }
     changeLanguage = (language) =>
     {
@@ -56,6 +58,8 @@ class HomeHeader extends Component {
         this.setState({
             menuApp: menu,
         })
+
+        
     }
 
     undoHomePage = () => 
@@ -134,8 +138,29 @@ class HomeHeader extends Component {
                         )}
 
                         {isOpenAllMenuSelect === true  && (
-                        <div className="model-all-menu">
+                        <div className="model-all-menu" >
                             <div className="model-inner">
+                                <div className='title-all-menu'>Medical HCMUTE</div>
+                                
+                                <div className='content'>
+                                    <div>
+                                        <a href='/home'>Trang chủ</a>
+                                    
+                                    </div>
+                                    <div>
+                                        <a href='/see-all-guidebook'>Cẩm nang</a>
+                                    </div>
+                                    <div>
+                                        <a href='/see-all-clinic'>Cơ sở ý tế</a>
+                                    </div>
+                                    <div>
+                                        <a href='/see-all-doctor'>Bác sĩ</a>
+                                    </div>
+                                    <div>
+                                        <a href='/support'>Liên hệ</a>
+                                    </div>
+
+                                </div>
 
                             </div>
                         </div>

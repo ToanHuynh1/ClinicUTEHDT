@@ -366,7 +366,7 @@
             -moz-border-radius: 10px;
             -ms-border-radius: 10px;
             -o-border-radius: 10px;
-    }
+        }
 
         .seen-booking{
             outline: none;
@@ -391,7 +391,32 @@
     left: 0px;
     width: 250px;
     height: 1000px;
-    background-color: rgb(252, 246, 246);
+    background-color: #fff;
     z-index: 999;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2); 
+    .model-inner
+    {
+        .title-all-menu
+        {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+    .content
+    {    
+        margin-top: 60px;
+        margin: 0;
+        padding: 20px 10px;
+        font-weight: 600;
+        border: none;
+        box-shadow: none;
+        div {
+            color: rgb(112, 172, 204);
+            margin-bottom: 20px;
+            padding: 5px 0;
+            border-bottom: 1px solid rgb(229, 225, 225);
+        }
+    }
 }
