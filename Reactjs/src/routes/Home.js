@@ -11,9 +11,13 @@ class Home extends Component {
         const { isLoggedIn } = this.props;
         let linkToRedirect
       
-        if (isLoggedIn && (this.props.userInfo.roleId == 'R1' || this.props.userInfo.roleId == 'R2'))
+        if (isLoggedIn && (this.props.userInfo.roleId == 'R1'))
         {
             linkToRedirect = isLoggedIn ? '/system/user-redux' : '/home';
+        }
+        if (isLoggedIn && this.props.userInfo.roleId == 'R2')
+        {
+            linkToRedirect = isLoggedIn ? '/doctor/manage-schedule' : 'home'
         }
         if (isLoggedIn && (this.props.userInfo.roleId == 'R3'))
         {
