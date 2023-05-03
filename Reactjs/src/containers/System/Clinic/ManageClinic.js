@@ -5,6 +5,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import _ from 'lodash'
 import { toast } from 'react-toastify';
 import './ManageClinic.scss'
+import Lightbox from 'react-image-lightbox';
 import MdEditor from 'react-markdown-editor-lite';
 import MarkdownIt from 'markdown-it';
 import {CommonUtils, CRUD_ACTIONS} from '../../../utils'
@@ -23,7 +24,8 @@ class ManageClinic extends Component {
             address: '',
             descriptionHTML: '',
             descriptionMardown: '',
-            listClinic: []
+            listClinic: [],
+            isOpen: false,
         }
     }
 
@@ -50,6 +52,15 @@ class ManageClinic extends Component {
         stateCoppy[id] = event.target.value
         this.setState({...stateCoppy})
     }
+
+    openImage = () =>
+    {
+        if (!this.state.imgURL) return
+        this.setState({
+            isOpen:true,
+        })
+    }
+
 
       // Finish!
       handleEditorChange = ({ html, text }) => {
@@ -166,6 +177,13 @@ class ManageClinic extends Component {
                                 clinics = {listClinic}
                             />
                     </div>
+
+                    {this.state.isOpen === true && 
+                    <Lightbox
+                        mainSrc={this.state.imgURL}
+                        onCloseRequest={() => this.setState({ isOpen: false })}
+                    />
+                    }
                 </div> 
            
             </div>
