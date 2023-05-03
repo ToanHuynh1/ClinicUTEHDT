@@ -172,7 +172,7 @@ class DoctorSchedule extends Component {
                                 <div className='calender-title'>
                                     <span>
                                         <i className="fas fa-calendar-alt icon-title"></i>
-                                        <FormattedMessage id= "patient.detail-doctor.schedule"/>
+                                        Xác nhận lịch hẹn thành công
                                     </span>
                                 </div>
                                 <div className='full-time-content'>

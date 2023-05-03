@@ -126,8 +126,6 @@ class BookingSchedule extends Component {
     {
         let {language} = this.props
 
-
-        console.log(this.state.detailDoctor)
         if (this.state.detailDoctor && !_.isEmpty(this.state.detailDoctor)){
             let name = language === LANGUAGES.VI ? 
             `${this.state.detailDoctor.lastName}${this.state.detailDoctor.firstName}`
@@ -179,6 +177,7 @@ class BookingSchedule extends Component {
             timeType: this.state.timeType,
             language: this.props.language,
             timeString: timeString,
+            gmail: this.state.email,
             doctorName:doctorName
         })
 
@@ -186,7 +185,17 @@ class BookingSchedule extends Component {
         {
             toast.success("Booking a new appointment succeed ! ")
             this.setState({
-                isShow: false
+                isShow: false,
+                fullName: '',
+                phoneNumber: '',
+                email: '',
+                address:'',
+                reason:'',
+                birthday:'',
+                genders:'',
+                doctorForId: '',
+                selectedGender: '', 
+                timeType: '',
             })
     
         }

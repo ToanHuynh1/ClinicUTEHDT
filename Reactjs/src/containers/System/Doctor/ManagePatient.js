@@ -218,7 +218,7 @@ class ManagePatient extends Component {
                                                 <td>{gender}</td>
                                                 <td>
                                                     <button className='btn-confirm' onClick={() => this.handleConfirm(item)}>Xác nhận</button>
-                                                    <button className='btn-send' onClick={()=> this.handleSend()}>Gửi hóa đơn</button>
+                                                    {/* <button className='btn-send' onClick={()=> this.handleSend()}>Gửi hóa đơn</button> */}
                                                 </td>
                                             </tr>
                                         )

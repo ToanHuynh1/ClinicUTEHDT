@@ -5,10 +5,11 @@ import emailService from './emailService'
 var bcrypt = require('bcryptjs');
 import { v4 as uuidv4 } from 'uuid';
 var salt = bcrypt.genSaltSync(10);
-let buildUrlEmail = (doctorId, token) => {
-    let result = `${process.env.URL_REACT}/verify-booking?token=${token}&doctorId=${doctorId}`
+let buildUrlEmail = (doctorId, token, gmail) => {
+    let result = `${process.env.URL_REACT}/verify-booking?token=${token}&doctorId=${doctorId}&gmail=${gmail}`
     return result
 }
+
 
 let bookAppointmentService = (data) => {
     return new Promise(async (resolve,reject) => 
@@ -31,7 +32,7 @@ let bookAppointmentService = (data) => {
                     time: data.timeString,
                     doctorName: data.doctorName,
                     language: data.language,
-                    redirectLink: buildUrlEmail(data.doctorId, token)
+                    redirectLink: buildUrlEmail(data.doctorId, token, data.gmail),
                 })
 
                 let user = await db.User.findOrCreate({
@@ -46,25 +47,20 @@ let bookAppointmentService = (data) => {
                   });
 
                   if (user && user[0] ){
-                    await db.Booking.findOrCreate({
-                        where: {
-                            patientId: user[0].id
-                        },
-                        defaults: {
-                            statusId: 'S1',
-                            doctorId: data.doctorId,
-                            patientId: user[0].id,
-                            date : data.date,
-                            timeType: data.timeType, 
-                            token: token
-                        }
+                    await db.Booking.create({
+                        statusId: 'S1',
+                        doctorId: data.doctorId,
+                        patientId: user[0].id,
+                        date : data.date,
+                        timeType: data.timeType, 
+                        token: token
                     })
                   }
                   resolve({
                     errCode: 0,
                     errMessage: 'Save infor patient succeed'
                   })
-            }
+              }
         } catch (error) {
             reject(error)
         }
@@ -76,7 +72,7 @@ let verifyBookAppointmentService = (data) => {
     return new Promise(async (resolve,reject) => 
     {
         try {
-            if (!data.token || !data.doctorId)
+            if (!data.token || !data.doctorId || !data.gmail)
             {
                 resolve({
                     errCode: 1,
@@ -100,12 +96,37 @@ let verifyBookAppointmentService = (data) => {
                     appointment.statusId = 'S2'
                     await appointment.save()
 
+                    let dataUser = await db.User.findOne({
+                      where: {
+                        email: data.gmail,
+                        password: null
+                      },
+                      raw: false
+                    })
+
+                    let randomNumber = Math.floor(Math.random() * 90000) + 10000;
+                    let password = `hcmute${randomNumber.toString()}`;
+
+                    if (dataUser){
+                      await emailService.sendSimpleEmailPassowrd({
+                        receiverEmail: data.gmail,
+                        language: data.language,
+                        password: password
+                     })
+
+                      let hashPasswordFromBcrypt = await hashUserPassword(password)
+
+                      dataUser.password = hashPasswordFromBcrypt
+  
+                      await dataUser.save()   
+               
+                    }
+
                     resolve({
                         errCode: 0,
                         errMessage: 'Update the appointment succeed !'
                     })
                 }
-
                 else
                 {
                     resolve({
