@@ -149,6 +149,8 @@ class DoctorSchedule extends Component {
         }
         )
     }
+
+
     render() {
         let {fullDayOfFoctor, allAvailableTime} = this.state
         let {language} = this.props
@@ -192,7 +194,7 @@ class DoctorSchedule extends Component {
                                         })
                                         }   
                                     </div>
-                                    <div className='booking-no-fee'>
+                                    <div className='booking-no-fee' >
                                         <span><FormattedMessage id= "patient.detail-doctor.choose"/> <i className="far fa-hand-pointer"></i> <FormattedMessage id= "patient.detail-doctor.book-free"/> </span> 
                                     </div>
                                     </>
