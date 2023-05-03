@@ -132,11 +132,13 @@ class detailSpecialty extends Component {
                 <br></br>
 
                 <div className='detail-specialty-body'> 
-            
                     <div className='description-specialty'>
-                        {dataDetailSpecialty && dataDetailSpecialty.descriptionHTML &&
+                    {dataDetailSpecialty && dataDetailSpecialty.descriptionHTML && (
+                        <div>
                             <div dangerouslySetInnerHTML={{__html: dataDetailSpecialty.descriptionHTML }}></div>
-                        }
+                        </div>
+                    )}
+
                     </div>
 
                     <div className='search-doctor'>

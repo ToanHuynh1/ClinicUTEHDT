@@ -75,10 +75,17 @@ class DetailClinic extends Component {
                 <br></br>
 
                 <div className='detail-specialty-body'> 
-            
+                    
                     <div className='description-specialty'>
-                        {dataDetailClinic && dataDetailClinic.descriptionHTML &&
-                            <div dangerouslySetInnerHTML={{__html: dataDetailClinic.descriptionHTML }}></div>
+                        {dataDetailClinic && dataDetailClinic.descriptionHTML && (
+                            <div>
+                                <div style={{textAlign: 'center', marginTop: '20px', marginBottom: '30px', fontSize: '25px', fontWeight: '600',
+                                color: 'red'
+                            }}>{dataDetailClinic.name}</div>
+                                <div dangerouslySetInnerHTML={{__html: dataDetailClinic.descriptionHTML }}></div>
+                            </div>
+                        )
+                           
                         }
                     </div>
 

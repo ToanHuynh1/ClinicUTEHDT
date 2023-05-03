@@ -200,11 +200,13 @@ class UserRedux extends Component {
 
     handleEditUser = (data) => 
     {
+      
         let imageBase64 = ''
         if (data.image)
         {
             imageBase64 = new Buffer(data.image, 'base64').toString('binary')
         }
+
         this.setState(
         {
             position: data.positionId,
@@ -216,7 +218,7 @@ class UserRedux extends Component {
             lastName: data.lastName,
             phoneNumber: data.phonenumber,
             address: data.address,
-            img: '',
+            img: imageBase64,
             imgURL: imageBase64,
             actions: CRUD_ACTIONS.EDIT,
             editId: data.id
