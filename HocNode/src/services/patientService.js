@@ -42,7 +42,8 @@ let bookAppointmentService = (data) => {
                       roleId: 'R3',
                       gender: data.selectedGender,
                       address: data.address,
-                      firstName: data.fullName
+                      firstName: data.fullName,
+                      positionId: 'P5'
                     }
                   });
 

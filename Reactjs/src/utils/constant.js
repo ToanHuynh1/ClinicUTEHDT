@@ -19,7 +19,8 @@ export const path = {
     SEEALLCLINIC: '/see-all-clinic',
     UPDATEINFOR: '/update-infor-patient',
     SUPPORT: '/support',
-    SEEALLGUIDEBOOK: '/see-all-guidebook'
+    SEEALLGUIDEBOOK: '/see-all-guidebook',
+    EXTRAINFOR: '/extra-infor'
 };
 
 export const LANGUAGES = {

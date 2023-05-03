@@ -127,6 +127,10 @@ class HomeHeader extends Component {
         this.props.history.push(`/see-all-guidebook`) 
     }
 
+
+    handleSwitchExtraInfor = () => {
+        this.props.history.push(`/extra-infor`) 
+    }
     render() {
       
         let {isOpen, dataUserlogin, isOpenMenu, isOpenAllMenuSelect} = this.state
@@ -302,16 +306,16 @@ class HomeHeader extends Component {
                             <input className='search-input' placeholder='Tìm chuyên khoa'></input>
                         </div>
                         <div className='icon-android'>
-                            <div className='ic_android'>
+                            <div className='ic_android' onClick={() => this.handleSwitchExtraInfor()}>
                             </div>
-                            <div className='ic_ios'>
+                            <div className='ic_ios' onClick={() => this.handleSwitchExtraInfor()}>
                             </div>
                         </div>
                     </div>
                     <div className='content-down'>
                         <div className='options'>
                             <div className='option-child'>
-                                <div className='icon-option-child' onClick = {() => this.SwtichSeeAllSpecialty()}>
+                                <div className='icon-option-child'>
                                     <i className="fas fa-hospital-alt"></i>
                                 </div>
                                 <div className='text-option-child'>
@@ -350,14 +354,6 @@ class HomeHeader extends Component {
                                 </div>
                                 <div className='text-option-child'>
                                     <FormattedMessage id= "banner.Mentalhealth"/>
-                                </div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-option-child'>
-                                  <i className="fas fa-syringe"></i>
-                                </div>
-                                <div className='text-option-child'>
-                                   <FormattedMessage id= "banner.Dentalexamination"/>
                                 </div>
                             </div>
                             <div className='option-child'>

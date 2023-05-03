@@ -31,6 +31,7 @@ import SeeallClinic from './Patient/Clinic/SeeallClinic';
 import UpdateInfor from './Patient/Booking/UpdateInfor';
 import Support from './Patient/Support/Support';
 import SeeAllGuidebook from './Patient/Guidebook/SeeAllGuidebook';
+import ExtraInfor from './Patient/Extra/ExtraInfor';
 class App extends Component {
 
     handlePersistorState = () => {
@@ -79,6 +80,7 @@ class App extends Component {
                                     <Route path={path.UPDATEINFOR} component={UpdateInfor}/>
                                     <Route path={path.SUPPORT} component={Support}/>
                                     <Route path={path.SEEALLGUIDEBOOK} component={SeeAllGuidebook}/>
+                                    <Route path={path.EXTRAINFOR} component={ExtraInfor}/>
                                     <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
                                     <Route path={path.VERIFY_EMAIL_BOOKING} component={VerifyEmail}/>
                                 </Switch>

@@ -174,7 +174,7 @@ class DoctorSchedule extends Component {
                                 <div className='calender-title'>
                                     <span>
                                         <i className="fas fa-calendar-alt icon-title"></i>
-                                        Xác nhận lịch hẹn thành công
+                                        Lịch khám
                                     </span>
                                 </div>
                                 <div className='full-time-content'>

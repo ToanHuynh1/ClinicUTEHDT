@@ -16,15 +16,14 @@
     {
         "title-banner": "ĐẶT LỊCH KHÁM ONLINE",
         "title-banner-small": "CHĂM SÓC SỨC KHỎE CHO BẠN",
-        "Specialtyexamination": "Khám chuyên khoa",
-        "Remotemedical": "Khám bệnh từ xa",
-        "healthcheckup" : "Khám tổng quát",
-        "Medicaltesting" : "Xét nghiệm y học",
-        "Mentalhealth" : "Sức khỏe tinh thần",
-        "Dentalexamination" : "Khám nha khoa",
-        "Surgicalpackage" : "Gói phẫu thuật",
-        "Medicalproducts": "Sản phẩm Y tế",
-        "Corporatehealth": "Sức khỏe Doanh nghiệp"
+        "Specialtyexamination": "Chúng tôi đặt sức khỏe của bạn lên hàng đầu",
+        "Remotemedical": "Tư vấn nhiệt tình, nhanh chóng 24/24",
+        "healthcheckup" : "Đặt lịch khám dễ dàng, nhanh chóng",
+        "Medicaltesting" : "Chăm sóc sức khỏe chất lượng, an toàn",
+        "Mentalhealth" : "Bảo vệ, chăm sóc sức khỏe cho bạn",
+        "Surgicalpackage" : "Giải pháp tốt nhất cho sức khỏe",
+        "Medicalproducts": "Sự an toàn và tiện lợi trong chăm sóc",
+        "Corporatehealth": "Dịch vụ chăm sóc sức khỏe hàng đầu"
     },
     "menu": {
         "admin":
