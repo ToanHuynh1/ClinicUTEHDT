@@ -20,6 +20,8 @@ let initWebRoutesUser = (app) => {
 
     router.post('/api/get-user-by-id' , userController.handleGetUserById)
 
+    router.post('/api/modify-passowrd' , userController.handleModifyPassowrd)
+
 
     return app.use("/", router)
 }

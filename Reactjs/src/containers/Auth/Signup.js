@@ -98,8 +98,6 @@ class Signup extends Component {
     }
     render() {
         // jsx
-
-        console.log(this.state)
         return (
             <div className='login-background'>
 
@@ -126,7 +124,7 @@ class Signup extends Component {
                             />
                         </div>
 
-                        <div className='col-12 form-group login-input'>
+                        <div className='col-12 form-group login-input' >
                             <label style={{fontWeight: '600', fontSize: '17px'}}>Email:</label>
                             <input type='text' 
                             className='form-control' 

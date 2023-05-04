@@ -33,17 +33,21 @@ class Specialty extends Component {
     SwitchSeeAllSpecialtyFromSpecialty = () => {
         this.props.history.push(`/see-all-specialty`)  
     }
+
+    handleTest = () => {
+        this.props.func_testClick(true)
+    }
     render() {
         let {dataSpecialty} = this.state
         return (
         <div className='section-share section-specialty'>
-            <div className='section-container'>
+            <div className='section-container' >
                 <div className='section-header'>
                     <span className='title-section'><FormattedMessage id="homepage.speciality"/></span>
                     <button className='btn-section' onClick={() => this.SwitchSeeAllSpecialtyFromSpecialty()}><FormattedMessage id="homepage.more-inf"/></button>
                 </div>
                 <div className='section-body'>
-                    <Slider {...this.props.settings}>
+                    <Slider {...this.props.settings} >
                         {dataSpecialty && dataSpecialty.length > 0 && dataSpecialty.map((item, index) => {
                             return(
                                 <div className='section-customize' 

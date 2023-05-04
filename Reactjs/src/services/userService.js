@@ -215,3 +215,8 @@ export const sendReviewDoctor= (data) => {
 export const getAllReviewForDoctor= (data) => {
     return axios.post(`http://localhost:1906/api/get-all-review`, data)
 }
+
+
+export const postModifyPassword= (data) => {
+    return axios.post(`http://localhost:1906/api/modify-passowrd`, data)
+}

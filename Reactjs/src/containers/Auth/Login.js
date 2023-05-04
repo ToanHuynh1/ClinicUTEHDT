@@ -80,6 +80,9 @@ class Login extends Component {
         this.props.history.push(`/forgot`)
     }
 
+    handleSwitchModifyPassowrd = () => {
+        this.props.history.push(`/modify-password`)
+    }
     render() {
         // jsx
         return (
@@ -139,11 +142,12 @@ class Login extends Component {
                             <span className='forgot-password' style={{cursor: 'pointer'}}  onClick={() => this.SwitchForgot()}>Quên mật khẩu ?</span>
                         </div>
                         <div className='col-12 text-center mt-3'>
-                            <span className='text-other-login' style={{fontWeight: '600'}}>Hoặc đăng nhập:</span>
+                            <span className='text-other-login' style={{fontWeight: '600'}}>Đặt lại mật khẩu:</span>
                         </div>
                         <div className='col-12 social-login'>
-                             <i className="fab fa-google-plus-g google"></i>
-                             <i className="fab fa-facebook-f facebook"></i>
+                             {/* <i className="fab fa-google-plus-g google"></i>
+                             <i className="fab fa-facebook-f facebook"></i> */}
+                             <i className="fas fa-wrench facebook" onClick={() => this.handleSwitchModifyPassowrd()}></i>
                         </div>
                     </div>
                 </div>
