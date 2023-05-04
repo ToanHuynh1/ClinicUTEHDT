@@ -132,9 +132,7 @@ let handleSignup  = async (req,res) => {
 
 let handleGetUserById = async (req,res) => {
     try {
-
         let data = await userService.handleGetUserByIdService(req.body.id);
-
         return res.status(200).json({data})
     } catch (error) {
         return res.status(200).json({
@@ -143,6 +141,20 @@ let handleGetUserById = async (req,res) => {
         })
     }
 }
+
+let handleModifyPassowrd = async (req,res) => {
+    try {
+        let data = await userService.handleModifyPasswordService(req.body);
+        return res.status(200).json(data)
+    } catch (error) {
+        console.log(error)
+        return res.status(200).json({
+            error: -1,
+            errMessage: "Lỗi từ server"
+        })
+    }
+}
+
 module.exports = {
     handleLogin: handleLogin,
     handleGetAllUsers:handleGetAllUsers,
@@ -151,5 +163,6 @@ module.exports = {
     handleDeleteUser : handleDeleteUser,
     getAllCode: getAllCode,
     handleSignup: handleSignup,
-    handleGetUserById:handleGetUserById
+    handleGetUserById:handleGetUserById,
+    handleModifyPassowrd:handleModifyPassowrd
 }

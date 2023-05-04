@@ -20,7 +20,8 @@ export const path = {
     UPDATEINFOR: '/update-infor-patient',
     SUPPORT: '/support',
     SEEALLGUIDEBOOK: '/see-all-guidebook',
-    EXTRAINFOR: '/extra-infor'
+    EXTRAINFOR: '/extra-infor',
+    MODIFYPASSWORD: '/modify-password'
 };
 
 export const LANGUAGES = {

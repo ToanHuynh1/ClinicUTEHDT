@@ -356,6 +356,76 @@ let handleGetUserByIdService = (IdInput) =>
         }
     })
 }
+
+let handleModifyPasswordService = (data) =>
+{
+    return new Promise(async(resolve, reject) =>{
+        try {
+            let userData = {}
+            let isExist = await checkUserEmail(data.email)
+            if(isExist)
+            {
+                let user = await db.User.findOne({
+                    attributes:  ['id', 'email', 'roleId', 'password', 'firstName', 'lastName'],
+                    where: {
+                        email: data.email
+                    },
+                    raw: true
+                })
+
+                if (user)
+                {
+                    let check = await bcrypt.compareSync(data.oldPassword, user.password);
+                    if (check)
+                    {   
+                        if (user.password === await hashUserPassword(data.newPassword)) {
+                            userData.errCode = 4
+                            userData.errMessage = 'Mật khẩu đã tồn tại trước đó'
+                            delete user.password
+                        }
+
+                        else
+                        {
+                            // Update the user's password
+                            await db.User.update({
+                                password: await hashUserPassword(data.newPassword)
+                            }, {
+                                where: {
+                                    id: user.id
+                                }
+                            })
+    
+                            userData.errCode = 0
+                            userData.errMessage = 'Đổi mật khẩu thành công'
+                            delete user.password
+                            userData.user = user
+                        }
+                    }
+                    else
+                    {
+                        userData.errCode = 3
+                        userData.errMessage = 'Mật khẩu cũ không chính xác'
+                    }
+                }
+                else
+                {
+                    userData.errCode = 2
+                    userData.errMessage = 'User không tồn tại'
+                }
+            }
+            else
+            {
+                userData.errCode = 1
+                userData.errMessage = 'Không tìm thấy Email'
+            }
+
+            resolve(userData)
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
+
 module.exports = {
     handleUserLogin: handleUserLogin,
     getAllUsers:getAllUsers,
@@ -364,5 +434,6 @@ module.exports = {
     updateUserData:updateUserData,
     getAllCodeService:getAllCodeService,
     handleUserSignup:handleUserSignup,
-    handleGetUserByIdService:handleGetUserByIdService
+    handleGetUserByIdService:handleGetUserByIdService,
+    handleModifyPasswordService:handleModifyPasswordService
 }

@@ -40,6 +40,8 @@ class HomePage extends Component {
        
         let language = this.props.language
 
+        console.log(this.state)
+
         let settings  = {
             dots: false,
             infinite: false,
@@ -51,12 +53,12 @@ class HomePage extends Component {
 
         return (
            <div>
-
                 <HomeHeader 
                     isShowBanner={true}
                     isOpenMenu = {true}
                 />
                 <Specialty 
+                    func_testClick = {this.func_testClick}
                     settings = {settings}
                 />
                 <MedicalFacility 
