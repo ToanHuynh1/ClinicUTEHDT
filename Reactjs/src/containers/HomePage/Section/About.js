@@ -26,22 +26,22 @@ class About extends Component {
                     </div>
                     <div className='content-right'>
                         <div className='about-top'>
-                            <a href='https://bookingcare.vn/'>
+                            <a href='https://vietnamnet.vn/ictnews'>
                                 <div className='icon-ictnews'></div>
                             </a>
-                            <a href='https://bookingcare.vn/'>
+                            <a href='https://infonet.vietnamnet.vn/'>
                                 <div className='icon-infonet'></div>
                             </a>
-                            <a href='https://bookingcare.vn/'>    
+                            <a href='https://suckhoedoisong.vn/'>    
                                 <div className='icon-suckhoedoisong'></div>
                             </a>
                      
                         </div>
                         <div className='about-center'>
-                            <a href='https://bookingcare.vn/'>    
+                            <a href='https://vnexpress.net/'>    
                                 <div className='icon-vnexpress'></div>
                             </a>
-                            <a href='https://bookingcare.vn/'>    
+                            <a href='https://vtv.vn/truyen-hinh-truc-tuyen/vtv1/chuyen-dong-24h-0.htm'>    
                                  <div className='icon-vtv1'></div>
                             </a>
                         </div>

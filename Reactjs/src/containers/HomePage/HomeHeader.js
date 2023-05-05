@@ -62,6 +62,8 @@ class HomeHeader extends Component {
         
     }
 
+
+
     undoHomePage = () => 
     {
         this.props.history.push(`/home`)
@@ -131,6 +133,8 @@ class HomeHeader extends Component {
     handleSwitchExtraInfor = () => {
         this.props.history.push(`/extra-infor`) 
     }
+
+   
     render() {
       
         let {isOpen, dataUserlogin, isOpenMenu, isOpenAllMenuSelect} = this.state
@@ -301,10 +305,9 @@ class HomeHeader extends Component {
                         <div className='title-banner-small'>
                              <FormattedMessage id= "banner.title-banner-small"/>
                         </div>
-                        <div className='search'>
-                            <i className="fas fa-search search-icon"></i>
-                            <input className='search-input' placeholder='Tìm chuyên khoa'></input>
-                        </div>
+                        {/* <div className='search'>
+                            <input class='search-input' placeholder='Medical HCMUTE xin chào quy khách' ></input>
+                        </div> */}
                         <div className='icon-android'>
                             <div className='ic_android' onClick={() => this.handleSwitchExtraInfor()}>
                             </div>

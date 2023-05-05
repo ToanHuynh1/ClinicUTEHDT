@@ -21,7 +21,8 @@ export const path = {
     SUPPORT: '/support',
     SEEALLGUIDEBOOK: '/see-all-guidebook',
     EXTRAINFOR: '/extra-infor',
-    MODIFYPASSWORD: '/modify-password'
+    MODIFYPASSWORD: '/modify-password',
+    INFORMATION: '/information'
 };
 
 export const LANGUAGES = {
