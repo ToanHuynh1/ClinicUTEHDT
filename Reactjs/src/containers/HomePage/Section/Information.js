@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import Slider from "react-slick";
-
+import { withRouter } from 'react-router';
 
 class Information extends Component {
    
+
+
+    handleSwitchQuestion = () => {
+        this.props.history.push(`/information`)
+    }
     render() {
         return (
            <div className='section-share section-information'>
@@ -18,9 +23,7 @@ class Information extends Component {
                     </div>
                     <div className='inf-center'>
                         <b className='inf-about'>Tìm hiểu thêm</b>
-                        <p className='mt-3'>Câu hỏi thường gặp</p>
-                        <p>Điều khoản sử dụng</p>
-                        <p>Chính sách hoạt động</p>
+                        <p className='mt-3' onClick={() => this.handleSwitchQuestion()} style={{cursor: 'pointer'}}>Câu hỏi thường gặp</p>
                     </div>
                     <div className='inf-right'>
                         <p> <i className="fas fa-map-marker-alt postion-right"></i><b>Vị trí</b></p>                
@@ -51,4 +54,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Information);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Information));
