@@ -23,6 +23,7 @@ class HomePage extends Component {
         super(props)
         this.state = {
             isOpenSeeBooking: false,
+            isOpenAllMenu: false,
         };
     }
     
@@ -36,11 +37,16 @@ class HomePage extends Component {
        
     }
 
+    handleClickCloseMenu = () => {
+        this.setState({
+            isOpenAllMenu: !this.state.isOpenAllMenu
+        })
+
+    }
+
     render() {
        
         let language = this.props.language
-
-        console.log(this.state)
 
         let settings  = {
             dots: false,
@@ -56,23 +62,28 @@ class HomePage extends Component {
                 <HomeHeader 
                     isShowBanner={true}
                     isOpenMenu = {true}
+                    isOpenAllMenu = {this.state.isOpenAllMenu}
                 />
                 <Specialty 
                     func_testClick = {this.func_testClick}
                     settings = {settings}
+                    handleClickCloseMenu= {this.handleClickCloseMenu}
                 />
                 <MedicalFacility 
                     settings = {settings}
+                    handleClickCloseMenu= {this.handleClickCloseMenu}
                 />
                 <ProminentDoctor 
                     settings = {settings}
+                    handleClickCloseMenu= {this.handleClickCloseMenu}
                 />
                 <Guidebook 
                     settings = {settings}
+                    handleClickCloseMenu= {this.handleClickCloseMenu}
                 />
-                <About/>
-                <Information/>
-                <HomeFooter/>
+                <About handleClickCloseMenu= {this.handleClickCloseMenu}/>
+                <Information handleClickCloseMenu= {this.handleClickCloseMenu}/>
+                <HomeFooter  handleClickCloseMenu= {this.handleClickCloseMenu}/>
 
            </div>
         );

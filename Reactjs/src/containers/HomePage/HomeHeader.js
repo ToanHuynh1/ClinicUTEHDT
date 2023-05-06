@@ -22,7 +22,7 @@ class HomeHeader extends Component {
             isOpen: false,
             dataUserlogin: {},
             isOpenMenu: false,
-            isOpenAllMenuSelect: false,
+            isOpenAllMenu: false,
             
         };
 
@@ -33,13 +33,22 @@ class HomeHeader extends Component {
         // fire redux event: actions
     }
 
+    componentDidUpdate(prevProps,prevState,snapshot){
+        if (prevProps.isOpenAllMenu !== this.props.isOpenAllMenu)
+        {
+            this.setState({
+                isOpenAllMenu: this.props.isOpenAllMenu
+            })
+        }
+    }
 
     componentDidMount = () => {
-        let {userInfo, isOpenMenu} = this.props
+        let {userInfo, isOpenMenu, isOpenAllMenu} = this.props
 
         this.setState({
             dataUserlogin: userInfo,
-            isOpenMenu: isOpenMenu
+            isOpenMenu: isOpenMenu,
+            isOpenAllMenu: isOpenAllMenu
         })
         let menu = []
         if (userInfo && ! _.isEmpty(userInfo))
@@ -121,7 +130,7 @@ class HomeHeader extends Component {
 
     openAllMenu = () => {
         this.setState({
-            isOpenAllMenuSelect : !this.state.isOpenAllMenuSelect
+            isOpenAllMenu: !this.state.isOpenAllMenu
         })
     }
 
@@ -134,22 +143,21 @@ class HomeHeader extends Component {
         this.props.history.push(`/extra-infor`) 
     }
 
-   
     render() {
       
-        let {isOpen, dataUserlogin, isOpenMenu, isOpenAllMenuSelect} = this.state
+        let {isOpen, dataUserlogin, isOpenMenu, isOpenAllMenu} = this.state
         let language = this.props.language
 
+
         return (
-            <React.Fragment>  
-                <div className='home-header-container'>
+            <React.Fragment >  
+                <div className='home-header-container' >
                     <div className='home-header-content'>
                     <div className='left-container'>
                         {isOpenMenu === true && (
                             <i className="fas fa-bars bar-header" onClick={() => this.openAllMenu()}></i>
                         )}
-
-                        {isOpenAllMenuSelect === true  && (
+                        {isOpenAllMenu === true  && (
                         <div className="model-all-menu" >
                             <div className="model-inner">
                                 <div className='title-all-menu'>Medical HCMUTE</div>
@@ -177,6 +185,7 @@ class HomeHeader extends Component {
                             </div>
                         </div>
                         )}
+            
                        
                         <div className='header-logo' onClick={() => this.undoHomePage()}></div>
                     </div>

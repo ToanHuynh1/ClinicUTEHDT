@@ -37,10 +37,14 @@ class Specialty extends Component {
     handleTest = () => {
         this.props.func_testClick(true)
     }
+    hanClickClose = () => {
+        this.props.handleClickCloseMenu()
+    }
+   
     render() {
         let {dataSpecialty} = this.state
         return (
-        <div className='section-share section-specialty'>
+        <div className='section-share section-specialty' onClick={() => this.hanClickClose()}>
             <div className='section-container' >
                 <div className='section-header'>
                     <span className='title-section'><FormattedMessage id="homepage.speciality"/></span>

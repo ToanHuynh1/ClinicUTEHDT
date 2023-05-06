@@ -5,10 +5,12 @@ import Slider from "react-slick";
 
 
 class About extends Component {
-   
+    hanClickClose = () => {
+        this.props.handleClickCloseMenu()
+    }
     render() {
         return (
-            <div className='section-share section-about'>
+            <div className='section-share section-about' onClick={() => this.hanClickClose()}>
                 <div className='section-about-header'>
                     Tư liệu về MEDICARE HCMUTE
                 </div>
