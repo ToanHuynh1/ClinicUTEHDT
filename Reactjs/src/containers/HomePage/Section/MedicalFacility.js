@@ -34,10 +34,15 @@ class MedicalFacility extends Component {
     handleSwtichSeeAllClinicFromMedical = () => {
         this.props.history.push(`/see-all-clinic`)  
     }
+
+    hanClickClose = () => {
+        this.props.handleClickCloseMenu()
+    }
+   
     render() {
         let {dataAllClinic} =  this.state
         return (
-            <div className='section-share section-medical-facility'>
+            <div className='section-share section-medical-facility' onClick={() => this.hanClickClose()}>
             <div className='section-container'>
                 <div className='section-header'>
                     <span className='title-section'>Cơ sở nổi bật</span>

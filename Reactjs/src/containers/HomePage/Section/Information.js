@@ -6,14 +6,20 @@ import { withRouter } from 'react-router';
 
 class Information extends Component {
    
-
+    hanClickClose = () => {
+        this.props.handleClickCloseMenu()
+    }
 
     handleSwitchQuestion = () => {
         this.props.history.push(`/information`)
     }
+
+    hanClickClose = () => {
+        this.props.handleClickCloseMenu()
+    }
     render() {
         return (
-           <div className='section-share section-information'>
+           <div className='section-share section-information' onClick={() => this.hanClickClose()}>
                 <div className='section-information-top'>
                     <div className='inf-left'>
                         <div className='inf-logo'></div>

@@ -4,10 +4,12 @@ import { FormattedMessage } from 'react-intl';
 import Slider from "react-slick";
 
 class HomeFooter extends Component {
-   
+    hanClickClose = () => {
+        this.props.handleClickCloseMenu()
+    }
     render() {
         return (
-            <div className='home-footer'>
+            <div className='home-footer' onClick={() => this.hanClickClose()}>
                 
                 <div className='footer-content'>
                     <p>&copy; 2023 Đồ án Công nghệ Phần mềm HĐT. Design By &#8594; <a href='https://www.facebook.com/profile.php?id=100009149872534'>HBT</a>&#8592;</p>

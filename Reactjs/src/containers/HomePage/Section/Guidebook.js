@@ -48,6 +48,9 @@ class Guidebook extends Component {
         this.setState({ searchValue: e.target.value });
     }
 
+    hanClickClose = () => {
+        this.props.handleClickCloseMenu()
+    }
     render() {
         let settings  = {
             dots: false,
@@ -62,7 +65,7 @@ class Guidebook extends Component {
 
 
         return (
-        <div className='section-share section-guidebook'>
+        <div className='section-share section-guidebook'  onClick={() => this.hanClickClose()}>
             <div className='section-container'>
                 <div className='section-header'>
                     <span className='title-section'>Cẩm nang</span>

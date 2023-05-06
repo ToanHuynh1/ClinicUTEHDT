@@ -38,13 +38,17 @@ class ProminentDoctor extends Component {
     handleSwitchMoreInfoDoctor = () => {
         this.props.history.push(`/see-all-doctor`)
     }
+
+    hanClickClose = () => {
+        this.props.handleClickCloseMenu()
+    }
     render() {
 
         let topDoctorArr = this.state.doctorArr
    
         let {language} = this.props
         return (
-            <div className='section-share section-prominent-doctor'>
+            <div className='section-share section-prominent-doctor'  onClick={() => this.hanClickClose()}>
             <div className='section-container'>
                 <div className='section-header'>
                     <span className='title-section'><FormattedMessage id="homepage.prominent-doctor"/></span>
