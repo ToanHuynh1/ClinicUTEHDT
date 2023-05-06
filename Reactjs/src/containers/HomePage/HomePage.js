@@ -24,6 +24,7 @@ class HomePage extends Component {
         this.state = {
             isOpenSeeBooking: false,
             isOpenAllMenu: false,
+            isOpen: false
         };
     }
     
@@ -37,9 +38,17 @@ class HomePage extends Component {
        
     }
 
-    handleClickCloseMenu = () => {
+    handleClickCloseMenu = (click) => {
+ 
         this.setState({
-            isOpenAllMenu: !this.state.isOpenAllMenu
+            isOpenAllMenu: click
+                    
+        })
+    }
+
+    handleClickCloseUpdate = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
         })
 
     }
@@ -62,10 +71,11 @@ class HomePage extends Component {
                 <HomeHeader 
                     isShowBanner={true}
                     isOpenMenu = {true}
+                    isOpen={this.state.isOpen}
                     isOpenAllMenu = {this.state.isOpenAllMenu}
+                    handleClickCloseMenu= {this.handleClickCloseMenu}
                 />
                 <Specialty 
-                    func_testClick = {this.func_testClick}
                     settings = {settings}
                     handleClickCloseMenu= {this.handleClickCloseMenu}
                 />

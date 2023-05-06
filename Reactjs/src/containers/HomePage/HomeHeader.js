@@ -43,12 +43,14 @@ class HomeHeader extends Component {
     }
 
     componentDidMount = () => {
-        let {userInfo, isOpenMenu, isOpenAllMenu} = this.props
+        let {userInfo, isOpenMenu, isOpenAllMenu, isOpen} = this.props
 
+        console.log(this.props)
         this.setState({
             dataUserlogin: userInfo,
             isOpenMenu: isOpenMenu,
-            isOpenAllMenu: isOpenAllMenu
+            isOpenAllMenu: isOpenAllMenu,
+            isOpen: isOpen
         })
         let menu = []
         if (userInfo && ! _.isEmpty(userInfo))
@@ -70,8 +72,6 @@ class HomeHeader extends Component {
 
         
     }
-
-
 
     undoHomePage = () => 
     {
@@ -100,7 +100,7 @@ class HomeHeader extends Component {
     handleUpdateProfile = () => {
         let check = true;
         this.setState({
-            isOpen: false
+            isOpen: !this.state.isOpen
         })
 
         this.props.history.push(`/update-infor-patient`)
@@ -132,6 +132,7 @@ class HomeHeader extends Component {
         this.setState({
             isOpenAllMenu: !this.state.isOpenAllMenu
         })
+        this.props.handleClickCloseMenu(true)
     }
 
     handleSwitchGuidebook = () => {

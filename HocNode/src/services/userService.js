@@ -296,7 +296,8 @@ let handleUserSignup = (email, password, username) =>
                     email: email,
                     password: hashPasswordFromBcrypt,
                     firstName: username,
-                    roleId: 'R3'
+                    roleId: 'R3',
+                    positionId: 'P5'
                 })
 
                 resolve({

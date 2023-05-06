@@ -86,12 +86,19 @@ class ConfirmCode extends Component {
 
             if (result && result.errCode === 0){
                 toast.success("Cập nhật mật khẩu thành công! ")
+
+                setTimeout(() => {
+                    this.props.history.push(`/login`)
+                }, 3000); // 3000 là số miligiây tương ứng với 3 giây
+    
             }
 
-            setTimeout(() => {
-                this.props.history.push(`/login`)
-            }, 3000); // 3000 là số miligiây tương ứng với 3 giây
+            if (result && result.errCode == 2)
+            {
+                toast.error('OTP không chính xác')
+            }
 
+         
         }
     }
     render() {
