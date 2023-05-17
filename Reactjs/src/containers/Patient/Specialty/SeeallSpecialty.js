@@ -17,7 +17,8 @@ class SeeallSpecialty extends Component {
     {
         super(props)
         this.state = {
-            dataSpecialty: []
+            dataSpecialty: [],
+            searchTerm: ''
         }
     }
 
@@ -45,8 +46,20 @@ class SeeallSpecialty extends Component {
     SwitchHome = () => {
         this.props.history.push(`/home`)  
     }
+
+
+    handleSearchInputChange = event => {
+        this.setState({ searchTerm: event.target.value });
+    }
+
     render() {
-        let {dataSpecialty} = this.state
+        let {dataSpecialty, searchTerm} = this.state
+
+        let filteredSpecialties = dataSpecialty.filter(specialty => {
+            const name = specialty.name;
+            return name.toLowerCase().includes(searchTerm.toLowerCase());
+        })
+
         return (
             <div className='see-all-specialty-container'>  
                <div className='up'>
@@ -57,14 +70,26 @@ class SeeallSpecialty extends Component {
                     <div className='title-see-all-specialty'>
                         Chuyên khoa
                     </div>
+
+                
                </div>
 
-               <div style={{marginTop: '70px'}}>
+               <div className='center'>
+                    <div className='search'>
 
-       
+                        <input 
+                            placeholder='Tìm chuyên khoa'
+                            value={this.state.searchTerm}
+                            onChange={this.handleSearchInputChange}
+                        >
+                        </input>
 
-               {dataSpecialty && dataSpecialty.length > 0 ? (
-                dataSpecialty.map((item, index) => (
+                        <i className="fas fa-search"></i>
+                    </div>
+                </div>
+
+               {filteredSpecialties && filteredSpecialties.length > 0 ? (
+                filteredSpecialties.map((item, index) => (
                 <div className="down" key={index}>
                     <div className="section-specialty" onClick={() => this.SwitchDetailSpecialty(item.id)}>
                     <div className="img-specialty">
@@ -75,10 +100,10 @@ class SeeallSpecialty extends Component {
                 </div>
                 ))
             ) : (
-                <div>Chưa có chuyên khoa</div>
+                <div style={{textAlign: 'center', fontSize: '18px', fontWeight: '600', marginTop: '20px'}}>Chưa có chuyên khoa</div>
             )}
 
-            </div>
+      
                                     
             </div>
         

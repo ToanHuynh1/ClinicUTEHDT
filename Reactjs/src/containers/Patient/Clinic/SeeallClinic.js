@@ -84,6 +84,7 @@ class SeeallClinic extends Component {
                     </div>
                     <div className='search'>
                         <input placeholder='Tìm kiếm' value={searchValue} onChange={this.handleSearchInputChange} />
+                        <i class="fas fa-search"></i>
                     </div>
                 </div>
                 <div className='center'>

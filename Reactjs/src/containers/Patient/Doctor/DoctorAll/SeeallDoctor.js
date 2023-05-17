@@ -70,12 +70,18 @@ class SeeallDoctor extends Component {
                </div>
 
                <div className='center'>
-                    <input 
-                        placeholder='Tìm bác sĩ'
-                        value={this.state.searchTerm}
-                        onChange={this.handleSearchInputChange}
-                    >
-                    </input>
+
+                    <div className='search'>
+
+                        <input 
+                            placeholder='Tìm bác sĩ'
+                            value={this.state.searchTerm}
+                            onChange={this.handleSearchInputChange}
+                        >
+                        </input>
+
+                        <i className="fas fa-search"></i>
+                    </div>
                </div>
 
                <div style={{marginTop: '20px'}}>
