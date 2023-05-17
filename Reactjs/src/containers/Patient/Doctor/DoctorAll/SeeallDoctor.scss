@@ -38,11 +38,27 @@
         margin-top: 50px;
         padding: 20px 100px;
         background: #f5f5f5;
+       
+
+        .search{
+            border: 1px solid rgb(177, 173, 173);
+            border-radius: 15px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            -ms-border-radius: 15px;
+            padding: 5px;
+            background-color: white;
+            -o-border-radius: 15px;
+
+            i {
+                margin-left: 25px;
+            }
+        }
 
         input{
             width: 95%;
             outline: none;
-            border: 0.5px solid darkgrey;
+            border: none;
             padding: 10px;
             border-radius: 10px;
         }
