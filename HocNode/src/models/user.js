@@ -33,7 +33,8 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
     roleId: DataTypes.STRING,
     positionId: DataTypes.STRING,
-    verificationCode: DataTypes.STRING //Thêm trường mới vào model User
+    verificationCode: DataTypes.STRING, //Thêm trường mới vào model User
+    rating: DataTypes.INTEGER, 
   }, {
     sequelize,
     modelName: 'User',

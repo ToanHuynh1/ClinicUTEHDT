@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import HomeFooter from '../../HomePage/HomeFooter'
 import LikeShare from '../../System/SocialPlugin/LikeShare'
 import Comment from '../../System/SocialPlugin/Comment'
+import StarRating from './DoctorAll/StarRating';
 class DetailDoctor extends Component {
 
     constructor(props)
@@ -20,7 +21,8 @@ class DetailDoctor extends Component {
             detailDoctor: {},
             currentDoctor: -1,
             contentReview: '',
-            allReview: {}
+            allReview: {},
+            rating: 0
         }
     }
 
@@ -68,6 +70,7 @@ class DetailDoctor extends Component {
         const hours = today.getHours().toString().padStart(2, "0"); 
         const minutes = today.getMinutes().toString().padStart(2, "0"); 
         const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes}`;
+        let {rating} = this.state
           
         if (this.props.userInfo)
         {
@@ -79,14 +82,16 @@ class DetailDoctor extends Component {
                 patientName: patientName,
                 patientId: patientId,
                 date: formattedDateTime,
-                status: this.state.contentReview
+                status: this.state.contentReview,
+                rating: rating
             })
 
             if (reponse.info.errCode === 0)
             {
                 toast.success('Gửi đánh giá thành công')
                 this.setState({
-                    contentReview:''
+                    contentReview:'',
+                    rating: 0
                 })
                 window.location.href = `/detail-doctor/${this.state.currentDoctor}`;
             }
@@ -110,8 +115,15 @@ class DetailDoctor extends Component {
             contentReview: status
         })
     }
+
+    
+      handleRatingChange = (rating) => {
+        this.setState({ rating });
+    };
+
+
     render() {
-        let {detailDoctor , allReview} = this.state
+        let {detailDoctor , allReview, rating} = this.state
         let nameVi = '',nameEn=''
         let {language} = this.props
 
@@ -190,6 +202,15 @@ class DetailDoctor extends Component {
                             <div>Hãy là người đầu tiên bình luận</div>
                         )}
                      
+
+                        <form onSubmit={this.handleSubmit}>
+                            <div>
+                            <StarRating
+                                rating={rating}
+                                onRatingChange={this.handleRatingChange}
+                            />
+                            </div>
+                        </form>
 
                         <div className='input-review-patient'>
                             <div className='custom-input'>

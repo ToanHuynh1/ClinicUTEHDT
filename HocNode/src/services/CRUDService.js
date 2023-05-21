@@ -17,6 +17,7 @@ let createNewUser =async (data) =>
                 phonenumber: data.phonenumber,
                 gender: data.gender === '1' ? true : false,
                 roleId: data.roleId,
+                rating: 0
             })
             resolve('Create thành công')
         } catch (error) {
