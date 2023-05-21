@@ -100,7 +100,6 @@ class DoctorProfile extends Component {
             nameEn = `${profileData.positionData.valueEn},${profileData.firstName} ${profileData.lastName}`
         }
 
-        console.log(profileData)
 
         return (
             <div className='profile-doctor-container'>

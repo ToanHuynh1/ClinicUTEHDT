@@ -38,7 +38,8 @@ module.exports = {
                             image: data.imageBase64,
                             name: data.name,
                             descriptionHTML: data.descriptionHTML,
-                            descriptionMardown: data.descriptionMardown
+                            descriptionMardown: data.descriptionMardown,
+                            rating: 0
                         }
                     )
     
@@ -243,5 +244,113 @@ module.exports = {
 
           
         })
-    }
+    },
+
+    getSuperSpecialtyHome: (typeInput) =>
+    {
+        return new Promise(async (resolve,reject) => 
+        {
+            try {
+                let data = await db.Specialty.findAll({  
+                    limit: typeInput,
+                    order: [['rating', 'DESC']],
+                })
+                if (data && data.length > 0)
+                {
+                    data.map(item =>{
+                        item.image = new Buffer(item.image, 'base64').toString('binary')
+                        return item
+                    } 
+                    )  
+                }
+                resolve({
+                    errCode: 0,
+                    errMessage: 'Yep',
+                    data
+                })
+            }
+               catch (error) {
+                reject(error)
+            }
+        })
+    },
+
+    handleReviewSpecialtyService: async (data) =>
+    {
+        return new Promise(async (resolve,reject) => 
+        {
+            try {
+
+                if (!data.patientId || !data.rating) {
+                    resolve({
+                        errCode: 1,
+                        errMessage: 'Bạn chưa đăng nhập hoặc đánh giá',
+                    })
+                }
+
+                else
+                {
+                     await db.Review_specialty.create({
+                        patientId: data.patientId,
+                            rating: data.rating,
+                            specialtyId: data.specialtyId
+                        })
+    
+                    }
+
+
+                    await handleUpdateRating(data.specialtyId)
+
+                    resolve({
+                        errCode: 0,
+                        errMessage: 'Cập nhật đánh giá thành công',
+                    })
+                }  
+               catch (error) {
+                reject(error)
+            }
+        })
+    },
+}
+
+let handleUpdateRating = async (id) =>
+{
+        try {
+            console.log(id)
+            if (!id) {
+                resolve({
+                    errCode: 1,
+                    errMessage: '',
+                })
+            } else {
+                let dataReviewRatingSpecialty = await db.Review_specialty.findAll({
+                    where: {
+                      specialtyId: id,
+                    },
+                    attributes: ['rating'],
+                    raw: true // Chỉ lấy trường "rating"
+            });
+          
+            let totalRating = dataReviewRatingSpecialty.reduce((total, data) => total + data.rating, 0);
+          
+            let averageRating = totalRating / dataReviewRatingSpecialty.length;
+          
+            let roundedAverageRating = Math.ceil(averageRating);
+          
+            let dataSpecialty = await db.Specialty.findOne({
+                where: {
+                    id: id
+                },
+                    attributes: ['rating', 'id'],
+                    raw: false
+                })
+          
+            if (dataSpecialty) {
+                dataSpecialty.rating = roundedAverageRating
+                await dataSpecialty.save()
+            }
+        }
+    } catch (error) {
+        console.log(error);
+   }
 }

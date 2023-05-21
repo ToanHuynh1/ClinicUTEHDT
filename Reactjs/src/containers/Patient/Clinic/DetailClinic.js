@@ -11,7 +11,9 @@ import DoctorProfile from '../Doctor/DoctorProfile';
 import {getDetailSpecialty, getAllCodeService, getAllClinicById} from '../../../services/userService'
 import _ from 'lodash'
 import { LANGUAGES } from '../../../utils';
-import HomeFooter from '../../HomePage/HomeFooter';
+import { Modal } from 'reactstrap';
+import ModalReviewSpecialty from '../Specialty/ModalReviewSpecialty'
+import ModalReviewClinic from './ModalReviewClinic';
 
 class DetailClinic extends Component {
 
@@ -21,6 +23,7 @@ class DetailClinic extends Component {
         this.state = {
             arrDoctorId: [],
             dataDetailClinic: {},
+            isOpen: false,
         }
     }
 
@@ -62,10 +65,22 @@ class DetailClinic extends Component {
     async componentDidUpdate(prevProps,prevState,snapshot){
      
     }
+    handleOpenReviewClinic = () => {
+        this.setState({
+            isOpen: true
+        })
+    }
 
+    toggleClinicModal = () =>{
+        this.setState({
+            isOpen: !this.state.isOpen,
+       })
+    }
 
     render() {
-        let {arrDoctorId, dataDetailClinic} = this.state
+        let {arrDoctorId, dataDetailClinic, rating} = this.state
+
+        let id = this.props.match.params.id
 
         let {language} = this.props
 
@@ -88,6 +103,14 @@ class DetailClinic extends Component {
                            
                         }
                     </div>
+
+                    <button className='review-specialty' onClick={()=> this.handleOpenReviewClinic()}>Đánh giá</button>
+
+                    <ModalReviewClinic 
+                        isOpen = {this.state.isOpen}
+                        toggleFromParent = {this.toggleClinicModal}
+                        idClinic = {id}
+                    />
 
 
                     {arrDoctorId && arrDoctorId.length > 0 && arrDoctorId.map((item, index)=> {

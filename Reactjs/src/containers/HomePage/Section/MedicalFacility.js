@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import Slider from "react-slick";
-import {getAllClinic} from '../../../services/userService'
+import {getSuperClinic} from '../../../services/userService'
 import { withRouter } from 'react-router';
 
 class MedicalFacility extends Component {
@@ -17,7 +17,7 @@ class MedicalFacility extends Component {
 
 
     async componentDidMount() {
-        let reponse = await getAllClinic()
+        let reponse = await getSuperClinic()
 
         if (reponse && reponse.infor.errCode ==0)
         {

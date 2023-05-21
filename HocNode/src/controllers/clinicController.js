@@ -70,4 +70,38 @@ module.exports = {
             })
         }
     },
+
+    handleReviewClinic: async (req,res) => 
+    {
+        try {
+            let infor = await clinicService.handleReviewClinicService(req.body)
+            return res.status(200).json({
+                infor
+            })
+        } catch (error) {
+            console.log(error)
+            return res.status(200).json({
+                errCode: -1,
+                message: 'Error from server'
+            })
+        }
+    },
+
+    getSuperClinicHome: async (req,res) => 
+    {
+        let limit = req.query.limit
+        if(!limit) limit = 10
+        try {
+            let infor = await clinicService.getSuperClinicHome(+limit)
+            return res.status(200).json({
+                infor
+            })
+        } catch (error) {
+            console.log(error)
+            return res.status(200).json({
+                errCode: -1,
+                message: 'Error from server'
+            })
+        }
+    },
 }

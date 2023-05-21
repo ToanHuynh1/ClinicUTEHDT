@@ -8,9 +8,13 @@ let initWebRoutesClinic = (app) => {
 
     router.get('/api/get-clinic', clinicController.getAllClinic)
 
+    router.get('/api/super-clinic-home', clinicController.getSuperClinicHome)
+
     router.get('/api/get-detail-clinic-for-id', clinicController.getDetailClinic)
 
     router.delete('/api/delete-clinic' , clinicController.handleDeleteClinic)
+
+    router.post('/api/review-clinic' , clinicController.handleReviewClinic)
 
     return app.use("/", router)
 }

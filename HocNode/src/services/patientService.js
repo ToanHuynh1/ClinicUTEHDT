@@ -459,8 +459,6 @@ let updateRatingDoctorService = (id) => {
           raw: false
         })
 
-        console.log(dataDoctor)
-
         if (dataDoctor) {
           dataDoctor.rating = roundedAverageRating
           await dataDoctor.save()
