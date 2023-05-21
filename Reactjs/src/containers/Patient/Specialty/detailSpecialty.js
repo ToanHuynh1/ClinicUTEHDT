@@ -11,6 +11,8 @@ import DoctorProfile from '../Doctor/DoctorProfile';
 import {getDetailSpecialty, getAllCodeService} from '../../../services/userService'
 import _ from 'lodash'
 import { LANGUAGES } from '../../../utils';
+import { Modal } from 'reactstrap';
+import ModalReviewSpecialty from '../Specialty/ModalReviewSpecialty'
 
 class detailSpecialty extends Component {
 
@@ -121,8 +123,22 @@ class detailSpecialty extends Component {
         }
 
     }
+
+    handleOpenReviewSpecialty = () => {
+        this.setState({
+            isOpen: true
+        })
+    }
+
+    toggleSpecialtyModal = () =>{
+        this.setState({
+            isOpen: !this.state.isOpen,
+       })
+    }
     render() {
         let {arrDoctorId, dataDetailSpecialty, listProvince} = this.state
+
+        let id = this.props.match.params.id
 
         let {language} = this.props
 
@@ -141,16 +157,29 @@ class detailSpecialty extends Component {
 
                     </div>
 
-                    <div className='search-doctor'>
-                        <select className='select-province'  onChange={(event) => this.hanldOnChangeSelect(event)}>
-                            {listProvince && listProvince.length > 0 && listProvince.map((item, index) => {
-                                return(
-                                    <option key={index} value={item.keyMap}>{language === LANGUAGES.VI ? item.valueVi : item.valueEn}</option>
-                                )
-                            })}
+                    <div className='search-rating'>
+                        <div className='search-doctor'>
+                            <select className='select-province'  onChange={(event) => this.hanldOnChangeSelect(event)}>
+                                {listProvince && listProvince.length > 0 && listProvince.map((item, index) => {
+                                    return(
+                                        <option key={index} value={item.keyMap}>{language === LANGUAGES.VI ? item.valueVi : item.valueEn}</option>
+                                    )
+                                })}
 
-                        </select>
+                            </select>
+                        </div>
+            
+
+                    <button className='review-specialty' onClick={()=> this.handleOpenReviewSpecialty()}>Đánh giá</button>
+
                     </div>
+
+
+                    <ModalReviewSpecialty 
+                        isOpen = {this.state.isOpen}
+                        toggleFromParent = {this.toggleSpecialtyModal}
+                        idSpecialty = {id}
+                    />
 
                     {arrDoctorId && arrDoctorId.length > 0 && arrDoctorId.map((item, index)=> {
                     return (

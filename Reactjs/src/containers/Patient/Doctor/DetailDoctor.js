@@ -117,7 +117,7 @@ class DetailDoctor extends Component {
     }
 
     
-      handleRatingChange = (rating) => {
+    handleRatingChange = (rating) => {
         this.setState({ rating });
     };
 

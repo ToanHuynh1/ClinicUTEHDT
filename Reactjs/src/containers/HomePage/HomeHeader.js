@@ -44,8 +44,6 @@ class HomeHeader extends Component {
 
     componentDidMount = () => {
         let {userInfo, isOpenMenu, isOpenAllMenu, isOpen} = this.props
-
-        console.log(this.props)
         this.setState({
             dataUserlogin: userInfo,
             isOpenMenu: isOpenMenu,
@@ -148,7 +146,6 @@ class HomeHeader extends Component {
       
         let {isOpen, dataUserlogin, isOpenMenu, isOpenAllMenu} = this.state
         let language = this.props.language
-
 
         return (
             <React.Fragment >  

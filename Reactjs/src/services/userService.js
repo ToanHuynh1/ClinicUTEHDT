@@ -99,6 +99,21 @@ export const getAllSpecialty= () => {
     return axios.get(`http://localhost:1906/api/get-specialty`)
 }
 
+export const postReviewSpecialty= (data) => {
+    return axios.post(`http://localhost:1906/api/review-specialty`, data)
+}
+
+
+
+export const getSuperSpecialty= () => {
+    return axios.get(`http://localhost:1906/api/super-specialty-home`)
+}
+
+export const getSuperClinic= () => {
+    return axios.get(`http://localhost:1906/api/super-clinic-home`)
+}
+
+
 export const getDetailSpecialty= (data) => {
     return axios.get(`http://localhost:1906/api/get-detail-specialty-for-id?id=${data.id}&location=${data.location}`)
 }
@@ -110,6 +125,11 @@ export const createNewClinic= (data) => {
 export const getAllClinic= () => {
     return axios.get(`http://localhost:1906/api/get-clinic`)
 }
+
+export const postReviewClinic= (data) => {
+    return axios.post(`http://localhost:1906/api/review-clinic`, data)
+}
+
 
 export const getAllClinicById= (data) => {
     return axios.get(`http://localhost:1906/api/get-detail-clinic-for-id?id=${data.id}`)

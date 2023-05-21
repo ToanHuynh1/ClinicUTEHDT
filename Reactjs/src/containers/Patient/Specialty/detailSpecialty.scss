@@ -4,6 +4,12 @@
     {
         padding: 0 200px;
         background: #eee;
+
+        .search-rating
+        {
+            display: flex;
+            gap: 20px
+        }
     }
     .search-doctor
     {
@@ -59,7 +65,7 @@
                         -moz-border-radius: 45px !important;
                         -ms-border-radius: 45px !important;
                         -o-border-radius: 45px !important;
-}
+            }
                     }
                     .content-right
                     {
