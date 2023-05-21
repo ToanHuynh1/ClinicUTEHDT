@@ -13,7 +13,7 @@ let getSuperDoctorHome = (typeInput) =>
             let users = await db.User.findAll({
                 limit: typeInput,
                 where: {roleId: 'R2'},
-                order: [['createdAt', 'DESC']],
+                order: [['rating', 'DESC']],
                 attributes: {
                     exclude: ['password']
                 },

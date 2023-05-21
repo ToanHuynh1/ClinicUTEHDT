@@ -361,7 +361,9 @@ let sendReviewOfDetailDoctorService = (data) => {
   return new Promise(async (resolve,reject) => 
   {
       try {
-          if (!data.patientName || !data.doctorId || !data.date || !data.status || !data.patientId)
+
+          console.log(data)
+          if (!data.patientName || !data.doctorId || !data.date || !data.status || !data.patientId || !data.rating)
           {
               resolve({
                   errCode: 1,
@@ -376,6 +378,7 @@ let sendReviewOfDetailDoctorService = (data) => {
               patientId: data.patientId,
               date: data.date,
               status: data.status,
+              rating: data.rating
             })
             resolve({
               errCode: 0,
@@ -392,6 +395,7 @@ let getAllReviewOfPatientService = (data) => {
   return new Promise(async (resolve,reject) => 
   {
       try {
+
           if (!data.doctorId){
             resolve({
               errCode: 1,
@@ -406,6 +410,10 @@ let getAllReviewOfPatientService = (data) => {
               }
             })
 
+            await updateRatingDoctorService({
+              id: data.doctorId
+            })
+
             resolve({
               errCode: 0,
               errMessage: 'Lấy thông tin đánh giá thành công',
@@ -418,6 +426,59 @@ let getAllReviewOfPatientService = (data) => {
       }
   })
 }
+
+
+let updateRatingDoctorService = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!id) {
+        resolve({
+          errCode: 1,
+          errMessage: 'Thiếu tham số'
+        });
+      } else {
+        let dataReviewRating = await db.Review.findAll({
+          where: {
+            doctorId: id.id,
+          },
+          attributes: ['rating'],
+          raw: true // Chỉ lấy trường "rating"
+        });
+
+        let totalRating = dataReviewRating.reduce((total, data) => total + data.rating, 0);
+
+        let averageRating = totalRating / dataReviewRating.length;
+
+        let roundedAverageRating = Math.ceil(averageRating);
+
+        let dataDoctor = await db.User.findOne({
+          where: {
+            id: id.id
+          },
+          attributes: ['rating', 'id'],
+          raw: false
+        })
+
+        console.log(dataDoctor)
+
+        if (dataDoctor) {
+          dataDoctor.rating = roundedAverageRating
+          await dataDoctor.save()
+        }
+
+        resolve({
+          errCode: 0,
+          errMessage: 'Lấy thông tin bình chọn thành công',
+          dataReviewRating
+        });
+      }
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+
 module.exports = {
     bookAppointmentService:bookAppointmentService,
     verifyBookAppointmentService:verifyBookAppointmentService,
@@ -426,5 +487,6 @@ module.exports = {
     getBookingByIdService:getBookingByIdService,
     updateInforPatientService:updateInforPatientService,
     sendReviewOfDetailDoctorService:sendReviewOfDetailDoctorService,
-    getAllReviewOfPatientService:getAllReviewOfPatientService
+    getAllReviewOfPatientService:getAllReviewOfPatientService,
+    updateRatingDoctorService:updateRatingDoctorService
 }

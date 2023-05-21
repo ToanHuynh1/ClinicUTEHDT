@@ -19,6 +19,8 @@ let initWebRoutesPatient = (app) => {
     router.post('/api/review-for-doctor', patientController.sendReviewOfDetailDoctor)
 
     router.post('/api/get-all-review', patientController.getAllReviewOfPatient)
+
+    router.post('/api/update-rating-doctor', patientController.updateRatingDoctor)
     
     return app.use("/", router)
 }

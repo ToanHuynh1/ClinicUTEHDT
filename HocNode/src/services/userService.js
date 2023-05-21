@@ -152,7 +152,8 @@ let createNewUser= (data) => {
                         gender: data.gender,
                         roleId: data.role,
                         positionId: data.position,
-                        image: data.image
+                        image: data.image,
+                        rating: 0
                     })
                     resolve({
                         errCode: 0,
@@ -297,7 +298,8 @@ let handleUserSignup = (email, password, username) =>
                     password: hashPasswordFromBcrypt,
                     firstName: username,
                     roleId: 'R3',
-                    positionId: 'P5'
+                    positionId: 'P5',
+                    rating: 0
                 })
 
                 resolve({

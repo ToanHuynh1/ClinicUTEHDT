@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-    
     }
   }
   Review.init({
@@ -20,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.STRING,
     patientId: DataTypes.INTEGER,
     status: DataTypes.TEXT('long'),
+    rating: DataTypes.INTEGER, // Thêm cột đánh giá số sao
   }, {
     sequelize,
     modelName: 'Review',
