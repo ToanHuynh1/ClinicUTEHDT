@@ -11,15 +11,15 @@ class Home extends Component {
         const { isLoggedIn } = this.props;
         let linkToRedirect
       
-        if (isLoggedIn && (this.props.userInfo.roleId == 'R1'))
+        if (isLoggedIn && (this.props.userInfo.roleId === 'R1'))
         {
-            linkToRedirect = isLoggedIn ? '/system/user-redux' : '/home';
+            linkToRedirect = isLoggedIn ? '/system/user-redux' : '/login';
         }
-        if (isLoggedIn && this.props.userInfo.roleId == 'R2')
+        if (isLoggedIn && this.props.userInfo.roleId === 'R2')
         {
-            linkToRedirect = isLoggedIn ? '/doctor/manage-schedule' : 'home'
+            linkToRedirect = isLoggedIn ? '/doctor/manage-schedule' : '/login'
         }
-        if (isLoggedIn && (this.props.userInfo.roleId == 'R3'))
+        if (isLoggedIn && (this.props.userInfo.roleId === 'R3'))
         {
             linkToRedirect = isLoggedIn ?  '/home' : '/login' ;
         }

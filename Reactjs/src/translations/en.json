@@ -65,7 +65,26 @@
     "homepage": {
         "prominent-doctor": "Prominent doctors of the week",
         "more-inf": "See more",
-        "speciality": "Popular specialties"
+        "speciality": "Popular specialties",
+        "guidebook": "Guidebooks",
+        "allposts": "All posts",
+        "outstandingfacility": "Outstanding medical facility",
+        "search": "Search",
+        "footerdesign": "2023 Software Engineering Project.",
+        "companyinfor": "MEDICARE HCMUTE. Technology Joint Stock Company",
+        "support": "Support",
+        "findoutmore": "Find out more",
+        "question": "Frequently asked questions",
+        "position": "Position",
+        "headquarters": "Headquarters",
+        "download": "Download the Medicare HCMUTE app for your phone or tablet",
+        "Materials": "Materials about MEDICARE HCMUTE",
+        "doctor": "Doctor",
+        "clinic": "Clinics",
+        "contact": "Contact",
+        "home": "Home",
+        "specialityseeall": "Specialty",
+        "searchspecialty": "Search specialty..."
     },
 
     "manage-schedule": {

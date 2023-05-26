@@ -23,24 +23,24 @@ class Information extends Component {
                 <div className='section-information-top'>
                     <div className='inf-left'>
                         <div className='inf-logo'></div>
-                        <b style={{fontSize: '18px'}} className='inf-company'>Công ty Cổ phần Công nghệ MEDICARE HCMUTE</b>
+                        <b style={{fontSize: '18px'}} className='inf-company'><FormattedMessage id="homepage.companyinfor"/></b>
                         <p><b>Hotline: </b>0765969802</p>
-                        <p><b>Hỗ trợ: </b>baotoandd2016@gmail.com</p>
+                        <p><b><FormattedMessage id="homepage.support"/>: </b>baotoandd2016@gmail.com</p>
                     </div>
                     <div className='inf-center'>
-                        <b className='inf-about'>Tìm hiểu thêm</b>
-                        <p className='mt-3' onClick={() => this.handleSwitchQuestion()} style={{cursor: 'pointer'}}>Câu hỏi thường gặp</p>
+                        <b className='inf-about'><FormattedMessage id="homepage.findoutmore"/></b>
+                        <p className='mt-3' onClick={() => this.handleSwitchQuestion()} style={{cursor: 'pointer'}}><FormattedMessage id="homepage.question"/></p>
                     </div>
                     <div className='inf-right'>
-                        <p> <i className="fas fa-map-marker-alt postion-right"></i><b>Vị trí</b></p>                
-                        <b className='mt-3'>Trụ sở Hồ Chí Minh</b>
-                        <p>Số 1, Võ Văn Ngân, Thành phố Thủ Đức</p>
-                        <b>Trụ sở Bình Dương</b>
-                        <p>Phạm Ngũ Lầu, p.Dĩ An, Bình Dương</p>
+                        <p> <i className="fas fa-map-marker-alt postion-right"></i><b><FormattedMessage id="homepage.position"/></b></p>                
+                        <b className='mt-3'><FormattedMessage id="homepage.headquarters"/> Ho Chi Minh</b>
+                        <p>So 1, Vo Van Ngan, Thanh pho Thu Duc</p>
+                        <b><FormattedMessage id="homepage.headquarters"/>  Binh Duong</b>
+                        <p>Pham Ngu Lau, p.Di An, Binh Duong</p>
                     </div>
                 </div>
                 <div className='section-information-below'>
-                     <div><b>Tải ứng dụng Medicare HCMUTE cho điện thoại hoặc máy tính bảng</b></div>
+                     <div><b><FormattedMessage id="homepage.download"/></b></div>
                 </div>
            </div>
         );

@@ -65,7 +65,26 @@
     "homepage": {
         "prominent-doctor": "Bác sĩ nổi bật tuần qua",
         "more-inf": "Xem thêm",
-        "speciality": "Chuyên khoa phổ biến"
+        "speciality": "Chuyên khoa phổ biến",
+        "guidebook": "Cẩm nang",
+        "allposts": "Tất cả bài viết",
+        "outstandingfacility": "Cơ sở nổi bật",
+        "search": "Tìm kiếm",
+        "footerdesign": "2023 Đồ án Công nghệ Phần mềm HĐT.",
+        "companyinfor": "Công ty Cổ phần Công nghệ MEDICARE HCMUTE",
+        "support": "Hỗ trợ",
+        "findoutmore": "Tìm hiểu thêm",
+        "question": "Câu hỏi thường gặp",
+        "position": "Vị trí",
+        "headquarters": "Trự sở",
+        "download": "Tải ứng dụng Medicare HCMUTE cho điện thoại hoặc máy tính bảng",
+        "Materials": "Tư liệu về MEDICARE HCMUTE",
+        "doctor": "Bác sĩ",
+        "clinic": "Cơ sở y tế",
+        "contact": "Liên hệ",
+        "home": "Trang chủ",
+        "specialityseeall": "Chuyên khoa",
+        "searchspecialty": "Tìm chuyên khoa..."
     },
     "manage-schedule": {
         "title": "Quản lý kế hoạch khám bệnh",

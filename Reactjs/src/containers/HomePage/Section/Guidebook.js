@@ -68,8 +68,8 @@ class Guidebook extends Component {
         <div className='section-share section-guidebook'  onClick={() => this.hanClickClose()}>
             <div className='section-container'>
                 <div className='section-header'>
-                    <span className='title-section'>Cẩm nang</span>
-                    <button className='btn-section' onClick={() => this.SwitchSeeAllGuidebook()}>Tất cả bài viết</button>
+                    <span className='title-section'><FormattedMessage id="homepage.guidebook"/></span>
+                    <button className='btn-section' onClick={() => this.SwitchSeeAllGuidebook()}><FormattedMessage id="homepage.allposts"/></button>
                 </div>
                 <div className='section-body'>
                     <Slider {...settings}>

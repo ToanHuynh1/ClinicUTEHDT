@@ -162,20 +162,25 @@ class HomeHeader extends Component {
                                 
                                 <div className='content'>
                                     <div>
-                                        <a href='/home'>Trang chủ</a>
+                                        <div className="event-modal" onClick={() => {
+                                            this.props.history.push(`/home`)}} style={{cursor: 'pointer'}}><FormattedMessage id="homepage.home"/></div>
                                     
                                     </div>
                                     <div>
-                                        <a href='/see-all-guidebook'>Cẩm nang</a>
+                                        <div className="event-modal" onClick={() => {
+                                            this.props.history.push(`/see-all-guidebook`)}}  style={{cursor: 'pointer'}}><FormattedMessage id="homepage.guidebook"/></div>
                                     </div>
                                     <div>
-                                        <a href='/see-all-clinic'>Cơ sở ý tế</a>
+                                        <div className="event-modal" onClick={() => {
+                                            this.props.history.push(`/see-all-clinic`)}} style={{cursor: 'pointer'}} ><FormattedMessage id="homepage.clinic"/></div>
                                     </div>
                                     <div>
-                                        <a href='/see-all-doctor'>Bác sĩ</a>
+                                        <div className="event-modal" onClick={() => {
+                                            this.props.history.push(`/see-all-doctor`)}} style={{cursor: 'pointer'}} ><FormattedMessage id="homepage.doctor"/></div>
                                     </div>
                                     <div>
-                                        <a href='/support'>Liên hệ</a>
+                                        <div className="event-modal" onClick={() => {
+                                            this.props.history.push(`/support`)}} style={{cursor: 'pointer'}}><FormattedMessage id="homepage.contact"/></div>
                                     </div>
 
                                 </div>

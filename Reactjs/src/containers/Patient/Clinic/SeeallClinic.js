@@ -79,7 +79,7 @@ class SeeallClinic extends Component {
                             <i className="fas fa-sign-out-alt"></i>
                         </div>
                         <div className='title-see-all-clinic'>
-                            Cơ sở y tế
+                             <FormattedMessage id="homepage.clinic"/>
                         </div>
                     </div>
                     <div className='search'>
