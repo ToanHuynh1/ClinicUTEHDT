@@ -68,7 +68,7 @@ class SeeallSpecialty extends Component {
                     </div>
 
                     <div className='title-see-all-specialty'>
-                        Chuyên khoa
+                        <FormattedMessage id="homepage.specialityseeall"/>
                     </div>
 
                 

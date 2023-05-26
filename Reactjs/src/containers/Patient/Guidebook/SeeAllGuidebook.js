@@ -101,7 +101,7 @@ class SeeAllGuidebook extends Component {
                             <i className="fas fa-sign-out-alt"></i>
                         </div>
                         <div className='title-see-all-guidebook'>
-                            Cẩm nang
+                             <FormattedMessage id="homepage.guidebook"/>
                         </div>
                     </div>
                     <div className='search'>

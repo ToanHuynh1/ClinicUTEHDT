@@ -12,7 +12,7 @@ class About extends Component {
         return (
             <div className='section-share section-about' onClick={() => this.hanClickClose()}>
                 <div className='section-about-header'>
-                    Tư liệu về MEDICARE HCMUTE
+                  <FormattedMessage id="homepage.Materials"/>
                 </div>
                 <div className='section-about-content'>
                     <div className='content-left'>

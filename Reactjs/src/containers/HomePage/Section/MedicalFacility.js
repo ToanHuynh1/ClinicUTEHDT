@@ -45,8 +45,8 @@ class MedicalFacility extends Component {
             <div className='section-share section-medical-facility' onClick={() => this.hanClickClose()}>
             <div className='section-container'>
                 <div className='section-header'>
-                    <span className='title-section'>Cơ sở nổi bật</span>
-                    <button className='btn-section' onClick={() => this.handleSwtichSeeAllClinicFromMedical()}>Tìm kiếm</button>
+                    <span className='title-section'><FormattedMessage id="homepage.outstandingfacility"/></span>
+                    <button className='btn-section' onClick={() => this.handleSwtichSeeAllClinicFromMedical()}><FormattedMessage id="homepage.search"/></button>
                 </div>
                 <div className='section-body'>
                     <Slider {...this.props.settings}>

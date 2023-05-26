@@ -12,7 +12,7 @@ class HomeFooter extends Component {
             <div className='home-footer' onClick={() => this.hanClickClose()}>
                 
                 <div className='footer-content'>
-                    <p>&copy; 2023 Đồ án Công nghệ Phần mềm HĐT. Design By &#8594; <a href='https://www.facebook.com/profile.php?id=100009149872534'>HBT</a>&#8592;</p>
+                    <p>&copy; <FormattedMessage id="homepage.footerdesign"/> Design By &#8594; <a href='https://www.facebook.com/profile.php?id=100009149872534'>HBT</a>&#8592;</p>
                 </div>
                 <div className='icon-footer'>
                     <div className='logo-face-footer'><a href='https://www.facebook.com/profile.php?id=100009149872534'><i className="fab fa-facebook-f facebook"></i></a></div>

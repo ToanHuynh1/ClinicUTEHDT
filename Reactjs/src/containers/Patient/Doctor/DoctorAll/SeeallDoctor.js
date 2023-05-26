@@ -65,7 +65,7 @@ class SeeallDoctor extends Component {
                         <i className="fas fa-sign-out-alt"></i>
                     </div>
                     <div className='see-all-doctor'>
-                        Bác sĩ
+                        <FormattedMessage id="homepage.doctor"/>
                     </div>
                </div>
 
