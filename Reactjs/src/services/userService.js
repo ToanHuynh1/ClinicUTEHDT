@@ -103,8 +103,6 @@ export const postReviewSpecialty= (data) => {
     return axios.post(`http://localhost:1906/api/review-specialty`, data)
 }
 
-
-
 export const getSuperSpecialty= () => {
     return axios.get(`http://localhost:1906/api/super-specialty-home`)
 }
@@ -193,6 +191,11 @@ export const handleGetUserById= (data) => {
 export const editSpecialtyService = (specialtyData) =>
 {   
     return axios.put('http://localhost:1906/api/update-specialty', specialtyData)
+}
+
+export const editClinicService = (clinicData) =>
+{   
+    return axios.put('http://localhost:1906/api/update-clinic', clinicData)
 }
 
 

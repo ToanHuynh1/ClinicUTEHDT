@@ -18,7 +18,6 @@ let initWebRoutesSpecialty = (app) => {
 
     router.post('/api/review-specialty' , specialtyController.handleReviewSpecialty)
 
-
     return app.use("/", router)
 }
 

@@ -146,7 +146,7 @@ class ManageGuidebook extends Component {
 
         if (checkFlag === false) return;
 
-        if (actions == CRUD_ACTIONS.CREATE)
+        if (actions === CRUD_ACTIONS.CREATE)
         {
             let reponse = await createNewGuidebook({
                     name: this.state.name,
@@ -247,10 +247,10 @@ class ManageGuidebook extends Component {
 
         return (
             <div className='manage-guidebook-container'>
-                <div className='ms-title' style={{fontWeight: '600', marginBottom: '20px', textTransform: 'uppercase', fontSize: '26px', marginTop: '20px'}}>Quản lý cẩm nang</div>
+                <div className='ms-title' style={{fontWeight: '600', marginBottom: '20px', textTransform: 'uppercase', fontSize: '26px', marginTop: '20px'}}><FormattedMessage id="manage-schedule.manage-guidebook"/></div>
                 <div className='add-all-guidebook row'>
                     <div className='col-6 form-group'>
-                        <label>Tên cẩm nang:</label>
+                        <label><FormattedMessage id="manage-schedule.name-guidebook"/>:</label>
                         <input type='text' className='form-control' 
                             value={this.state.name}
                             onChange={(event) => this.handleOnChangeInput(event,'name')}
@@ -258,7 +258,7 @@ class ManageGuidebook extends Component {
                     </div>
 
                     <div className='col-6 form-group'>
-                        <label>Loại:</label>
+                        <label><FormattedMessage id="manage-schedule.type-guidebook"/>:</label>
                         <input type='text' className='form-control' 
                             value={this.state.type}
                             onChange={(event) => this.handleOnChangeInput(event,'type')}
@@ -267,10 +267,10 @@ class ManageGuidebook extends Component {
 
 
                     <div className='col-6 form-group'>
-                        <label>Ảnh cẩm nang</label>
+                        <label><FormattedMessage id="manage-schedule.image-guidebook"/>:</label>
                         <div className='img-container'>
                             <input id='imgAdmin' type='file' hidden onChange={(event) => this.onChangeImage(event)}></input>
-                            <label className='upload_custom' htmlFor='imgAdmin'>Tải ảnh <i className="fas fa-upload"></i></label>
+                            <label className='upload_custom' htmlFor='imgAdmin'><FormattedMessage id="manage-schedule.upload"/> <i className="fas fa-upload"></i></label>
                                 <div className='image-admin'
                                 style = {{backgroundImage: `url(${this.state.imgURL})`}}
                                 onClick = {() => this.openImage()}

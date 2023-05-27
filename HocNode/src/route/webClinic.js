@@ -12,6 +12,8 @@ let initWebRoutesClinic = (app) => {
 
     router.get('/api/get-detail-clinic-for-id', clinicController.getDetailClinic)
 
+    router.put('/api/update-clinic', clinicController.updateClinic)
+
     router.delete('/api/delete-clinic' , clinicController.handleDeleteClinic)
 
     router.post('/api/review-clinic' , clinicController.handleReviewClinic)

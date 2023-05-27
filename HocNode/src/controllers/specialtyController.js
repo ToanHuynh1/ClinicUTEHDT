@@ -6,7 +6,6 @@ module.exports = {
     createNewSpecialty: async (req, res) => 
     {
         try {
-            console.log(req.body)
             let infor = await specialtyService.createNewSpecialtyService(req.body)
             return res.status(200).json({
                 infor

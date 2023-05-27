@@ -167,13 +167,12 @@ module.exports = {
                 if (dataSpecialty)
                 {
                     dataSpecialty.name = data.name,
-                    dataSpecialty.address = data.type,
                     dataSpecialty.descriptionMardown= data.descriptionMardown,
                     dataSpecialty.descriptionHTML = data.descriptionHTML
     
-                    if (data.image)
+                    if (data.imageBase64)
                     {
-                        guidebook.image = data.image
+                        dataSpecialty.image = data.imageBase64
                     }
                     await dataSpecialty.save()
                     resolve({

@@ -129,7 +129,7 @@ class ManageSpecialty extends Component {
 
         if (checkFlag === false) return;
         
-        if (actions == CRUD_ACTIONS.CREATE)
+        if (actions === CRUD_ACTIONS.CREATE)
         {
             let res = await createNewSpecialty({
                 name: this.state.name,
@@ -138,7 +138,6 @@ class ManageSpecialty extends Component {
                 descriptionMardown: this.state.descriptionMardown,
             })
 
-            console.log(res)
             if (res && res.infor.errCode === 0){
                 toast.success("Create new specialty succeed ! ")
                 this.setState({
@@ -193,20 +192,20 @@ class ManageSpecialty extends Component {
         let {listSpecialty} = this.state
         return (
             <div className='manage-specialty-container'>
-                <div className='ms-title' style={{fontWeight: '600', marginBottom: '20px', textTransform: 'uppercase', fontSize: '26px', marginTop: '20px'}}>Quản lý chuyên khoa</div>
+                <div className='ms-title' style={{fontWeight: '600', marginBottom: '20px', textTransform: 'uppercase', fontSize: '26px', marginTop: '20px'}}><FormattedMessage id="manage-schedule.manage-speciality"/></div>
                 <div className='add-all-specialty row'>
                     <div className='col-6 form-group'>
-                        <label>Tên chuyên khoa</label>
+                        <label><FormattedMessage id="manage-schedule.name-speciality"/></label>
                         <input type='text' className='form-control' 
                             value={this.state.name}
                             onChange={(event) => this.handleOnChangeInput(event,'name')}
                             />
                     </div>
                     <div className='col-6 form-group'>
-                        <label>Ảnh chuyên khoa</label>
+                        <label><FormattedMessage id="manage-schedule.image-speciality"/></label>
                         <div className='img-container'>
                             <input id='imgAdmin' type='file' hidden onChange={(event) => this.onChangeImage(event)}></input>
-                            <label className='upload_custom' htmlFor='imgAdmin'>Tải ảnh <i className="fas fa-upload"></i></label>
+                            <label className='upload_custom' htmlFor='imgAdmin'><FormattedMessage id="manage-schedule.upload"/> <i className="fas fa-upload"></i></label>
                                 <div className='image-admin'
                                 style = {{backgroundImage: `url(${this.state.imgURL})`}}
                                 onClick = {() => this.openImage()}
@@ -225,12 +224,12 @@ class ManageSpecialty extends Component {
                         />
                     </div>
                     <div className='col-12 my-3'>
-                        <button className={this.state.actions == CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}  
+                        <button className={this.state.actions === CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}  
                             onClick={() => this.handleSaveSpecialty()}
                         >
-                        {this.state.actions == CRUD_ACTIONS.EDIT ? 
+                        {this.state.actions === CRUD_ACTIONS.EDIT ? 
                             <FormattedMessage id ="manage-user.edit-guidebook"/> :
-                            <FormattedMessage id ="manage-user.save-guidebook"/>
+                            <FormattedMessage id ="manage-user.save-speciality"/>
                             }
                         </button>
                     </div>   
