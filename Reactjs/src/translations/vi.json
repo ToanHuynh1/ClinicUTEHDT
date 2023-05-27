@@ -60,7 +60,11 @@
         "image": "Hình ảnh",
         "edit": "Cập nhật thay đổi",
         "save-guidebook": "Lưu cẩm nang",
-        "edit-guidebook": "Cập nhật thay đổi"
+        "edit-guidebook": "Cập nhật thay đổi",
+        "save-clinic": "Lưu cơ sơ",
+        "edit-clinic": "Cập nhật thay đổi",
+        "save-speciality": "Lưu chuyên khoa",
+        "edit-speciality": "Cập nhật thay đổi"
     },
     "homepage": {
         "prominent-doctor": "Bác sĩ nổi bật tuần qua",
@@ -90,7 +94,20 @@
         "title": "Quản lý kế hoạch khám bệnh",
         "select-doctor": "Chọn bác sĩ",
         "select-day": "Chọn ngày khám bệnh",
-        "save-inforSchedule": "Lưu thông tin"
+        "save-inforSchedule": "Lưu thông tin",
+        "manage-clinic": "QUẢN LÝ PHÒNG KHÁM",
+        "name-clinic": "Tên phòng khám",
+        "address-clinic": "Địa chỉ phòng khám",
+        "image-clinic":"Ảnh phòng khám",
+        "upload": "Tải ảnh",
+        "manage-speciality": "QUẢN LÝ CHUYÊN KHOA",
+        "name-speciality": "Tên chuyên khoa",
+        "image-speciality":"Ảnh chuyên khoa",
+        "manage-guidebook": "QUẢN LÝ CẨM NANG",
+        "name-guidebook": "Tên cẩm nang",
+        "type-guidebook": "Loại",
+        "image-guidebook": "Ảnh cẩm nang"
+
     },
     "patient": {
         "detail-doctor": {

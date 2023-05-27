@@ -9,7 +9,7 @@ import Lightbox from 'react-image-lightbox';
 import MdEditor from 'react-markdown-editor-lite';
 import MarkdownIt from 'markdown-it';
 import {CommonUtils, CRUD_ACTIONS} from '../../../utils'
-import {createNewClinic, getAllClinic} from '../../../services/userService'
+import {createNewClinic, getAllClinic, editClinicService} from '../../../services/userService'
 import TableClinic from './TableClinic';
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
@@ -84,24 +84,84 @@ class ManageClinic extends Component {
     }
 
 
+    checkInput  = () => 
+    {
+        let checkFlag = true
+        let checkArr = ['name', 'address']
+        for(let i = 0 ; i < checkArr.length; i++)
+        {
+            if (!this.state[checkArr[i]])
+                {
+                    checkFlag = false
+                    alert('Lack of worth : ' + checkArr[i])
+                    break
+                }
+        }
+
+        return checkFlag
+ 
+    }
+
+    
+    resetState = () =>
+    {
+        this.setState({
+            name: '',
+            imageBase64: '',
+            descriptionHTML: '',
+            descriptionMardown: '',
+            address: ''
+        })
+    }
+
+
     handleSaveClinic = async () => 
     {
-        let res = await createNewClinic(this.state)
-        console.log(res)
-        if (res && res.infor.errCode === 0){
-            toast.success("Create new clinic succeed ! ")
-            this.setState({
-                name: '',
-                imageBase64: '',
-                address: '',
-                descriptionHTML: '',
-                descriptionMardown: ''
-            })
-            window.location.href = `/system/manage-clinic`;
-        } 
-        else
+        let checkFlag = this.checkInput()
+        let actions = this.state.actions
+
+        if (checkFlag === false) return;
+
+        if (actions === CRUD_ACTIONS.CREATE)
         {
-            toast.error("Create new clinic fail ! ")
+
+            let res = await createNewClinic(this.state)
+            if (res && res.infor.errCode === 0){
+                toast.success("Tạo mới cơ sở y tế thành công ! ")
+                this.setState({
+                    name: '',
+                    imageBase64: '',
+                    address: '',
+                    descriptionHTML: '',
+                    descriptionMardown: ''
+                })
+                window.location.href = `/system/manage-clinic`;
+            } 
+            else
+            {
+                toast.error("Tạo mới cơ sở y tế thất bại ! ")
+            }
+        }
+
+        if (actions === CRUD_ACTIONS.EDIT)
+        {
+            let reponse = await editClinicService({
+                name: this.state.name,
+                address: this.state.address,
+                imageBase64: this.state.imageBase64,
+                descriptionHTML: this.state.descriptionHTML,
+                descriptionMardown: this.state.descriptionMardown,
+                id:this.state.editId
+            })
+
+            if (reponse && reponse.infor.errCode === 0){
+                toast.success("Cập nhật sơ sở y tế thành công ! ")
+                this.resetState()
+            }
+            else
+            {
+                toast.error("Cập nhật sơ sở y tế thất bại ! ")
+            }  
         }
     }
 
@@ -123,20 +183,20 @@ class ManageClinic extends Component {
         let {listClinic} = this.state
         return (
             <div className='manage-specialty-container'>
-                <div className='ms-title' style={{fontWeight: '600', marginBottom: '20px', textTransform: 'uppercase', fontSize: '26px', marginTop: '20px'}}>Quản lý phòng khám</div>
+                <div className='ms-title' style={{fontWeight: '600', marginBottom: '20px', textTransform: 'uppercase', fontSize: '26px', marginTop: '20px'}}><FormattedMessage id="manage-schedule.manage-clinic"/></div>
                 <div className='add-all-specialty row'>
                     <div className='col-6 form-group'>
-                        <label>Tên phòng khám</label>
+                        <label><FormattedMessage id="manage-schedule.name-clinic"/></label>
                         <input type='text' className='form-control' 
                             value={this.state.name}
                             onChange={(event) => this.handleOnChangeInput(event,'name')}
                             />
                     </div>
                     <div className='col-6 form-group'>
-                        <label>Ảnh phòng khám</label>
+                        <label><FormattedMessage id="manage-schedule.image-clinic"/></label>
                         <div className='img-container'>
                             <input id='imgAdmin' type='file' hidden onChange={(event) => this.onChangeImage(event)}></input>
-                            <label className='upload_custom' htmlFor='imgAdmin'>Tải ảnh <i className="fas fa-upload"></i></label>
+                            <label className='upload_custom' htmlFor='imgAdmin'><FormattedMessage id="manage-schedule.upload"/> <i className="fas fa-upload"></i></label>
                                 <div className='image-admin'
                                 style = {{backgroundImage: `url(${this.state.imgURL})`}}
                                 onClick = {() => this.openImage()}
@@ -146,7 +206,7 @@ class ManageClinic extends Component {
                         </div>
                     </div>
                     <div className='col-6 form-group'>
-                        <label>Địa chỉ phòng khám</label>
+                        <label><FormattedMessage id="manage-schedule.address-clinic"/></label>
                         <input 
                         type='text' className='form-control'
                         value={this.state.address}
@@ -161,10 +221,10 @@ class ManageClinic extends Component {
                         />
                     </div>
                     <div className='col-12 my-3'>
-                        <button className={this.state.actions == CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}  
+                        <button className={this.state.actions === CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}  
                             onClick={() => this.handleSaveClinic()}
                         >
-                        {this.state.actions == CRUD_ACTIONS.EDIT ? 
+                        {this.state.actions === CRUD_ACTIONS.EDIT ? 
                             <FormattedMessage id ="manage-user.edit-guidebook"/> :
                             <FormattedMessage id ="manage-user.save-guidebook"/>
                             }

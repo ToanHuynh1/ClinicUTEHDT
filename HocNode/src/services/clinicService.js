@@ -115,7 +115,55 @@ module.exports = {
                 reject(error)
             }
         })
-    }, 
+    },
+    
+    updateClinicService: (data) => {
+        return new Promise (async (resolve,reject) => {
+            try {
+
+                if (!data.id || !data.name || !data.descriptionMardown || !data.descriptionHTML || !data.address)
+                {
+                    resolve({
+                        errCode:2,
+                        errmessage: 'Phải điền đầy đủ thông tin'
+                    })
+                }
+                let dataClinic = await db.Clinic.findOne({
+                    where: {
+                        id : data.id
+                    },raw: false
+                    
+                })
+                if (dataClinic)
+                {
+                    dataClinic.name = data.name,
+                    dataClinic.address = data.address,
+                    dataClinic.descriptionMardown= data.descriptionMardown,
+                    dataClinic.descriptionHTML = data.descriptionHTML
+    
+                    if (data.imageBase64)
+                    {
+                        dataClinic.image = data.imageBase64
+                    }
+                    await dataClinic.save()
+                    resolve({
+                        errCode:0,
+                        errMessage: 'Cập nhật cơ sở y tế thành công'
+                    })
+                }
+                else
+                {
+                    resolve({
+                        errCode: 1,
+                        errmessage: 'Không tìm thấy cơ sở y tế'
+                    })
+                }
+            } catch (error) {
+                reject(error)
+            }
+            
+        });
+    },
     handleDeleteClinicService: async (dataId) =>
     {
         return new Promise(async (resolve,reject) =>{

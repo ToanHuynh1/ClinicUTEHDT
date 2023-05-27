@@ -59,7 +59,11 @@
         "role": "Role",
         "save": "Save user",
         "image": "Avatar",
-        "edit": "Edit user"
+        "edit": "Edit user",    
+        "save-clinic": "Save clinic",
+        "edit-clinic": "Edit clinic",
+        "save-speciality": "Save speciality",
+        "edit-speciality": "Update speciality"
     },
 
     "homepage": {
@@ -91,7 +95,19 @@
         "title": "Management of medical examination plan",
         "select-doctor": "Select Doctor",
         "select-day": "Choose a medical examination date",
-        "save-inforSchedule": "Submit Information"
+        "save-inforSchedule": "Submit Information",
+        "manage-clinic": "MANAGE CLINIC",
+        "name-clinic": "Name clinic",
+        "address-clinic": "Clinic address",
+        "image-clinic":"Clinic image",
+        "upload": "Upload image",
+        "manage-speciality": "MANAGE SPECIALTY",
+        "name-speciality": "Specialty name",
+        "image-speciality":"Specialty image",
+        "manage-guidebook": "MANAGE GUIDEBOOK",
+        "name-guidebook": "Guidebook name",
+        "type-guidebook": "Type",
+        "image-guidebook": "Guidebook image"
     },
     "patient": {
         "detail-doctor": {

@@ -10,7 +10,7 @@ class Home extends Component {
     render() {
         const { isLoggedIn } = this.props;
         let linkToRedirect
-      
+
         if (isLoggedIn && (this.props.userInfo.roleId === 'R1'))
         {
             linkToRedirect = isLoggedIn ? '/system/user-redux' : '/login';
@@ -21,7 +21,7 @@ class Home extends Component {
         }
         if (isLoggedIn && (this.props.userInfo.roleId === 'R3'))
         {
-            linkToRedirect = isLoggedIn ?  '/home' : '/login' ;
+            linkToRedirect = isLoggedIn ?  '/' : '/login' ;
         }
       
 
