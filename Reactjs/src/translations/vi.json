@@ -88,7 +88,15 @@
         "contact": "Liên hệ",
         "home": "Trang chủ",
         "specialityseeall": "Chuyên khoa",
-        "searchspecialty": "Tìm chuyên khoa..."
+        "searchspecialty": "Tìm chuyên khoa...",
+        "specialist": "Chuyên khoa",
+        "login": "Đăng nhập",
+        "update": "Cập nhật",
+        "seebooking": "Xem lịch hẹn",
+        "cancel": "Hủy bỏ",
+        "ios": "Chúng tôi sẽ sớm ra mắt phần mềm trên Android, IOS",
+        "contactsupport": "Mọi thắc mắc khách hàng có thể liên hệ qua gmail: ",
+        "extracontact": "hoặc quý khách có thể liên hệ thông qua facebook:"
     },
     "manage-schedule": {
         "title": "Quản lý kế hoạch khám bệnh",

@@ -128,24 +128,24 @@ class UpdateInfor extends Component {
             <HomeHeader isShowBanner={false}/>
                 <div className='update-infor-patient'>  
                     <div className='custom-update'>
-                        <div className='title-update'>Cập nhật thông tin</div>
+                        <div className='title-update'><FormattedMessage id="homepage.update"/></div>
                         <div className='row'>
                             <div className='col-6 form-group'>
-                                <label style={{fontWeight: '600', fontSize: '17px'}}>Tên</label>
+                                <label style={{fontWeight: '600', fontSize: '17px'}}><FormattedMessage id="manage-user.firstName"/></label>
                                 <input className='form-control' type='firstName' value={this.state.firstName}
                                         onChange= {(event) => this.onChangeInput(event, 'firstName')}
                                 ></input>
                             </div> 
 
                             <div className='col-6 form-group'>
-                                    <label style={{fontWeight: '600', fontSize: '17px'}}>Số điện thoại</label>
+                                    <label style={{fontWeight: '600', fontSize: '17px'}}><FormattedMessage id="manage-user.phoneNumber"/></label>
                                     <input className='form-control' type='phoneNumber' value={this.state.phoneNumber}
                                         onChange= {(event) => this.onChangeInput(event, 'phoneNumber')}
                                     ></input>
                             </div> 
 
                             <div className='col-6 form-group' style={{marginTop: '10px'}}>
-                                    <label style={{fontWeight: '600', fontSize: '17px'}}>Địa chỉ</label>
+                                    <label style={{fontWeight: '600', fontSize: '17px'}}><FormattedMessage id="manage-user.address"/></label>
                                     <input 
                                     className='form-control' 
                                     type='address' 
@@ -156,7 +156,7 @@ class UpdateInfor extends Component {
 
 
                             <div className='col-6' style={{marginTop: '10px'}}>
-                                    <label style={{fontWeight: '600', fontSize: '17px'}}>Giới tính</label>
+                                    <label style={{fontWeight: '600', fontSize: '17px'}}><FormattedMessage id="manage-user.gender"/></label>
                                     <select className="form-control"
                                         onChange= {(event) => this.onChangeInput(event, 'gender')}
                                         value={gender}
@@ -173,8 +173,8 @@ class UpdateInfor extends Component {
                                 </div>
                         </div>
                     
-                        <Button className='btn-excute' onClick={() => this.handleExcuteUpdateInfo()}>Cập nhật</Button>
-                        <Button className='btn-cancel' onClick={() => this.closeUpdateInfor()}>Hủy bỏ</Button>
+                        <Button className='btn-excute' onClick={() => this.handleExcuteUpdateInfo()}><FormattedMessage id="homepage.update"/></Button>
+                        <Button className='btn-cancel' onClick={() => this.closeUpdateInfor()}><FormattedMessage id="homepage.cancel"/></Button>
                     </div>
                 </div>
             </>

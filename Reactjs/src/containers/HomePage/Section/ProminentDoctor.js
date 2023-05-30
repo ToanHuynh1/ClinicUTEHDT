@@ -79,7 +79,7 @@ class ProminentDoctor extends Component {
                                             <div className='position text-center'>
                                                 <div style={{fontWeight: '600'}}>{language === LANGUAGES.VI ? nameVi : nameEn}</div>
                                                 {doctor.Doctor_Infor.Specialty.name && (
-                                                    <div>Chuyên khoa: {doctor.Doctor_Infor.Specialty.name}</div>
+                                                    <div><FormattedMessage id="homepage.specialist"/>: {doctor.Doctor_Infor.Specialty.name}</div>
                                                 )}
                                                
                                              </div>

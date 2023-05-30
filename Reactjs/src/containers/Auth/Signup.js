@@ -96,6 +96,13 @@ class Signup extends Component {
     handleSwtichSignin = () => {
         this.props.history.push(`/login`)
     }
+
+    handlePasswordKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          this.handleSignup();
+        }
+    }
+
     render() {
         // jsx
         return (
@@ -121,6 +128,8 @@ class Signup extends Component {
                             {
                                 this.handleOnChangeUsername(event)
                             }}
+
+                            onKeyDown={this.handlePasswordKeyDown}
                             />
                         </div>
 

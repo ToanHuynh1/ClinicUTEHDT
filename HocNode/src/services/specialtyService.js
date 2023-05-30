@@ -315,7 +315,6 @@ module.exports = {
 let handleUpdateRating = async (id) =>
 {
         try {
-            console.log(id)
             if (!id) {
                 resolve({
                     errCode: 1,

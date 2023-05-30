@@ -21,7 +21,7 @@ class Home extends Component {
         }
         if (isLoggedIn && (this.props.userInfo.roleId === 'R3'))
         {
-            linkToRedirect = isLoggedIn ?  '/' : '/login' ;
+            linkToRedirect = isLoggedIn ?  '/' : '/';
         }
       
 
