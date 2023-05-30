@@ -144,6 +144,13 @@ class ModifyPassword extends Component {
     handleSwtichSignin = () => {
         this.props.history.push(`/login`)
     }
+
+    handlePasswordKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          this.handleForgotPassword();
+        }
+    }
+
     render() {
         // jsx
         return (
@@ -168,6 +175,7 @@ class ModifyPassword extends Component {
                             {
                                 this.handleOnChangeEmail(event)
                             }}
+                            onKeyDown={this.handlePasswordKeyDown}
                             />
                         </div>
 

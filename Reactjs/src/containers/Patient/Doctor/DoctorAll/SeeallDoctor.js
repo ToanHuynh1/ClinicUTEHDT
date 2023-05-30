@@ -86,7 +86,7 @@ class SeeallDoctor extends Component {
 
                <div style={{marginTop: '20px'}}>
 
-                <div className='prominent'>Bác sĩ nổi bật</div>
+                <div className='prominent'><FormattedMessage id="homepage.prominent-doctor"/></div>
        
 
                {filteredDoctors && filteredDoctors.length > 0 ? (

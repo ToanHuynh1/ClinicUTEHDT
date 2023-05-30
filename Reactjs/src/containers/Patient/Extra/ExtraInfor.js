@@ -40,7 +40,7 @@ class ExtraInfor extends Component {
 
                 <br/>
                 <div className='ExtraInfor-cotent' style={{marginTop: '120px', textAlign: 'center', fontSize: '28px', fontWeight: '600'}}>
-                    Chúng tôi sẽ sớm ra mắt phần mềm trên Android, IOS
+                    <FormattedMessage id="homepage.ios"/>
                 </div>
             </div>
         

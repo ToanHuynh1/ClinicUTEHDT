@@ -89,10 +89,9 @@ class Login extends Component {
     componentDidMount() {
         document.addEventListener('keydown', this.handlerKeyDown);
       
-        if (username && password) {
-          // automatically fill in the login form with the saved credentials
-          this.setState({ username, password });
-        }
+        // if (username && password) {
+        //   this.setState({ username, password });
+        // }
     }
 
     componentWillUnmount() {

@@ -65,6 +65,14 @@ class Login extends Component {
         }
 
     }
+
+    handlePasswordKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          this.handleLogin();
+        }
+    }
+
+
     handleShowHidePassword = () =>
     {
        this.setState({
@@ -83,6 +91,8 @@ class Login extends Component {
     handleSwitchModifyPassowrd = () => {
         this.props.history.push(`/modify-password`)
     }
+
+
     render() {
         // jsx
         return (
@@ -123,6 +133,7 @@ class Login extends Component {
                                     {
                                         this.handleOnChangePassword(event)
                                     }}
+                                onKeyDown={this.handlePasswordKeyDown}
                                 // onKeyDown={this.}
                                 />
                                 <span onClick={() => this.handleShowHidePassword()}>
@@ -145,8 +156,6 @@ class Login extends Component {
                             <span className='text-other-login' style={{fontWeight: '600'}}>Đặt lại mật khẩu:</span>
                         </div>
                         <div className='col-12 social-login'>
-                             {/* <i className="fab fa-google-plus-g google"></i>
-                             <i className="fab fa-facebook-f facebook"></i> */}
                              <i className="fas fa-wrench facebook" onClick={() => this.handleSwitchModifyPassowrd()}></i>
                         </div>
                     </div>

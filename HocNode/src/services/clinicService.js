@@ -286,7 +286,6 @@ module.exports = {
 let handleUpdateRatingClinic = async (id) =>
 {
         try {
-            console.log(id)
             if (!id) {
                 resolve({
                     errCode: 1,

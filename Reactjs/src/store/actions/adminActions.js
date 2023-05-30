@@ -116,18 +116,18 @@ export const createNewUser = (data) =>{
             let res = await createNewUserService(data)
             if (res && res.errCode === 0)
             {
-                toast.success("Create a new user success !!!")
+                toast.success("Tạo người dùng thành công !!!")
                 dispatch(saveUserSuccess())
                 dispatch(getAllUserStart())
             }
             else
             {
-                toast.error('Create a new user error !!!')
+                toast.error('Tạo người dùng thất bại !!!')
                 dispatch(saveUserFail()) 
             }
         } 
         catch (error) {
-            toast.error('Create a new user error !!!')
+            toast.error('Tạo người dùng thất bại !!!')
             dispatch(saveUserFail()) 
             console.log(error)
         }
@@ -155,17 +155,17 @@ export const getAllUserStart = () => {
             let res = await getAllUsers('ALL')
             if (res && res.errCode === 0)
             {
-                toast.success('Get all user success !!!')
+                toast.success('Lấy danh sách người dùng thành công !!!')
                 dispatch(getAllUserSuccess(res.users.reverse()))
             } 
             else
             {
-                toast.error('Get all user error !!!')
+                toast.error('Lấy danh sách người dùng thất bại !!!')
                 dispatch(getAllUserFail()) 
             }
         } 
         catch (error) {
-            toast.error('Get all user error !!!')
+            toast.error('Lấy danh sách người dùng thất bại !!!')
             dispatch(getAllUserFail()) 
             console.log(error)
         }
@@ -193,18 +193,18 @@ export const deleteUser = (dataId) =>{
                 let res = await deleteUserService(dataId)
             if (res && res.errCode === 0)
                 {
-                    toast.success("Delete user success !!!")
+                    toast.success("Xóa người dùng thành công !!!")
                     dispatch(deleteSuccess())
                     dispatch(getAllUserStart())
                 }
             else
                 {
-                    toast.error('Delete user error !!!')
+                    toast.error('Xóa người dùng thất bại  !!!')
                     dispatch(deleteFail()) 
                 }
         } 
         catch (error) {
-                toast.error('Delete user error !!!')
+                toast.error('Xóa người dùng thất bại !!!')
                 dispatch(deleteFail()) 
                 console.log(error)
         }
@@ -230,18 +230,18 @@ export const editUser = (data) =>{
                 let res = await editUserService(data)
             if (res && res.errCode === 0)
                 {
-                    toast.success("Edit user success !!!")
+                    toast.success("Cập nhật người đùng thành công !!!")
                     dispatch(editSuccess())
                     dispatch(getAllUserStart())
                 }
             else
                 {
-                    toast.error('Edit user error !!!')
+                    toast.error('Cập nhật người đùng thất bại  !!!')
                     dispatch(editFail()) 
                 }
         } 
         catch (error) {
-                toast.error('Edit user error !!!')
+                toast.error('Cập nhật người đùng thất bại !!!')
                 dispatch(editFail()) 
                 console.log(error)
         }
@@ -330,14 +330,14 @@ export const saveDetailDoctor= (data) => {
             let res = await saveDetailDoctorService(data)
             if (res && res.errCode === 0)
             {
-                toast.success("Save infor detail doctor success !!!")
+                toast.success("Lưu thông tin chi tiết bác sĩ thành công !!!")
                 dispatch({
                     type: actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS,
                 })
             }
             else
             {
-                toast.error("Save infor detail doctor fail !!!")
+                toast.error("Lưu thông tin chi tiết bác sĩ thất bại !!!")
                 dispatch({
                     type: actionTypes.SAVE_DETAIL_DOCTOR_FAIL
                 })
@@ -345,7 +345,7 @@ export const saveDetailDoctor= (data) => {
         } 
         catch (error) { 
             console.log(error)
-            toast.error("Save infor detail doctor fail !!!")
+            toast.error("Lưu thông tin chi tiết bác sĩ thất bại !!!")
             dispatch({
                 type: actionTypes.SAVE_DETAIL_DOCTOR_FAIL
             })

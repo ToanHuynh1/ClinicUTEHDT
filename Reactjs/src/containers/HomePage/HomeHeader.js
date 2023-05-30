@@ -295,11 +295,11 @@ class HomeHeader extends Component {
 
                             {dataUserlogin ? (
                             <div className='handle'>
-                               <button className='update-profile' onClick={() => this.handleUpdateProfile()}>Cập nhật</button>
-                                <button className='seen-booking' onClick={() => this.handleSeeBooking()}>Xem lịch hẹn</button>
+                               <button className='update-profile' onClick={() => this.handleUpdateProfile()}><FormattedMessage id="homepage.update"/></button>
+                                <button className='seen-booking' onClick={() => this.handleSeeBooking()}><FormattedMessage id="homepage.seebooking"/></button>
                             </div>
 
-                            ):  <button className='btn-login' onClick={() => this.handleSwtichLogin()}>Đăng nhập</button>}
+                            ):  <button className='btn-login' onClick={() => this.handleSwtichLogin()}><FormattedMessage id="homepage.login"/></button>}
                                                 
                             </div>
                             ) : null}

@@ -214,7 +214,6 @@ let hashUserPassword = (password) =>
   let ConfirmPasswordService = (data) => {
     return new Promise(async (resolve, reject) => {
       try {
-        console.log(data)
         // Check if the email parameter is missing
         if (!data.otp) {
           resolve({
@@ -362,7 +361,6 @@ let sendReviewOfDetailDoctorService = (data) => {
   {
       try {
 
-          console.log(data)
           if (!data.patientName || !data.doctorId || !data.date || !data.status || !data.patientId || !data.rating)
           {
               resolve({

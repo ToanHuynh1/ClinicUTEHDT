@@ -88,7 +88,15 @@
         "contact": "Contact",
         "home": "Home",
         "specialityseeall": "Specialty",
-        "searchspecialty": "Search specialty..."
+        "searchspecialty": "Search specialty...",
+        "specialist": "Specialist",
+        "login": "  --- Login ---    ",
+        "update": "Update infor",
+        "seebooking": "See booking",
+        "cancel": "Cancel",
+        "ios": "We will launch the software on Android, IOS soon",
+        "contactsupport": "For any questions, customers can contact via gmail: ",
+        "extracontact": "or you can contact via facebook:"
     },
 
     "manage-schedule": {

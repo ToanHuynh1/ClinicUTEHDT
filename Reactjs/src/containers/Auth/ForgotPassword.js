@@ -75,6 +75,14 @@ class ForgotPassword extends Component {
     }
 
 
+    handlePasswordKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          this.handleForgotPassword();
+        }
+    }
+
+
+
     render() {
         // jsx
         return (
@@ -96,6 +104,7 @@ class ForgotPassword extends Component {
                             {
                                 this.handleOnChangeEmail(event)
                             }}
+                            onKeyDown={this.handlePasswordKeyDown}
                             />
                         </div>
 

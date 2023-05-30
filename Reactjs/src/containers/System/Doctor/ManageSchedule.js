@@ -120,14 +120,14 @@ class ManageSchedule extends Component {
         // sử dụng moment để format date
         if (!currentDate)
         {
-            toast.error('Missing date !!!')
+            toast.error('Hãy chọn ngày !!!')
             return;
         }
 
         //  '_.isEmplty' check rỗng sử dụng lodash
         if (selectedDoctor && _.isEmpty(selectedDoctor))
         {
-            toast.error('No doctor selected !!!')
+            toast.error('Hãy chọn bác sĩ !!!')
             return;
         }
 
@@ -158,7 +158,7 @@ class ManageSchedule extends Component {
             }
             else
             {
-                toast.error('No time selected !!!')
+                toast.error('Hãy chọn thời gian !!!')
                  return;
             }
         }   
@@ -171,11 +171,11 @@ class ManageSchedule extends Component {
 
         if (res && res.errCode === 0)
         {
-            toast.success("Save success")
+            toast.success("Lưu thành công")
         }
         else
         {
-            toast.error("Save error")
+            toast.error("Lưu thất bại")
         }
        
     }
